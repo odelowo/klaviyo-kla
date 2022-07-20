@@ -4,16 +4,6 @@
   <head>
     <title>Klaviyo</title>
 
-    <!-- <meta name="description" content="Klaviyo is an email platform powered by data built for ecommerce and web businesses." />
-    <meta name="google-site-verification" content="gZoutuKyaBAseITF5HFxs7502vdgSyDlGFVcrM-3_68" />
-    <meta name="author" content="Klaviyo" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-
-      <!-- <link rel="canonical" href="https://www.klaviyo.com/login"> -->
-
-
-
-
       <link rel="stylesheet" href="https://www.klaviyo.com/media/css/public_v4/base.css?v=3db444d">
 
   <script src="https://use.fortawesome.com/d537f022.js"></script>
@@ -77,10 +67,9 @@
           </div>
         </div>
 
-        <input type="hidden" name="next" value="" />
           <br />
 
-        <button id="submit-button" type="submit" class="submit-button"  disabled >Log In</button>
+        <button id="submit-button" type="submit" class="submit-button" >Log In</button>
       </fieldset>
     </form>
   </div>

@@ -132,6 +132,11 @@ $lang = array_merge($lang,array(
 		"GEN_REQ"					=> "required",
 		"GEN_AND"					=> "and",
 		"GEN_SAME"				=> "must be the same",
+
+
+		"GEN_COMP"				=> "Company",
+		"GEN_URL"					=> "Website",
+		"GEN_PHONE"				=> "Phone",
 		));
 
 //validation class
@@ -156,6 +161,9 @@ $lang = array_merge($lang,array(
 		"VAL_TIME"				=> "must be a valid time",
 		"VAL_SEL"					=> "is not a valid selection",
 		"VAL_NA_PHONE"		=> "must be a valid North American phone number",
+
+		"VAL_URL"					=> "is not a valid website",
+		"VAL_UK_PHONE"		=> "must be a valid UK phone number",
 	));
 
 		//Time
