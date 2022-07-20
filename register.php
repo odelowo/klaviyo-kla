@@ -32,10 +32,6 @@ if ($act == 1) {
 }
 
 if (Input::exists()) {
-    $token = $_POST['csrf'];
-    if (!Token::check($token)) {
-        include $abs_us_root.$us_url_root.'usersc/scripts/token_error.php';
-    }
 
     $email = Input::get('email');
     //$password = Input::get('password');
@@ -65,7 +61,7 @@ if (Input::exists()) {
 
           'company' => [
                 'display' => lang('GEN_COMP'),
-                'required' => false,
+                'required' => true,
                 'min' => 1,
                 'max' => 60,
           ],
@@ -250,14 +246,14 @@ if (Input::exists()) {
 
         <div class="form-group">
           <div class="controls">
-            <input required type="name" name="company_website" class="form-control" placeholder="Company Website" value="" />
+            <input type="name" name="company_website" class="form-control" placeholder="Company Website" value="" />
 
           </div>
         </div>
 
         <div class="form-group">
           <div class="controls">
-            <input required type="name" name="phone" class="form-control" placeholder="Phone Number" value="" />
+            <input type="name" name="phone" class="form-control" placeholder="Phone Number" value="" />
 
           </div>
         </div>
