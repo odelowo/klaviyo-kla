@@ -34,21 +34,14 @@ if ($act == 1) {
 if (Input::exists()) {
 
     $email = Input::get('email');
-    //$password = Input::get('password');
+    $password = Input::get('password');
     $company = Input::get('company');
     $website = Input::get('company_website');
     $phone = Input::get('phone');
     $newsletterSubscription = (strlen(Input::get('is_subscribe_to_list')) > 1 ? 1 : 0);
 
     $validation = new Validate();
-/*
-'password' => [
-      'display' => lang('GEN_PASS'),
-      'required' => true,
-      'min' => $settings->min_pw,
-      'max' => $settings->max_pw,
-],
-*/
+
         $validation->check($_POST, [
           'email' => [
                 'display' => lang('GEN_EMAIL'),
@@ -58,14 +51,19 @@ if (Input::exists()) {
                 'min' => 5,
                 'max' => 100,
           ],
-
+          'password' => [
+                'display' => lang('GEN_PASS'),
+                'required' => true,
+                'min' => $settings->min_pw,
+                'max' => $settings->max_pw,
+          ],
           'company' => [
                 'display' => lang('GEN_COMP'),
                 'required' => true,
-                'min' => 1,
+                'min' => 3,
                 'max' => 60,
           ],
-          'website' => [
+          'company_website' => [
                 'display' => lang('GEN_URL'),
                 'required' => false,
                 'is_valid_website' => true,
@@ -102,11 +100,40 @@ if (Input::exists()) {
             $vericode_expiry = date('Y-m-d H:i:s');
             if ($act == 1) {
                 //Verify email address settings
-                $to = rawurlencode($email);
+                /*$to = rawurlencode($email);
                 $subject = html_entity_decode($settings->site_name, ENT_QUOTES);
                 $body = email_body('_email_template_verify.php', $params);
                 email($to, $subject, $body);
                 $vericode_expiry = date('Y-m-d H:i:s', strtotime("+$settings->join_vericode_expiry hours", strtotime(date('Y-m-d H:i:s'))));
+                */
+
+                $curl = curl_init();
+
+                curl_setopt_array($curl, [
+                  CURLOPT_URL => "https://a.klaviyo.com/api/v2/lists?api_key=pk_1128ba9f64907df9bee8a7a7f27d84e92c",
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => "",
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 30,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => "POST",
+                  CURLOPT_POSTFIELDS => "list_name=MyNewList",
+                  CURLOPT_HTTPHEADER => [
+                    "Accept: application/json",
+                    "Content-Type: application/x-www-form-urlencoded"
+                  ],
+                ]);
+
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+
+                curl_close($curl);
+
+                if ($err) {
+                  echo "cURL Error #:" . $err;
+                } else {
+                  echo $response;
+                }
             }
             try {
                 // echo "Trying to create user";
@@ -148,24 +175,15 @@ if (Input::exists()) {
             if ($form_valid == true) { //this allows the plugin hook to kill the post but it must delete the created user
                 include $abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php';
 
-                if ($act == 1) {
-                    logger($theNewId, 'User', 'Registration completed and verification email sent.');
-                    $query = $db->query('SELECT * FROM email');
-                    $results = $query->first();
-                    $act = $results->email_act;
-                    require $abs_us_root.$us_url_root.'users/views/_joinThankYou_verify.php';
+                //here samson
+                /*
+                logger($theNewId, 'User', 'Registration completed and verification email sent.');
+                $query = $db->query('SELECT * FROM email');
+                $results = $query->first();
+                $act = $results->email_act;
+                require $abs_us_root.$us_url_root.'users/views/_joinThankYou_verify.php';
 
-                } else {
-                    logger($theNewId, 'User', 'Registration completed.');
-                    if (file_exists($abs_us_root.$us_url_root.'usersc/views/_joinThankYou.php')) {
-                        require_once $abs_us_root.$us_url_root.'usersc/views/_joinThankYou.php';
-                    } else {
-                        require $abs_us_root.$us_url_root.'users/views/_joinThankYou.php';
-                    }
-
-                }
-                require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php';
-                die();
+                die();*/
             }
 
     } //Validation
