@@ -4,7 +4,7 @@
 Used to manage all  integrations with the Klaviyo. Extends guzzlehttp
 */
 
-require_once __DIR__.'../../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 
 class Klaviyo extends Client {
 
