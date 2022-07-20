@@ -1,0 +1,2702 @@
+/*
+ *  Klaviyo Colors
+ *  --------------
+ *  The only colors to be used in the new Klaviyo.
+ *
+ *  Speak with Justin if you don't see a color
+ *  here that you need.
+ */
+/*
+ * NOTE: make sure to update the version number.
+ * if you are changing the icons.
+ */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* @group Base */
+.chzn-container {
+  font-size: 14px;
+  position: relative;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  text-align: left;
+  border: 1px solid transparent;
+}
+.chzn-container.error {
+  border: 1px solid #D0331F;
+}
+.chzn-container .chzn-icon-and-text {
+  max-width: 220px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+.chzn-container .chzn-icon {
+  margin: 0 8px 0 0;
+  max-height: 24px;
+  width: auto;
+}
+.chzn-container .chzn-drop {
+  background: #FFFFFF;
+  position: absolute;
+  width: 100%;
+  top: 32px;
+  left: 0;
+  z-index: 1010;
+}
+.chzn-container.chzn-large .chzn-drop {
+  top: 40px;
+}
+/* @end */
+/* @group Single Chosen */
+.chzn-container-single:hover {
+  cursor: pointer;
+}
+.chzn-container-single.fake-chzn-container-single:hover {
+  cursor: not-allowed;
+}
+.chzn-container-single .chzn-single {
+  border: 1px solid #DFE3E6;
+  *margin-left: .3em;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 32px;
+  line-height: 32px;
+  background: #F2F4F5;
+  padding: 0 0 0 8px;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+  color: #373F47;
+}
+.chzn-container-single .chzn-single:first-child {
+  *margin-left: 0;
+}
+.chzn-container-single .chzn-single span {
+  margin-right: 18px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.chzn-container-single .chzn-single abbr {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 6px;
+  width: 12px;
+  height: 13px;
+  font-size: 1px;
+}
+.chzn-container-single .chzn-single abbr:hover {
+  background-position: right -11px;
+}
+.chzn-container-single .chzn-single div {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  height: 32px;
+  width: 18px;
+  text-align: center;
+}
+.chzn-container-single .chzn-single div b {
+  color: #91979F;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.chzn-container-single .chzn-single div b::after {
+  content: '\f0d7';
+  color: #91979F;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.chzn-container-single .chzn-single:hover,
+.chzn-container-single .chzn-single:active,
+.chzn-container-single .chzn-single:focus {
+  outline: 0;
+  background: #EBEEEF;
+}
+.chzn-container-single .chzn-single.chzn-disabled .chzn-single abbr:hover {
+  background-position: right top;
+}
+.chzn-container-single .chzn-search {
+  padding: 8px;
+  position: relative;
+  margin: 0;
+  white-space: nowrap;
+  z-index: 1010;
+}
+.chzn-container-single .chzn-search input {
+  background: #FFFFFF;
+  color: #373F47;
+  line-height: 28px;
+  height: 28px;
+  box-sizing: border-box;
+  margin: 1px 0;
+  padding: 8px;
+  outline: 0;
+  border: 1px solid #DFE3E6;
+  font-size: 14px;
+  width: 100%;
+}
+.chzn-container-single.chzn-large .chzn-single {
+  line-height: 40px;
+  height: 40px;
+}
+.chzn-container-single.chzn-large .chzn-single div {
+  height: 40px;
+}
+/* @end */
+.chzn-container-single-nosearch .chzn-search input {
+  position: absolute;
+  left: -9000px;
+}
+/* @group Multi Chosen */
+.chzn-container-multi .chzn-choices {
+  background-color: #F2F4F5;
+  border: 1px solid #DFE3E6;
+  margin: 0;
+  padding: 0;
+  cursor: text;
+  overflow: hidden;
+  height: auto !important;
+  height: 1%;
+  position: relative;
+}
+.chzn-container-multi .chzn-choices li {
+  float: left;
+  list-style: none;
+}
+.chzn-container-multi .chzn-choices .search-field {
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  height: calc(30px);
+}
+.chzn-container-multi .chzn-choices .search-field input {
+  color: #606A72;
+  background: transparent !important;
+  border: 0 !important;
+  font-size: 100%;
+  height: 32px;
+  padding: 5px;
+  margin: 1px 0;
+  outline: 0;
+  width: auto;
+  box-sizing: border-box;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.chzn-container-multi .chzn-choices .search-field .default {
+  color: #91979F;
+}
+.chzn-container-multi .chzn-choices .search-choice {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #DFE3E6;
+  color: #373F47;
+  border: 1px solid #DFE3E6;
+  line-height: 13px;
+  padding: 3px 20px 3px 5px;
+  margin: 3px 0 3px 5px;
+  position: relative;
+  cursor: default;
+}
+.chzn-container-multi .chzn-choices .search-choice-focus {
+  background: #DFE3E6;
+}
+.chzn-container-multi .chzn-choices .search-choice .search-choice-close {
+  display: block;
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  width: 12px;
+  height: 13px;
+  font-size: 1px;
+  background: url('/media/images/chosen-sprite.png') right top no-repeat;
+}
+.chzn-container-multi .chzn-choices .search-choice .search-choice-close:hover {
+  background-position: right -11px;
+}
+.chzn-container-multi .chzn-choices .search-choice-focus .search-choice-close {
+  background-position: right -11px;
+}
+/* @end */
+/* @group Results */
+.chzn-container .chzn-results {
+  margin: 0;
+  max-height: 240px;
+  padding: 0;
+  background: #FFFFFF;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.chzn-container-multi .chzn-results {
+  margin: -1px 0 0;
+  padding: 0;
+}
+.chzn-container .chzn-results li {
+  display: none;
+  padding: 6.5px 8px;
+  min-height: 32px;
+  border-top: 1px solid #EBEEEF;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #373F47;
+  margin: 0;
+  list-style: none;
+}
+.chzn-container.chzn-large .chzn-results li {
+  min-height: 40px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+.chzn-container .chzn-results:first-child li:first-child {
+  border-top: 0;
+}
+.chzn-container .chzn-results .active-result {
+  cursor: pointer;
+  display: list-item;
+}
+.chzn-container .chzn-results .highlighted {
+  background-color: #F2F4F5;
+}
+.chzn-container .chzn-results li em {
+  background: #F2F4F5;
+  font-style: normal;
+}
+.chzn-container .chzn-results .highlighted em {
+  background: transparent;
+}
+.chzn-container .chzn-results .no-results {
+  background: #F2F4F5;
+  display: list-item;
+}
+.chzn-container .chzn-results .group-result {
+  cursor: default;
+  color: #373F47;
+  font-weight: bold;
+}
+.chzn-container .chzn-results .group-option {
+  padding-left: 15px;
+}
+.chzn-container-multi .chzn-drop .result-selected {
+  display: none;
+}
+.chzn-container .chzn-results-scroll {
+  background: #FFFFFF;
+  margin: 0 4px;
+  position: absolute;
+  text-align: center;
+  width: 321px;
+  /* This should by dynamic with js */
+  z-index: 1;
+}
+.chzn-container .chzn-results-scroll span {
+  display: inline-block;
+  height: 17px;
+  text-indent: -5000px;
+  width: 9px;
+}
+.chzn-container .chzn-results-scroll-down {
+  bottom: 0;
+}
+.chzn-container .chzn-results-scroll-down span {
+  background: url('/media/images/chosen-sprite.png') no-repeat -4px -3px;
+}
+.chzn-container .chzn-results-scroll-up span {
+  background: url('/media/images/chosen-sprite.png') no-repeat -22px -3px;
+}
+/* @end */
+/* @group Active  */
+.chzn-container-active .chzn-single.chzn-single-with-drop {
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 1px solid transparent;
+  box-shadow: 0 -1px 0 0 #373F47, 1px 0 0 0 #373F47, -1px 0 0 0 #373F47;
+}
+.chzn-container-active .chzn-single.chzn-single-with-drop div {
+  background: transparent;
+  border-left: none;
+}
+.chzn-container-active .chzn-single.chzn-single-with-drop div b {
+  background-position: -21px 3px;
+}
+.chzn-container-active .chzn-choices.chzn-multi-with-drop {
+  border: 1px solid transparent;
+  box-shadow: 0 -1px 0 0 #373F47, 1px 0 0 0 #373F47, -1px 0 0 0 #373F47;
+}
+.chzn-container-active .chzn-choices .search-field input {
+  color: #373F47 !important;
+}
+.chzn-container-active .chzn-drop {
+  box-shadow: 0 1px 0 0 #373F47, 1px 0 0 0 #373F47, -1px 0 0 0 #373F47;
+}
+/* @end */
+/* @group Disabled Support */
+.chzn-disabled {
+  cursor: default;
+  opacity: 0.5 !important;
+}
+.chzn-disabled .chzn-single {
+  cursor: default;
+}
+.chzn-disabled .chzn-choices .search-choice .search-choice-close {
+  cursor: default;
+}
+/* @group Right to Left */
+.chzn-rtl {
+  text-align: right;
+}
+.chzn-rtl .chzn-single {
+  padding: 0 8px 0 0;
+  overflow: visible;
+}
+.chzn-rtl .chzn-single span {
+  margin-left: 20px;
+  margin-right: 0;
+  direction: rtl;
+}
+.chzn-rtl .chzn-single div {
+  left: 3px;
+  right: auto;
+}
+.chzn-rtl .chzn-single abbr {
+  left: 20px;
+  right: auto;
+}
+.chzn-rtl .chzn-choices .search-field input {
+  direction: rtl;
+}
+.chzn-rtl .chzn-choices li {
+  float: right;
+}
+.chzn-rtl .chzn-choices .search-choice {
+  padding: 3px 5px 3px 19px;
+  margin: 3px 5px 3px 0;
+}
+.chzn-rtl .chzn-choices .search-choice .search-choice-close {
+  left: 4px;
+  right: auto;
+  background-position: right top;
+}
+.chzn-rtl.chzn-container-single .chzn-results {
+  margin: 0 0 4px 4px;
+  padding: 0 4px 0 0;
+}
+.chzn-rtl .chzn-results .group-option {
+  padding-left: 0;
+  padding-right: 15px;
+}
+.chzn-rtl.chzn-container-active .chzn-single-with-drop div {
+  border-right: none;
+}
+.chzn-rtl .chzn-search input {
+  background: #FFFFFF url('/media/images/chosen-sprite.png') no-repeat -38px -22px;
+  padding: 4px 5px 4px 20px;
+  direction: rtl;
+}
+/* @end */
+.chzn-container.chzn-simple .chzn-search {
+  display: none;
+}
+.chzn-container.chzn-container-has-icons .chzn-single .chzn-icon {
+  height: 16px;
+  width: 16px;
+  padding: 2px;
+  margin-right: 8px;
+  margin-top: 3px;
+  border: solid 1px #DFE3E6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #FFFFFF;
+  float: left;
+}
+.chzn-container.chzn-container-has-icons .chzn-results li {
+  line-height: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  *zoom: 1;
+}
+.chzn-container.chzn-container-has-icons .chzn-results li:before,
+.chzn-container.chzn-container-has-icons .chzn-results li:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.chzn-container.chzn-container-has-icons .chzn-results li:after {
+  clear: both;
+}
+.chzn-container.chzn-container-has-icons .chzn-results .chzn-icon {
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+  margin-right: 8px;
+  border: solid 1px #DFE3E6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #FFFFFF;
+}
+.chzn-container.chzn-container-has-icons .chzn-results .chzn-text {
+  vertical-align: middle;
+}
+.chzn-container.chzn-container-folders .chzn-results .chzn-count {
+  float: right;
+  font-size: 11px;
+  min-width: 10px;
+  text-align: center;
+  line-height: 14px;
+  padding: 2px 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #91979F;
+  color: #FFFFFF;
+  text-shadow: none;
+  position: relative;
+  top: -2px;
+}
+.chzn-container.chzn-container-folders .chzn-results .chzn-folders-create {
+  text-align: center;
+}
+.chzn-container.chzn-container-folders .chzn-results .chzn-folders-create .icon-plus-sign-alt {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  font-size: 14px;
+  margin-right: 3px;
+}
+li.event_item {
+  *zoom: 1;
+  padding: 2px 0 22px;
+  overflow-y: hidden;
+}
+li.event_item:before,
+li.event_item:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+li.event_item:after {
+  clear: both;
+}
+li.event_item .customer_image {
+  float: left;
+  width: 48px;
+}
+li.event_item .customer_image img {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+li.event_item .event_item_content .event_ts {
+  float: right;
+  cursor: pointer;
+}
+li.event_item .event_item_content .event_ts:hover {
+  text-decoration: underline;
+  color: #91979F;
+}
+li.event_item .event_item_content .event_item_header .customer_profile_link {
+  text-decoration: none;
+}
+li.event_item .event_item_content .event_item_header .customer_profile_link .customer_label {
+  color: #373F47;
+  font-weight: bold;
+}
+li.event_item .event_item_content .event_item_header .customer_profile_link .customer_email {
+  margin-left: 2px;
+  color: #91979F;
+}
+li.event_item .event_item_content .event_item_header .customer_profile_link:hover .customer_label {
+  text-decoration: underline;
+  color: #2B98D3;
+}
+li.event_item .event_item_content .event_item_body .event_item_icon {
+  float: left;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  position: relative;
+}
+li.event_item .event_item_content .event_item_body .event_item_icon img {
+  vertical-align: baseline;
+  height: 18px;
+  width: 18px;
+}
+li.event_item .event_item_content .event_item_body .event_item_icon:after {
+  position: absolute;
+  left: 8px;
+  height: 998px;
+  width: 2px;
+  bottom: -1000px;
+  background: #EBEEEF;
+  content: '';
+}
+li.event_item .event_item_content .event_item_body .event_item_description {
+  margin-bottom: 0;
+  margin-left: 24px;
+}
+li.event_item .event_item_content .event_item_body .event_item_details {
+  margin-top: 6px;
+  margin-left: 24px;
+}
+li.event_item .event_item_content .event_item_footer {
+  margin-left: 24px;
+}
+li.event_item .event_item_content .event_item_footer .event_item_expand_collapse {
+  color: #91979F;
+}
+li.event_item.w_customer {
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-bottom: solid 1px #EBEEEF;
+}
+li.event_item.w_customer .event_item_content {
+  margin-left: 58px;
+}
+li.event_item.w_customer .event_item_content .event_item_description,
+li.event_item.w_customer .event_item_content .event_item_details {
+  margin-left: 0;
+}
+li.event_item.w_customer .event_item_content .event_item_footer {
+  margin-left: 0;
+}
+li.event_item.w_customer:hover {
+  background: #F2F4F5;
+}
+li.event_item.w_customer:hover .event_item_footer .event_item_expand_collapse {
+  color: #2B98D3;
+}
+li.event_item:first-child {
+  padding-top: 12px;
+}
+.event_properties_tree {
+  border: none;
+  background: transparent;
+}
+.event_properties_tree .event_property {
+  padding: 0 2px;
+  border: none;
+  width: 100%;
+  float: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 21px;
+}
+.event_properties_tree .event_property strong {
+  margin-right: 4px;
+  padding-left: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  color: #373F47;
+}
+.event_properties_tree .event_property strong.expandable {
+  background: url(/media/images/icons/toggle_plus.png) no-repeat left center;
+}
+.event_properties_tree .event_property strong.open {
+  background-image: url(/media/images/icons/toggle_minus.png);
+}
+.event_properties_tree .event_property .leaf {
+  cursor: pointer;
+}
+.event_properties_tree .event_property.indent0 {
+  padding-left: 0px;
+}
+.event_properties_tree .event_property.indent1,
+.event_properties_tree .event_property.indent2,
+.event_properties_tree .event_property.indent3,
+.event_properties_tree .event_property.indent4,
+.event_properties_tree .event_property.indent5,
+.event_properties_tree .event_property.indent6,
+.event_properties_tree .event_property.indent7,
+.event_properties_tree .event_property.indent8 {
+  padding-left: 1em;
+}
+#raw_event_modal {
+  width: 700px;
+  margin-left: -350px;
+}
+#raw_event_modal .modal-body {
+  font-size: 14px;
+  line-height: 19px;
+  max-height: 550px;
+}
+#raw_event_modal .event_timing {
+  color: #373F47;
+  margin-bottom: 9px;
+}
+#raw_event_modal .properties_view_options {
+  text-align: right;
+  padding: 0 0 4px;
+}
+#raw_event_modal .event_properties_tree,
+#raw_event_modal .event_properties_json {
+  border: solid 1px #EBEEEF;
+  background: #F2F4F5;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 8px;
+}
+#raw_event_modal .event_properties_json {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 15px;
+}
+#raw_event_modal .event_ids {
+  margin-top: 5px;
+}
+.event_item a.external_link {
+  border: none;
+}
+.event_item a.subtle_action {
+  border: none;
+  color: #373F47;
+  margin-left: 7px;
+}
+.event_item a.subtle_action:hover {
+  color: #21252a;
+}
+.event_item .event_properties {
+  *zoom: 1;
+  margin-bottom: 6px;
+}
+.event_item .event_properties:before,
+.event_item .event_properties:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.event_item .event_properties:after {
+  clear: both;
+}
+.event_item .event_properties .event_property {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.event_item .event_properties .event_property strong {
+  color: #373F47;
+}
+.event_item .event_properties .event_property:nth-of-type(even) {
+  border-right: 0;
+}
+.event_item .event_item_details .detail_label {
+  color: #373F47;
+}
+.event_item.api-generic-session .activity_progress_bar {
+  background-color: #f2f4f5;
+  background-image: -moz-linear-gradient(top, #F2F4F5, #F2F4F5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F2F4F5), to(#F2F4F5));
+  background-image: -webkit-linear-gradient(top, #F2F4F5, #F2F4F5);
+  background-image: -o-linear-gradient(top, #F2F4F5, #F2F4F5);
+  background-image: linear-gradient(to bottom, #F2F4F5, #F2F4F5);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2f4f5', endColorstr='#fff2f4f5', GradientType=0);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.event_item.api-generic-session .activity_progress_bar .progress {
+  margin-bottom: 1px;
+  height: 15px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.event_item.api-generic-session .activity_progress_bar .progress .bar {
+  width: 100%;
+  background-color: #36bc78;
+  background-image: -moz-linear-gradient(top, #36bc78, #36bc78);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#36bc78), to(#36bc78));
+  background-image: -webkit-linear-gradient(top, #36bc78, #36bc78);
+  background-image: -o-linear-gradient(top, #36bc78, #36bc78);
+  background-image: linear-gradient(to bottom, #36bc78, #36bc78);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff36bc78', endColorstr='#ff36bc78', GradientType=0);
+}
+.event_item.api-generic-session .subtitle {
+  font-size: 12px;
+  color: #91979F;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.event_item.base-order .ecommerce_line_items,
+.event_item.api-order .ecommerce_line_items,
+.event_item.shopify-checkout-started .ecommerce_line_items,
+.event_item.shopify-checkout-completed .ecommerce_line_items,
+.event_item.shopify-order .ecommerce_line_items,
+.event_item.shopify-order-cancelled .ecommerce_line_items,
+.event_item.shopify-order-fulfilled .ecommerce_line_items,
+.event_item.magento-checkout-started .ecommerce_line_items,
+.event_item.magento-order .ecommerce_line_items,
+.event_item.magento-order-complete .ecommerce_line_items,
+.event_item.magento-order-cancelled .ecommerce_line_items,
+.event_item.magento_two-checkout-started .ecommerce_line_items,
+.event_item.magento_two-placed-order .ecommerce_line_items,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items,
+.event_item.bigcommerce-placed_order .ecommerce_line_items,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items,
+.event_item.celery-placed_order .ecommerce_line_items,
+.event_item.celery-fulfilled_order .ecommerce_line_items,
+.event_item.celery-cancelled_order .ecommerce_line_items,
+.event_item.opencart-started_checkout .ecommerce_line_items,
+.event_item.opencart-placed_order .ecommerce_line_items,
+.event_item.opencart-fulfilled_order .ecommerce_line_items,
+.event_item.shopdirect-started_checkout .ecommerce_line_items,
+.event_item.shopdirect-placed_order .ecommerce_line_items,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items,
+.event_item.spree-started_checkout .ecommerce_line_items,
+.event_item.spree-placed_order .ecommerce_line_items,
+.event_item.spree-fulfilled_order .ecommerce_line_items,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items,
+.event_item.three_d_cart-placed_order .ecommerce_line_items,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items,
+.event_item.woocommerce-started_checkout .ecommerce_line_items,
+.event_item.woocommerce-placed_order .ecommerce_line_items,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items,
+.event_item.commercev3-placed_order .ecommerce_line_items,
+.event_item.volusion-placed_order .ecommerce_line_items,
+.event_item.spree-placed_order .ecommerce_line_items,
+.event_item.mws-placed_order .ecommerce_line_items,
+.event_item.mws-fulfilled_order .ecommerce_line_items {
+  margin: 0 0 8px;
+  border: solid 1px #DFE3E6;
+}
+.event_item.base-order .ecommerce_line_items th,
+.event_item.api-order .ecommerce_line_items th,
+.event_item.shopify-checkout-started .ecommerce_line_items th,
+.event_item.shopify-checkout-completed .ecommerce_line_items th,
+.event_item.shopify-order .ecommerce_line_items th,
+.event_item.shopify-order-cancelled .ecommerce_line_items th,
+.event_item.shopify-order-fulfilled .ecommerce_line_items th,
+.event_item.magento-checkout-started .ecommerce_line_items th,
+.event_item.magento-order .ecommerce_line_items th,
+.event_item.magento-order-complete .ecommerce_line_items th,
+.event_item.magento-order-cancelled .ecommerce_line_items th,
+.event_item.magento_two-checkout-started .ecommerce_line_items th,
+.event_item.magento_two-placed-order .ecommerce_line_items th,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items th,
+.event_item.bigcommerce-placed_order .ecommerce_line_items th,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items th,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items th,
+.event_item.celery-placed_order .ecommerce_line_items th,
+.event_item.celery-fulfilled_order .ecommerce_line_items th,
+.event_item.celery-cancelled_order .ecommerce_line_items th,
+.event_item.opencart-started_checkout .ecommerce_line_items th,
+.event_item.opencart-placed_order .ecommerce_line_items th,
+.event_item.opencart-fulfilled_order .ecommerce_line_items th,
+.event_item.shopdirect-started_checkout .ecommerce_line_items th,
+.event_item.shopdirect-placed_order .ecommerce_line_items th,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items th,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items th,
+.event_item.spree-started_checkout .ecommerce_line_items th,
+.event_item.spree-placed_order .ecommerce_line_items th,
+.event_item.spree-fulfilled_order .ecommerce_line_items th,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items th,
+.event_item.three_d_cart-placed_order .ecommerce_line_items th,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items th,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items th,
+.event_item.woocommerce-started_checkout .ecommerce_line_items th,
+.event_item.woocommerce-placed_order .ecommerce_line_items th,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items th,
+.event_item.commercev3-placed_order .ecommerce_line_items th,
+.event_item.volusion-placed_order .ecommerce_line_items th,
+.event_item.spree-placed_order .ecommerce_line_items th,
+.event_item.mws-placed_order .ecommerce_line_items th,
+.event_item.mws-fulfilled_order .ecommerce_line_items th {
+  text-shadow: none;
+  background: #EBEEEF;
+}
+.event_item.base-order .ecommerce_line_items td,
+.event_item.api-order .ecommerce_line_items td,
+.event_item.shopify-checkout-started .ecommerce_line_items td,
+.event_item.shopify-checkout-completed .ecommerce_line_items td,
+.event_item.shopify-order .ecommerce_line_items td,
+.event_item.shopify-order-cancelled .ecommerce_line_items td,
+.event_item.shopify-order-fulfilled .ecommerce_line_items td,
+.event_item.magento-checkout-started .ecommerce_line_items td,
+.event_item.magento-order .ecommerce_line_items td,
+.event_item.magento-order-complete .ecommerce_line_items td,
+.event_item.magento-order-cancelled .ecommerce_line_items td,
+.event_item.magento_two-checkout-started .ecommerce_line_items td,
+.event_item.magento_two-placed-order .ecommerce_line_items td,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items td,
+.event_item.bigcommerce-placed_order .ecommerce_line_items td,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items td,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items td,
+.event_item.celery-placed_order .ecommerce_line_items td,
+.event_item.celery-fulfilled_order .ecommerce_line_items td,
+.event_item.celery-cancelled_order .ecommerce_line_items td,
+.event_item.opencart-started_checkout .ecommerce_line_items td,
+.event_item.opencart-placed_order .ecommerce_line_items td,
+.event_item.opencart-fulfilled_order .ecommerce_line_items td,
+.event_item.shopdirect-started_checkout .ecommerce_line_items td,
+.event_item.shopdirect-placed_order .ecommerce_line_items td,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items td,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items td,
+.event_item.spree-started_checkout .ecommerce_line_items td,
+.event_item.spree-placed_order .ecommerce_line_items td,
+.event_item.spree-fulfilled_order .ecommerce_line_items td,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items td,
+.event_item.three_d_cart-placed_order .ecommerce_line_items td,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items td,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items td,
+.event_item.woocommerce-started_checkout .ecommerce_line_items td,
+.event_item.woocommerce-placed_order .ecommerce_line_items td,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items td,
+.event_item.commercev3-placed_order .ecommerce_line_items td,
+.event_item.volusion-placed_order .ecommerce_line_items td,
+.event_item.spree-placed_order .ecommerce_line_items td,
+.event_item.mws-placed_order .ecommerce_line_items td,
+.event_item.mws-fulfilled_order .ecommerce_line_items td {
+  border-top: solid 1px #DFE3E6;
+  vertical-align: middle;
+}
+.event_item.base-order .ecommerce_line_items td,
+.event_item.api-order .ecommerce_line_items td,
+.event_item.shopify-checkout-started .ecommerce_line_items td,
+.event_item.shopify-checkout-completed .ecommerce_line_items td,
+.event_item.shopify-order .ecommerce_line_items td,
+.event_item.shopify-order-cancelled .ecommerce_line_items td,
+.event_item.shopify-order-fulfilled .ecommerce_line_items td,
+.event_item.magento-checkout-started .ecommerce_line_items td,
+.event_item.magento-order .ecommerce_line_items td,
+.event_item.magento-order-complete .ecommerce_line_items td,
+.event_item.magento-order-cancelled .ecommerce_line_items td,
+.event_item.magento_two-checkout-started .ecommerce_line_items td,
+.event_item.magento_two-placed-order .ecommerce_line_items td,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items td,
+.event_item.bigcommerce-placed_order .ecommerce_line_items td,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items td,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items td,
+.event_item.celery-placed_order .ecommerce_line_items td,
+.event_item.celery-fulfilled_order .ecommerce_line_items td,
+.event_item.celery-cancelled_order .ecommerce_line_items td,
+.event_item.opencart-started_checkout .ecommerce_line_items td,
+.event_item.opencart-placed_order .ecommerce_line_items td,
+.event_item.opencart-fulfilled_order .ecommerce_line_items td,
+.event_item.shopdirect-started_checkout .ecommerce_line_items td,
+.event_item.shopdirect-placed_order .ecommerce_line_items td,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items td,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items td,
+.event_item.spree-started_checkout .ecommerce_line_items td,
+.event_item.spree-placed_order .ecommerce_line_items td,
+.event_item.spree-fulfilled_order .ecommerce_line_items td,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items td,
+.event_item.three_d_cart-placed_order .ecommerce_line_items td,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items td,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items td,
+.event_item.woocommerce-started_checkout .ecommerce_line_items td,
+.event_item.woocommerce-placed_order .ecommerce_line_items td,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items td,
+.event_item.commercev3-placed_order .ecommerce_line_items td,
+.event_item.volusion-placed_order .ecommerce_line_items td,
+.event_item.spree-placed_order .ecommerce_line_items td,
+.event_item.mws-placed_order .ecommerce_line_items td,
+.event_item.mws-fulfilled_order .ecommerce_line_items td,
+.event_item.base-order .ecommerce_line_items th,
+.event_item.api-order .ecommerce_line_items th,
+.event_item.shopify-checkout-started .ecommerce_line_items th,
+.event_item.shopify-checkout-completed .ecommerce_line_items th,
+.event_item.shopify-order .ecommerce_line_items th,
+.event_item.shopify-order-cancelled .ecommerce_line_items th,
+.event_item.shopify-order-fulfilled .ecommerce_line_items th,
+.event_item.magento-checkout-started .ecommerce_line_items th,
+.event_item.magento-order .ecommerce_line_items th,
+.event_item.magento-order-complete .ecommerce_line_items th,
+.event_item.magento-order-cancelled .ecommerce_line_items th,
+.event_item.magento_two-checkout-started .ecommerce_line_items th,
+.event_item.magento_two-placed-order .ecommerce_line_items th,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items th,
+.event_item.bigcommerce-placed_order .ecommerce_line_items th,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items th,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items th,
+.event_item.celery-placed_order .ecommerce_line_items th,
+.event_item.celery-fulfilled_order .ecommerce_line_items th,
+.event_item.celery-cancelled_order .ecommerce_line_items th,
+.event_item.opencart-started_checkout .ecommerce_line_items th,
+.event_item.opencart-placed_order .ecommerce_line_items th,
+.event_item.opencart-fulfilled_order .ecommerce_line_items th,
+.event_item.shopdirect-started_checkout .ecommerce_line_items th,
+.event_item.shopdirect-placed_order .ecommerce_line_items th,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items th,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items th,
+.event_item.spree-started_checkout .ecommerce_line_items th,
+.event_item.spree-placed_order .ecommerce_line_items th,
+.event_item.spree-fulfilled_order .ecommerce_line_items th,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items th,
+.event_item.three_d_cart-placed_order .ecommerce_line_items th,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items th,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items th,
+.event_item.woocommerce-started_checkout .ecommerce_line_items th,
+.event_item.woocommerce-placed_order .ecommerce_line_items th,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items th,
+.event_item.commercev3-placed_order .ecommerce_line_items th,
+.event_item.volusion-placed_order .ecommerce_line_items th,
+.event_item.spree-placed_order .ecommerce_line_items th,
+.event_item.mws-placed_order .ecommerce_line_items th,
+.event_item.mws-fulfilled_order .ecommerce_line_items th {
+  padding: 6px 8px;
+}
+.event_item.base-order .ecommerce_line_items .line_info,
+.event_item.api-order .ecommerce_line_items .line_info,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_info,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_info,
+.event_item.shopify-order .ecommerce_line_items .line_info,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_info,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_info,
+.event_item.magento-checkout-started .ecommerce_line_items .line_info,
+.event_item.magento-order .ecommerce_line_items .line_info,
+.event_item.magento-order-complete .ecommerce_line_items .line_info,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_info,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_info,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_info,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_info,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_info,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_info,
+.event_item.celery-placed_order .ecommerce_line_items .line_info,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_info,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_info,
+.event_item.opencart-placed_order .ecommerce_line_items .line_info,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_info,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_info,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_info,
+.event_item.spree-started_checkout .ecommerce_line_items .line_info,
+.event_item.spree-placed_order .ecommerce_line_items .line_info,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_info,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_info,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_info,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_info,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_info,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_info,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_info,
+.event_item.volusion-placed_order .ecommerce_line_items .line_info,
+.event_item.spree-placed_order .ecommerce_line_items .line_info,
+.event_item.mws-placed_order .ecommerce_line_items .line_info,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_info {
+  margin-left: 87px;
+  width: 75%;
+}
+.event_item.base-order .ecommerce_line_items .line_info .product_image,
+.event_item.api-order .ecommerce_line_items .line_info .product_image,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_info .product_image,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_info .product_image,
+.event_item.shopify-order .ecommerce_line_items .line_info .product_image,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_info .product_image,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_info .product_image,
+.event_item.magento-checkout-started .ecommerce_line_items .line_info .product_image,
+.event_item.magento-order .ecommerce_line_items .line_info .product_image,
+.event_item.magento-order-complete .ecommerce_line_items .line_info .product_image,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_info .product_image,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_info .product_image,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_info .product_image,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_info .product_image,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_info .product_image,
+.event_item.celery-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_info .product_image,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_info .product_image,
+.event_item.opencart-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_info .product_image,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_info .product_image,
+.event_item.spree-started_checkout .ecommerce_line_items .line_info .product_image,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_info .product_image,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_info .product_image,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_info .product_image,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_info .product_image,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.volusion-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.mws-placed_order .ecommerce_line_items .line_info .product_image,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_info .product_image {
+  float: left;
+  width: 60px;
+  margin-right: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.event_item.base-order .ecommerce_line_items .line_info .product_image img,
+.event_item.api-order .ecommerce_line_items .line_info .product_image img,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_info .product_image img,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_info .product_image img,
+.event_item.shopify-order .ecommerce_line_items .line_info .product_image img,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_info .product_image img,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_info .product_image img,
+.event_item.magento-checkout-started .ecommerce_line_items .line_info .product_image img,
+.event_item.magento-order .ecommerce_line_items .line_info .product_image img,
+.event_item.magento-order-complete .ecommerce_line_items .line_info .product_image img,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_info .product_image img,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_info .product_image img,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_info .product_image img,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_info .product_image img,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.celery-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_info .product_image img,
+.event_item.opencart-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_info .product_image img,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.spree-started_checkout .ecommerce_line_items .line_info .product_image img,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_info .product_image img,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_info .product_image img,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_info .product_image img,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.volusion-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.mws-placed_order .ecommerce_line_items .line_info .product_image img,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_info .product_image img {
+  max-width: 60px;
+}
+.event_item.base-order .ecommerce_line_items .line_info .product_info,
+.event_item.api-order .ecommerce_line_items .line_info .product_info,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_info .product_info,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_info .product_info,
+.event_item.shopify-order .ecommerce_line_items .line_info .product_info,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_info .product_info,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_info .product_info,
+.event_item.magento-checkout-started .ecommerce_line_items .line_info .product_info,
+.event_item.magento-order .ecommerce_line_items .line_info .product_info,
+.event_item.magento-order-complete .ecommerce_line_items .line_info .product_info,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_info .product_info,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_info .product_info,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_info .product_info,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_info .product_info,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_info .product_info,
+.event_item.celery-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_info .product_info,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_info .product_info,
+.event_item.opencart-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_info .product_info,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_info .product_info,
+.event_item.spree-started_checkout .ecommerce_line_items .line_info .product_info,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_info .product_info,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_info .product_info,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_info .product_info,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_info .product_info,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.volusion-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.mws-placed_order .ecommerce_line_items .line_info .product_info,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_info .product_info {
+  margin-left: 70px;
+}
+.event_item.base-order .ecommerce_line_items .line_info .product_title,
+.event_item.api-order .ecommerce_line_items .line_info .product_title,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_info .product_title,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_info .product_title,
+.event_item.shopify-order .ecommerce_line_items .line_info .product_title,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_info .product_title,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_info .product_title,
+.event_item.magento-checkout-started .ecommerce_line_items .line_info .product_title,
+.event_item.magento-order .ecommerce_line_items .line_info .product_title,
+.event_item.magento-order-complete .ecommerce_line_items .line_info .product_title,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_info .product_title,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_info .product_title,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_info .product_title,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_info .product_title,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_info .product_title,
+.event_item.celery-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_info .product_title,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_info .product_title,
+.event_item.opencart-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_info .product_title,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_info .product_title,
+.event_item.spree-started_checkout .ecommerce_line_items .line_info .product_title,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_info .product_title,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_info .product_title,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_info .product_title,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_info .product_title,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.volusion-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.spree-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.mws-placed_order .ecommerce_line_items .line_info .product_title,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_info .product_title {
+  color: #373F47;
+  font-weight: bold;
+}
+.event_item.base-order .ecommerce_line_items .line_quantity,
+.event_item.api-order .ecommerce_line_items .line_quantity,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_quantity,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_quantity,
+.event_item.shopify-order .ecommerce_line_items .line_quantity,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_quantity,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_quantity,
+.event_item.magento-checkout-started .ecommerce_line_items .line_quantity,
+.event_item.magento-order .ecommerce_line_items .line_quantity,
+.event_item.magento-order-complete .ecommerce_line_items .line_quantity,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_quantity,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_quantity,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_quantity,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_quantity,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_quantity,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_quantity,
+.event_item.celery-placed_order .ecommerce_line_items .line_quantity,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_quantity,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_quantity,
+.event_item.opencart-placed_order .ecommerce_line_items .line_quantity,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_quantity,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_quantity,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_quantity,
+.event_item.spree-started_checkout .ecommerce_line_items .line_quantity,
+.event_item.spree-placed_order .ecommerce_line_items .line_quantity,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_quantity,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_quantity,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_quantity,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_quantity,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_quantity,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_quantity,
+.event_item.volusion-placed_order .ecommerce_line_items .line_quantity,
+.event_item.spree-placed_order .ecommerce_line_items .line_quantity,
+.event_item.mws-placed_order .ecommerce_line_items .line_quantity,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_quantity,
+.event_item.base-order .ecommerce_line_items .line_price,
+.event_item.api-order .ecommerce_line_items .line_price,
+.event_item.shopify-checkout-started .ecommerce_line_items .line_price,
+.event_item.shopify-checkout-completed .ecommerce_line_items .line_price,
+.event_item.shopify-order .ecommerce_line_items .line_price,
+.event_item.shopify-order-cancelled .ecommerce_line_items .line_price,
+.event_item.shopify-order-fulfilled .ecommerce_line_items .line_price,
+.event_item.magento-checkout-started .ecommerce_line_items .line_price,
+.event_item.magento-order .ecommerce_line_items .line_price,
+.event_item.magento-order-complete .ecommerce_line_items .line_price,
+.event_item.magento-order-cancelled .ecommerce_line_items .line_price,
+.event_item.magento_two-checkout-started .ecommerce_line_items .line_price,
+.event_item.magento_two-placed-order .ecommerce_line_items .line_price,
+.event_item.bigcommerce-started_checkout .ecommerce_line_items .line_price,
+.event_item.bigcommerce-placed_order .ecommerce_line_items .line_price,
+.event_item.bigcommerce-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.bigcommerce-cancelled_order .ecommerce_line_items .line_price,
+.event_item.celery-placed_order .ecommerce_line_items .line_price,
+.event_item.celery-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.celery-cancelled_order .ecommerce_line_items .line_price,
+.event_item.opencart-started_checkout .ecommerce_line_items .line_price,
+.event_item.opencart-placed_order .ecommerce_line_items .line_price,
+.event_item.opencart-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.shopdirect-started_checkout .ecommerce_line_items .line_price,
+.event_item.shopdirect-placed_order .ecommerce_line_items .line_price,
+.event_item.shopdirect-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.shopdirect-cancelled_order .ecommerce_line_items .line_price,
+.event_item.spree-started_checkout .ecommerce_line_items .line_price,
+.event_item.spree-placed_order .ecommerce_line_items .line_price,
+.event_item.spree-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.three_d_cart-started_checkout .ecommerce_line_items .line_price,
+.event_item.three_d_cart-placed_order .ecommerce_line_items .line_price,
+.event_item.three_d_cart-cancelled_order .ecommerce_line_items .line_price,
+.event_item.three_d_cart-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.woocommerce-started_checkout .ecommerce_line_items .line_price,
+.event_item.woocommerce-placed_order .ecommerce_line_items .line_price,
+.event_item.woocommerce-fulfilled_order .ecommerce_line_items .line_price,
+.event_item.commercev3-placed_order .ecommerce_line_items .line_price,
+.event_item.volusion-placed_order .ecommerce_line_items .line_price,
+.event_item.spree-placed_order .ecommerce_line_items .line_price,
+.event_item.mws-placed_order .ecommerce_line_items .line_price,
+.event_item.mws-fulfilled_order .ecommerce_line_items .line_price {
+  text-align: right;
+}
+.event_item.base-order .ecommerce_payment_information,
+.event_item.api-order .ecommerce_payment_information,
+.event_item.shopify-checkout-started .ecommerce_payment_information,
+.event_item.shopify-checkout-completed .ecommerce_payment_information,
+.event_item.shopify-order .ecommerce_payment_information,
+.event_item.shopify-order-cancelled .ecommerce_payment_information,
+.event_item.shopify-order-fulfilled .ecommerce_payment_information,
+.event_item.magento-checkout-started .ecommerce_payment_information,
+.event_item.magento-order .ecommerce_payment_information,
+.event_item.magento-order-complete .ecommerce_payment_information,
+.event_item.magento-order-cancelled .ecommerce_payment_information,
+.event_item.magento_two-checkout-started .ecommerce_payment_information,
+.event_item.magento_two-placed-order .ecommerce_payment_information,
+.event_item.bigcommerce-started_checkout .ecommerce_payment_information,
+.event_item.bigcommerce-placed_order .ecommerce_payment_information,
+.event_item.bigcommerce-fulfilled_order .ecommerce_payment_information,
+.event_item.bigcommerce-cancelled_order .ecommerce_payment_information,
+.event_item.celery-placed_order .ecommerce_payment_information,
+.event_item.celery-fulfilled_order .ecommerce_payment_information,
+.event_item.celery-cancelled_order .ecommerce_payment_information,
+.event_item.opencart-started_checkout .ecommerce_payment_information,
+.event_item.opencart-placed_order .ecommerce_payment_information,
+.event_item.opencart-fulfilled_order .ecommerce_payment_information,
+.event_item.shopdirect-started_checkout .ecommerce_payment_information,
+.event_item.shopdirect-placed_order .ecommerce_payment_information,
+.event_item.shopdirect-fulfilled_order .ecommerce_payment_information,
+.event_item.shopdirect-cancelled_order .ecommerce_payment_information,
+.event_item.spree-started_checkout .ecommerce_payment_information,
+.event_item.spree-placed_order .ecommerce_payment_information,
+.event_item.spree-fulfilled_order .ecommerce_payment_information,
+.event_item.three_d_cart-started_checkout .ecommerce_payment_information,
+.event_item.three_d_cart-placed_order .ecommerce_payment_information,
+.event_item.three_d_cart-cancelled_order .ecommerce_payment_information,
+.event_item.three_d_cart-fulfilled_order .ecommerce_payment_information,
+.event_item.woocommerce-started_checkout .ecommerce_payment_information,
+.event_item.woocommerce-placed_order .ecommerce_payment_information,
+.event_item.woocommerce-fulfilled_order .ecommerce_payment_information,
+.event_item.commercev3-placed_order .ecommerce_payment_information,
+.event_item.volusion-placed_order .ecommerce_payment_information,
+.event_item.spree-placed_order .ecommerce_payment_information,
+.event_item.mws-placed_order .ecommerce_payment_information,
+.event_item.mws-fulfilled_order .ecommerce_payment_information {
+  text-align: right;
+}
+.event_item.base-order .ecommerce_payment_information .payment_info,
+.event_item.api-order .ecommerce_payment_information .payment_info,
+.event_item.shopify-checkout-started .ecommerce_payment_information .payment_info,
+.event_item.shopify-checkout-completed .ecommerce_payment_information .payment_info,
+.event_item.shopify-order .ecommerce_payment_information .payment_info,
+.event_item.shopify-order-cancelled .ecommerce_payment_information .payment_info,
+.event_item.shopify-order-fulfilled .ecommerce_payment_information .payment_info,
+.event_item.magento-checkout-started .ecommerce_payment_information .payment_info,
+.event_item.magento-order .ecommerce_payment_information .payment_info,
+.event_item.magento-order-complete .ecommerce_payment_information .payment_info,
+.event_item.magento-order-cancelled .ecommerce_payment_information .payment_info,
+.event_item.magento_two-checkout-started .ecommerce_payment_information .payment_info,
+.event_item.magento_two-placed-order .ecommerce_payment_information .payment_info,
+.event_item.bigcommerce-started_checkout .ecommerce_payment_information .payment_info,
+.event_item.bigcommerce-placed_order .ecommerce_payment_information .payment_info,
+.event_item.bigcommerce-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.bigcommerce-cancelled_order .ecommerce_payment_information .payment_info,
+.event_item.celery-placed_order .ecommerce_payment_information .payment_info,
+.event_item.celery-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.celery-cancelled_order .ecommerce_payment_information .payment_info,
+.event_item.opencart-started_checkout .ecommerce_payment_information .payment_info,
+.event_item.opencart-placed_order .ecommerce_payment_information .payment_info,
+.event_item.opencart-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.shopdirect-started_checkout .ecommerce_payment_information .payment_info,
+.event_item.shopdirect-placed_order .ecommerce_payment_information .payment_info,
+.event_item.shopdirect-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.shopdirect-cancelled_order .ecommerce_payment_information .payment_info,
+.event_item.spree-started_checkout .ecommerce_payment_information .payment_info,
+.event_item.spree-placed_order .ecommerce_payment_information .payment_info,
+.event_item.spree-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.three_d_cart-started_checkout .ecommerce_payment_information .payment_info,
+.event_item.three_d_cart-placed_order .ecommerce_payment_information .payment_info,
+.event_item.three_d_cart-cancelled_order .ecommerce_payment_information .payment_info,
+.event_item.three_d_cart-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.woocommerce-started_checkout .ecommerce_payment_information .payment_info,
+.event_item.woocommerce-placed_order .ecommerce_payment_information .payment_info,
+.event_item.woocommerce-fulfilled_order .ecommerce_payment_information .payment_info,
+.event_item.commercev3-placed_order .ecommerce_payment_information .payment_info,
+.event_item.volusion-placed_order .ecommerce_payment_information .payment_info,
+.event_item.spree-placed_order .ecommerce_payment_information .payment_info,
+.event_item.mws-placed_order .ecommerce_payment_information .payment_info,
+.event_item.mws-fulfilled_order .ecommerce_payment_information .payment_info {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 10px;
+  background: #F2F4F5;
+  border: solid 1px #eceff1;
+}
+.event_item.zendesk-ticket-submitted .case_interaction,
+.event_item.zendesk-ticket-resolved .case_interaction,
+.event_item.desk-case-interaction .case_interaction,
+.event_item.uservoice-ticket_interaction .case_interaction,
+.event_item.helpscout-conversation_inbound .case_interaction,
+.event_item.helpscout-conversation_outbound .case_interaction,
+.event_item.olark-finished_conversation .case_interaction {
+  padding: 10px;
+  border: solid 1px #e4e8ea;
+  background: #FFFFFF;
+  margin-top: 10px;
+  overflow-x: auto;
+  margin-bottom: 8px;
+}
+.event_item.zendesk-ticket-submitted .interaction_info,
+.event_item.zendesk-ticket-resolved .interaction_info,
+.event_item.desk-case-interaction .interaction_info,
+.event_item.uservoice-ticket_interaction .interaction_info,
+.event_item.helpscout-conversation_inbound .interaction_info,
+.event_item.helpscout-conversation_outbound .interaction_info,
+.event_item.olark-finished_conversation .interaction_info {
+  margin-bottom: 12px;
+}
+.event_item.zendesk-ticket-submitted .interaction_info .interaction_subject,
+.event_item.zendesk-ticket-resolved .interaction_info .interaction_subject,
+.event_item.desk-case-interaction .interaction_info .interaction_subject,
+.event_item.uservoice-ticket_interaction .interaction_info .interaction_subject,
+.event_item.helpscout-conversation_inbound .interaction_info .interaction_subject,
+.event_item.helpscout-conversation_outbound .interaction_info .interaction_subject,
+.event_item.olark-finished_conversation .interaction_info .interaction_subject {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+.event_item.zendesk-ticket-submitted .interaction_info .interaction_participants .interaction_from,
+.event_item.zendesk-ticket-resolved .interaction_info .interaction_participants .interaction_from,
+.event_item.desk-case-interaction .interaction_info .interaction_participants .interaction_from,
+.event_item.uservoice-ticket_interaction .interaction_info .interaction_participants .interaction_from,
+.event_item.helpscout-conversation_inbound .interaction_info .interaction_participants .interaction_from,
+.event_item.helpscout-conversation_outbound .interaction_info .interaction_participants .interaction_from,
+.event_item.olark-finished_conversation .interaction_info .interaction_participants .interaction_from,
+.event_item.zendesk-ticket-submitted .interaction_info .interaction_participants .interaction_to,
+.event_item.zendesk-ticket-resolved .interaction_info .interaction_participants .interaction_to,
+.event_item.desk-case-interaction .interaction_info .interaction_participants .interaction_to,
+.event_item.uservoice-ticket_interaction .interaction_info .interaction_participants .interaction_to,
+.event_item.helpscout-conversation_inbound .interaction_info .interaction_participants .interaction_to,
+.event_item.helpscout-conversation_outbound .interaction_info .interaction_participants .interaction_to,
+.event_item.olark-finished_conversation .interaction_info .interaction_participants .interaction_to {
+  display: inline-block;
+  background: #F2F4F5;
+  padding: 1px 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin: 0 3px;
+}
+.event_item.zendesk-ticket-submitted .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.zendesk-ticket-resolved .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.desk-case-interaction .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.uservoice-ticket_interaction .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.helpscout-conversation_inbound .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.helpscout-conversation_outbound .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.olark-finished_conversation .interaction_info .interaction_participants .interaction_from:first-child,
+.event_item.zendesk-ticket-submitted .interaction_info .interaction_participants .interaction_to:first-child,
+.event_item.zendesk-ticket-resolved .interaction_info .interaction_participants .interaction_to:first-child,
+.event_item.desk-case-interaction .interaction_info .interaction_participants .interaction_to:first-child,
+.event_item.uservoice-ticket_interaction .interaction_info .interaction_participants .interaction_to:first-child,
+.event_item.helpscout-conversation_inbound .interaction_info .interaction_participants .interaction_to:first-child,
+.event_item.helpscout-conversation_outbound .interaction_info .interaction_participants .interaction_to:first-child,
+.event_item.olark-finished_conversation .interaction_info .interaction_participants .interaction_to:first-child {
+  margin-left: 0;
+}
+#body {
+  padding-right: 0;
+}
+#app > .row {
+  overflow: visible;
+}
+#dashboard {
+  *zoom: 1;
+}
+#dashboard:before,
+#dashboard:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+#dashboard:after {
+  clear: both;
+}
+#dashboard .loading_tab {
+  margin: 80px 20px 20px;
+}
+#dashboard .loading_tab h3 {
+  text-align: center;
+  color: #606A72;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: normal;
+}
+#dashboard .dashboard_tab {
+  margin: 20px;
+}
+#dashboard .dashboard_tab.hide {
+  display: block;
+  position: absolute;
+  top: -9999px;
+}
+#dashboard .empty_message {
+  background: #F2F4F5;
+  border: solid 1px #EBEEEF;
+  border-bottom-color: #DFE3E6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 70px 10px;
+  color: #91979F;
+  text-align: center;
+  font-size: 14px;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 19px;
+}
+#dashboard .empty_message h3 {
+  font-size: 24px;
+  line-height: 1.2;
+  color: #373F47;
+}
+#dashboard .empty_message h4 {
+  font-size: 20px;
+  line-height: 1.2;
+  color: #373F47;
+}
+#dashboard .empty_message .welcome_wizard_launch {
+  margin: 30px 0 50px;
+}
+#dashboard .empty_message .welcome_wizard_launch a.btn {
+  font-size: 24px;
+  line-height: 1.2;
+  padding: 20px 40px;
+}
+#dashboard .empty_message .welcome_wizard_launch a.btn i {
+  margin-right: 24px;
+  font-size: 30px;
+  float: left;
+}
+#dashboard .empty_message .split_options {
+  border-top: solid 1px #EBEEEF;
+  margin-left: 3%;
+  margin-right: 3%;
+  width: 94%;
+  margin-top: 30px;
+  padding: 50px 0;
+}
+#dashboard .empty_message .split_options .span6 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 40px;
+}
+#dashboard .empty_message .split_options .btn {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+#dashboard .empty_message .split_options .btn_holder {
+  text-align: center;
+}
+#dashboard #react_tab {
+  display: none;
+}
+#dashboard #react_tab .conversions_tab {
+  display: none;
+}
+.tab_container .statistic_settings {
+  margin-bottom: 10px;
+}
+.tab_container .statistic_settings [name="timeframe"] {
+  width: auto;
+}
+.tab_container .statistic_settings .refresh {
+  vertical-align: top;
+  margin-right: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.tab_container .statistic_settings .refresh i {
+  margin-right: 5px;
+}
+.tab_container .statistic_settings .refresh.disabled {
+  color: #91979F;
+  background: #F2F4F5;
+  background-color: #f4f6f7;
+  background-image: -moz-linear-gradient(top, #ffffff, #e4e8ea);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e4e8ea));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e4e8ea);
+  background-image: -o-linear-gradient(top, #ffffff, #e4e8ea);
+  background-image: linear-gradient(to bottom, #ffffff, #e4e8ea);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe4e8ea', GradientType=0);
+}
+.tab_container .statistic_settings .add_statistic_box {
+  float: right;
+}
+.tab_container .statistic_boxes {
+  margin: 0;
+  *zoom: 1;
+}
+.tab_container .statistic_boxes:before,
+.tab_container .statistic_boxes:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.tab_container .statistic_boxes:after {
+  clear: both;
+}
+.tab_container .statistic_column {
+  float: left;
+  width: 49.5%;
+  margin-right: 1%;
+  padding-bottom: 10px;
+}
+.tab_container .statistic_column.last {
+  margin-right: 0;
+}
+.tab_container .statistic_box {
+  background: #F2F4F5;
+  border: solid 1px #EBEEEF;
+  border-bottom-color: #DFE3E6;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.tab_container .statistic_box .box_header {
+  padding: 5px 10px;
+  border-bottom: solid 1px #EBEEEF;
+  line-height: 30px;
+  color: #373F47;
+  *zoom: 1;
+}
+.tab_container .statistic_box .box_header:before,
+.tab_container .statistic_box .box_header:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.tab_container .statistic_box .box_header:after {
+  clear: both;
+}
+.tab_container .statistic_box .box_header h3 {
+  float: left;
+  font-size: 15px;
+  line-height: 30px;
+  margin: 0;
+  color: #373F47;
+  width: 165px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tab_container .statistic_box .box_header h3 .integration_icon {
+  float: left;
+  height: 24px;
+  width: 24px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: solid 1px #F2F4F5;
+  padding: 2px;
+  margin-right: 5px;
+  background: #FFFFFF;
+}
+.tab_container .statistic_box .box_header h3 .integration_icon img {
+  vertical-align: top;
+  border-radius: 2px;
+}
+.tab_container .statistic_box .box_header .controls {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 56px;
+  text-align: center;
+  z-index: 10;
+}
+.tab_container .statistic_box .box_header .controls .shim {
+  position: absolute;
+  border: solid 28px rgba(223, 227, 230, 0.45);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.tab_container .statistic_box .box_header .controls a {
+  color: #606A72;
+  text-decoration: none;
+  font-size: 20px;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+}
+.tab_container .statistic_box .box_header .controls:hover a {
+  color: #373F47;
+}
+.tab_container .statistic_box .box_header .value {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: right;
+  width: 60px;
+  margin-right: 15px;
+}
+.tab_container .statistic_box .box_header .percent_change_value {
+  float: left;
+  margin-right: 6px;
+  padding-left: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.tab_container .statistic_box .box_header .percent_change_value.increase {
+  background: url(/media/images/icons/up_arrow_12x12.png) no-repeat left 8px;
+}
+.tab_container .statistic_box .box_header .percent_change_value.decrease {
+  background: url(/media/images/icons/down_arrow_12x12.png) no-repeat left 8px;
+}
+.tab_container .statistic_box .box_header .change_description {
+  float: left;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+}
+.tab_container .statistic_box .box_subheader {
+  font-size: 12px;
+  line-height: 1.2;
+  background: #F2F4F5;
+  border-bottom: solid 1px #EBEEEF;
+  padding: 4px 12px;
+}
+.tab_container .statistic_box .box_body {
+  padding: 10px;
+  *zoom: 1;
+}
+.tab_container .statistic_box .box_body:before,
+.tab_container .statistic_box .box_body:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.tab_container .statistic_box .box_body:after {
+  clear: both;
+}
+.tab_container .statistic_box .box_body .chart {
+  height: 100px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.tab_container .statistic_box .box_body .related_info {
+  font-size: 12px;
+}
+.tab_container .statistic_box .box_body .related_info ul {
+  margin: 0;
+  list-style: none;
+}
+.tab_container .statistic_box .box_body .related_info ul li {
+  *zoom: 1;
+  margin: 2px 0;
+}
+.tab_container .statistic_box .box_body .related_info ul li:before,
+.tab_container .statistic_box .box_body .related_info ul li:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.tab_container .statistic_box .box_body .related_info ul li:after {
+  clear: both;
+}
+.tab_container .statistic_box .box_body .related_info ul li .event_customer {
+  float: left;
+  white-space: nowrap;
+  overflow-x: hidden;
+  max-width: 275px;
+  text-overflow: ellipsis;
+}
+.tab_container .statistic_box .box_body .related_info ul li .event_customer .photo {
+  height: 20px;
+  margin-right: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.tab_container .statistic_box .box_body .related_info ul li .event_time {
+  float: right;
+  color: #606A72;
+  line-height: 24px;
+}
+.tab_container .statistic_box .box_body .related_info ul li:first-child {
+  margin-top: 0;
+}
+.tab_container .statistic_box .box_body .related_info ul li:last-child {
+  margin-bottom: 0;
+}
+.tab_container .statistic_box:hover {
+  background: #F2F4F5;
+}
+.tab_container .statistic_box:hover .controls {
+  display: block;
+}
+.tab_container .statistic_box:last-child {
+  margin-bottom: 0;
+}
+.tab_container .statistic_box.loading {
+  padding: 30px 15px;
+  color: #91979F;
+  text-align: center;
+  font-size: 16px;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 36px;
+}
+.tab_container .statistic_box.add_first_box {
+  background: #F2F4F5;
+}
+.tab_container .statistic_box.add_first_box .box_header {
+  background: #F2F4F5;
+}
+.tab_container .statistic_box.add_first_box .box_header h3 {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+  font-size: 20px;
+  line-height: 36px;
+  color: #91979F;
+  font-weight: normal;
+}
+.tab_container .statistic_box.add_first_box .box_header .integration_icon {
+  display: none;
+}
+.tab_container .statistic_box.add_first_box .box_body {
+  display: none;
+}
+.tab_container .statistic_box_placeholder {
+  background: #F2F4F5;
+  border: dotted 1px #DFE3E6;
+  margin-bottom: 10px;
+}
+.tab_container .groups_header {
+  *zoom: 1;
+  margin-bottom: 12px;
+}
+.tab_container .groups_header:before,
+.tab_container .groups_header:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.tab_container .groups_header:after {
+  clear: both;
+}
+.tab_container .groups_header p {
+  line-height: 32px;
+  margin: 0;
+}
+.tab_container .groups_header .btn {
+  margin-left: 8px;
+}
+.tab_container .groups_list {
+  list-style: none;
+  margin: 0;
+  border-top: solid 1px #EBEEEF;
+}
+.tab_container .groups_list > li {
+  *zoom: 1;
+  border-bottom: solid 1px #EBEEEF;
+  padding: 18px 0;
+}
+.tab_container .groups_list > li:before,
+.tab_container .groups_list > li:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.tab_container .groups_list > li:after {
+  clear: both;
+}
+.tab_container .groups_list > li .basic_info {
+  float: left;
+  width: 500px;
+  max-width: 43%;
+}
+.tab_container .groups_list > li .basic_info .header a {
+  font-size: 20px;
+  font-weight: bold;
+}
+.tab_container .groups_list > li .basic_info .header .group_type {
+  margin-left: 5px;
+  font-weight: normal;
+  padding: 2px 4px 3px;
+  top: -2px;
+  background: #F2F4F5;
+  color: #91979F;
+  text-shadow: 0 1px 0 #FFFFFF;
+  position: relative;
+  top: -3px;
+}
+.tab_container .groups_list > li .basic_info .extra {
+  line-height: 24px;
+}
+.tab_container .groups_list > li .statistics {
+  float: right;
+}
+.tab_container .groups_list > li .statistics .statistic {
+  float: left;
+  margin-right: 24px;
+}
+.tab_container .groups_list > li .statistics .statistic strong {
+  display: block;
+  color: #606A72;
+  font-size: 20px;
+  line-height: 23px;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.tab_container .groups_list > li .statistics .statistic span {
+  display: block;
+  line-height: 24px;
+}
+.tab_container .groups_list > li .menu {
+  float: right;
+  text-align: right;
+  width: 120px;
+}
+.tab_container .groups_list > li .menu .btn-group {
+  position: relative;
+  top: 4px;
+}
+.tab_container .groups_list > li .menu .btn-group .btn {
+  padding: 0 12px;
+}
+.tab_container .groups_list > li .menu .dropdown-menu {
+  text-align: left;
+  border-radius: 0;
+}
+.tab_container .view_lists {
+  padding-top: 20px;
+}
+.tab_container .view_lists .btn {
+  padding: 0 24px;
+}
+.tab_container .big_icon {
+  display: block;
+  font-size: 80px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+.tab_container .activity_feed_header {
+  padding-bottom: 12px;
+  border-bottom: solid 1px #EBEEEF;
+}
+.tab_container .activity_feed_header [name="statistic"] {
+  width: auto;
+  min-width: 220px;
+}
+.tab_container .activity_feed {
+  list-style: none;
+  margin: 0;
+}
+/*-- Chart --*/
+.c3 svg {
+  font: 10px sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.c3 path,
+.c3 line {
+  fill: none;
+  stroke: #000;
+}
+.c3 text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.c3-legend-item-tile,
+.c3-xgrid-focus,
+.c3-ygrid,
+.c3-event-rect,
+.c3-bars path {
+  shape-rendering: crispEdges;
+}
+.c3-chart-arc path {
+  stroke: #fff;
+}
+.c3-chart-arc text {
+  fill: #fff;
+  font-size: 13px;
+}
+/*-- Axis --*/
+/*-- Grid --*/
+.c3-grid line {
+  stroke: #aaa;
+}
+.c3-grid text {
+  fill: #aaa;
+}
+.c3-xgrid,
+.c3-ygrid {
+  stroke-dasharray: 3 3;
+}
+/*-- Text on Chart --*/
+.c3-text.c3-empty {
+  fill: #000;
+  font-size: 2em;
+}
+/*-- Line --*/
+.c3-line {
+  stroke-width: 1px;
+}
+/*-- Point --*/
+.c3-circle._expanded_ {
+  stroke-width: 1px;
+  stroke: #fff;
+}
+.c3-selected-circle {
+  fill: #fff;
+  stroke-width: 2px;
+}
+/*-- Bar --*/
+.c3-bar {
+  stroke-width: 0;
+}
+.c3-bar._expanded_ {
+  fill-opacity: 0.75;
+}
+/*-- Focus --*/
+.c3-target.c3-focused {
+  opacity: 1;
+}
+.c3-target.c3-focused path.c3-line,
+.c3-target.c3-focused path.c3-step {
+  stroke-width: 2px;
+}
+.c3-target.c3-defocused {
+  opacity: 0.3 !important;
+}
+/*-- Region --*/
+.c3-region {
+  fill: steelblue;
+  fill-opacity: .1;
+}
+/*-- Brush --*/
+.c3-brush .extent {
+  fill-opacity: .1;
+}
+/*-- Select - Drag --*/
+/*-- Legend --*/
+.c3-legend-item {
+  font-size: 12px;
+}
+.c3-legend-item-hidden {
+  opacity: 0.15;
+}
+.c3-legend-background {
+  opacity: 0.75;
+  fill: white;
+  stroke: lightgray;
+  stroke-width: 1;
+}
+/*-- Title --*/
+.c3-title {
+  font: 14px sans-serif;
+}
+/*-- Tooltip --*/
+.c3-tooltip-container {
+  z-index: 10;
+}
+.c3-tooltip {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: #fff;
+  empty-cells: show;
+  -webkit-box-shadow: 7px 7px 12px -9px #777;
+  -moz-box-shadow: 7px 7px 12px -9px #777;
+  box-shadow: 7px 7px 12px -9px #777;
+  opacity: 0.9;
+}
+.c3-tooltip tr {
+  border: 1px solid #ccc;
+}
+.c3-tooltip th {
+  background-color: #aaa;
+  font-size: 14px;
+  padding: 2px 5px;
+  text-align: left;
+  color: #FFF;
+}
+.c3-tooltip td {
+  font-size: 13px;
+  padding: 3px 6px;
+  background-color: #fff;
+  border-left: 1px dotted #999;
+}
+.c3-tooltip td > span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+}
+.c3-tooltip td.value {
+  text-align: right;
+}
+/*-- Area --*/
+.c3-area {
+  stroke-width: 0;
+  opacity: 0.2;
+}
+/*-- Arc --*/
+.c3-chart-arcs-title {
+  dominant-baseline: middle;
+  font-size: 1.3em;
+}
+.c3-chart-arcs .c3-chart-arcs-background {
+  fill: #e0e0e0;
+  stroke: none;
+}
+.c3-chart-arcs .c3-chart-arcs-gauge-unit {
+  fill: #000;
+  font-size: 16px;
+}
+.c3-chart-arcs .c3-chart-arcs-gauge-min {
+  fill: #777;
+}
+.c3-chart-arcs .c3-chart-arcs-gauge-max {
+  fill: #777;
+}
+.c3-chart-arcs .c3-gauge-value {
+  fill: #000;
+  /*  font-size: 28px !important;*/
+}
+.c3-arc-Zero {
+  fill: #EBEEEF !important;
+}
+.c3-tooltip .name {
+  white-space: nowrap;
+}
+.email_performance_tab {
+  text-shadow: none;
+  font-size: 14px;
+}
+.email_performance_tab .email_performance_settings {
+  box-sizing: border-box;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #DFE3E6;
+  text-shadow: none;
+  *zoom: 1;
+}
+.email_performance_tab .email_performance_settings:before,
+.email_performance_tab .email_performance_settings:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.email_performance_tab .email_performance_settings:after {
+  clear: both;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector {
+  float: left;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector > ul {
+  list-style: none;
+  margin: 0;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector > ul > li {
+  display: inline-block;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector > ul > li > a {
+  text-transform: uppercase;
+  color: #373F47;
+  display: block;
+  font-weight: normal;
+  line-height: 18px;
+  padding: 8px 12px;
+  position: relative;
+  top: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector > ul > li.active > a {
+  background: #DFE3E6;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: 600;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector > ul > li select[name="timeframe_month"] {
+  width: 150px;
+}
+.email_performance_tab .email_performance_settings .timeframe_selector > ul > li .chzn-container {
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.email_performance_tab .email_performance_settings .statistic_selector {
+  float: right;
+}
+.email_performance_tab .email_performance_settings .statistic_selector select[name="conversion_statistic"] {
+  width: 210px;
+}
+.email_performance_tab .card_reminders {
+  margin: 0 2px 16px 2px;
+}
+.email_performance_tab .card_reminders .card_reminders_area {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  min-width: 808px;
+}
+.email_performance_tab .card_reminders .card_reminder {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex: 1 0 198px;
+  -moz-flex: 1 0 198px;
+  -ms-flex: 1 0 198px;
+  flex: 1 0 198px;
+  min-width: 198px;
+  min-height: 96px;
+  position: relative;
+  padding: 16px;
+  background-color: #ECF3F5;
+  -moz-box-shadow: 0 1px 2px 0 rgba(98, 111, 126, 0.65);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(98, 111, 126, 0.65);
+  box-shadow: 0 1px 2px 0 rgba(98, 111, 126, 0.65);
+}
+.email_performance_tab .card_reminders .card_reminder:not(:first-of-type) {
+  margin: 0 0 0 16px;
+}
+.email_performance_tab .card_reminders .card_reminder button {
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  height: 24px;
+  box-sizing: border-box;
+  padding: 0 8px;
+  color: #606A72;
+}
+.email_performance_tab .card_reminders .card_reminder button:hover {
+  background-color: rgba(55, 63, 71, 0.1);
+}
+.email_performance_tab .card_reminders .card_reminder .dismiss_icon {
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+.email_performance_tab .card_reminders .card_reminder .dismiss_icon::after {
+  content: "\00D7";
+  font-size: 21px;
+  color: #BAC2CA;
+}
+.email_performance_tab .card_reminders .card_reminder .dismiss_icon:hover {
+  background-color: unset;
+}
+.email_performance_tab .card_reminders .card_reminder .dismiss_icon:focus,
+.email_performance_tab .card_reminders .card_reminder .dismiss_icon:active {
+  outline: none;
+}
+.email_performance_tab .card_reminders .card_reminder .card_icon_area {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-flex: 0 0 48px;
+  -moz-flex: 0 0 48px;
+  -ms-flex: 0 0 48px;
+  flex: 0 0 48px;
+  border-radius: 48px;
+  background-color: #F2F4F5;
+  height: 48px;
+}
+.email_performance_tab .card_reminders .card_reminder .card_icon_area i {
+  color: #606A72;
+  font-size: 22px;
+}
+.email_performance_tab .card_reminders .card_reminder .card_icon_area i.green {
+  color: #24CE78;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_area {
+  margin: 0 0 0 16px;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_area .card_title {
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  display: block;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_area .card_description {
+  margin: 0 0 16px 0;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_area .card_link {
+  font-weight: bold;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_cover {
+  background-color: rgba(217, 224, 231, 0.95);
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_cover .dismiss_prompt {
+  width: 200px;
+  text-align: center;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_cover .dismiss_actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 24px 0 0 0;
+}
+.email_performance_tab .card_reminders .card_reminder .card_content_cover .dismiss_actions .dismiss_prompt_dismiss {
+  color: #2B98D3;
+  margin: 0 0 0 8px;
+}
+.email_performance_tab .email_performance_body .summary {
+  *zoom: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.email_performance_tab .email_performance_body .summary:before,
+.email_performance_tab .email_performance_body .summary:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.email_performance_tab .email_performance_body .summary:after {
+  clear: both;
+}
+.email_performance_tab .email_performance_body .summary .chart {
+  margin-top: 5px;
+  width: 80px;
+}
+.email_performance_tab .email_performance_body .summary .c3-arc-Unattributed {
+  fill: #DFE3E6 !important;
+}
+.email_performance_tab .email_performance_body .summary .c3-legend-item-Unattributed line {
+  stroke: #DFE3E6 !important;
+}
+.email_performance_tab .email_performance_body .summary .c3-tooltip-name--Unattributed .name span {
+  background-color: #DFE3E6 !important;
+}
+.email_performance_tab .email_performance_body .summary .legend_indicator_Unattributed {
+  background-color: #DFE3E6;
+}
+.email_performance_tab .email_performance_body .summary .c3-arc-Campaigns {
+  fill: #157745 !important;
+}
+.email_performance_tab .email_performance_body .summary .c3-legend-item-Campaigns line {
+  stroke: #157745 !important;
+}
+.email_performance_tab .email_performance_body .summary .c3-tooltip-name--Campaigns .name span {
+  background-color: #157745 !important;
+}
+.email_performance_tab .email_performance_body .summary .legend_indicator_Campaigns {
+  background-color: #157745;
+}
+.email_performance_tab .email_performance_body .summary .c3-arc-Flows {
+  fill: #24CE78 !important;
+}
+.email_performance_tab .email_performance_body .summary .c3-legend-item-Flows line {
+  stroke: #24CE78 !important;
+}
+.email_performance_tab .email_performance_body .summary .c3-tooltip-name--Flows .name span {
+  background-color: #24CE78 !important;
+}
+.email_performance_tab .email_performance_body .summary .legend_indicator_Flows {
+  background-color: #24CE78;
+}
+.email_performance_tab .email_performance_body .summary .details {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #EBEEEF;
+  border-bottom: 1px solid #EBEEEF;
+  padding: 15px 0;
+  color: #606A72;
+  position: relative;
+}
+.email_performance_tab .email_performance_body .summary .details .summary_container {
+  margin-left: 25px;
+}
+.email_performance_tab .email_performance_body .summary .details .summary_container .revenue_summaries > div,
+.email_performance_tab .email_performance_body .summary .details .summary_container .channel_summaries > div {
+  margin-right: 16px;
+  display: inline-block;
+}
+.email_performance_tab .email_performance_body .summary .details .summary_container .channel_summaries {
+  padding-top: 10px;
+}
+.email_performance_tab .email_performance_body .summary .details strong {
+  color: #373F47;
+}
+.email_performance_tab .email_performance_body .summary .details .date {
+  background: #373F47;
+  color: #FFFFFF;
+  border-radius: 2px;
+  padding: 6px 10px 5px;
+}
+.email_performance_tab .email_performance_body .summary .details .from_campaigns,
+.email_performance_tab .email_performance_body .summary .details .total {
+  padding-right: 16px;
+  border-right: 1px solid #DFE3E6;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section {
+  padding-top: 24px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .summary {
+  font-weight: bold;
+  color: #373F47;
+  font-size: 24px;
+  padding-bottom: 4px;
+  margin-bottom: 18px;
+  border-bottom: solid 1px #EBEEEF;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .summary path {
+  fill: #24CE78;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .summary .icon {
+  margin-right: 8px;
+  color: #24CE78;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .summary .description {
+  font-size: 13px;
+  color: #606A72;
+  font-weight: normal;
+  margin-left: 8px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body {
+  position: relative;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .chart_wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list {
+  width: 100%;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list tr:hover {
+  background: #F2F4F5;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list tr.flow_status_live .legend_icon .legend_indicator {
+  background: #24CE78;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list tr.flow_status_manual .legend_icon .legend_indicator {
+  background: #F8BE00;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list tr.flow_status_manual .conversion_value,
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list tr.flow_status_manual .value_per_recipient {
+  color: #91979F;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list th,
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list td {
+  padding: 8px 12px;
+  text-align: left;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list th {
+  background: #EBEEEF;
+  font-weight: bold;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list td a {
+  font-weight: bold;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list .legend_icon {
+  width: 18px;
+  padding-left: 12px;
+  padding-right: 0;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list .legend_icon .legend_indicator {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  border-radius: 9px;
+  background: #DFE3E6;
+  vertical-align: top;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list .sent_at {
+  width: 50px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list .conversion_value,
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .record_list .value_per_recipient {
+  text-align: right;
+  width: 150px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .no_messages {
+  text-align: center;
+  padding: 75px 0;
+  background: #F2F4F5;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .no_messages h3 {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body .no_messages .btn-large {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section .conversion_section_body.has_messages {
+  padding-left: 250px;
+  min-height: 250px;
+}
+.email_performance_tab .email_performance_body .conversion_sections .conversion_section.campaigns .summary .icon {
+  color: #157745;
+}
+#ecommerce_platform_modal .control-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+#ecommerce_platform_modal select {
+  width: 250px;
+}
+@media (max-width: 1200px) {
+  .visible-lg {
+    display: none;
+  }
+  .email_performance_tab .email_performance_body .summary .details > div {
+    margin-right: 8px;
+  }
+  .email_performance_tab .email_performance_body .summary .details .from_campaigns,
+  .email_performance_tab .email_performance_body .summary .details .total {
+    padding-right: 8px;
+  }
+}
+@media (min-width: 1201px) {
+  .hidden-lg {
+    display: none;
+  }
+}
+.modal.statistic_selector {
+  width: 700px;
+  margin-left: -350px;
+}
+.modal.statistic_selector .statistic_container {
+  *zoom: 1;
+  margin-bottom: 24px;
+}
+.modal.statistic_selector .statistic_container:before,
+.modal.statistic_selector .statistic_container:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.modal.statistic_selector .statistic_container:after {
+  clear: both;
+}
+.modal.statistic_selector .statistic_control_group,
+.modal.statistic_selector .measurement_control_group {
+  margin-right: 2%;
+  float: left;
+  margin-bottom: 0;
+}
+.modal.statistic_selector .statistic_control_group select {
+  width: 90%;
+}
+.modal.statistic_selector .advanced_container .summary a {
+  color: #373F47;
+  border-bottom: none;
+}
+.modal.statistic_selector .advanced_container .summary i {
+  font-size: 15px;
+  margin-right: 4px;
+}
+.modal.statistic_selector .advanced_container .filters_container {
+  margin-left: 12px;
+}
+.modal.statistic_selector .advanced_container .filters_container .alert-block {
+  margin-bottom: 10px;
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set {
+  position: relative;
+  margin: 6px 0;
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set [name="dimension_function"] {
+  width: 80px;
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set .dimension_function_chosen,
+.modal.statistic_selector .advanced_container .filters_container .filter_set .reset_filter {
+  visibility: hidden;
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set .reset_filter {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 2px 5px 0 0;
+  font-size: 18px;
+  color: #373F47;
+  line-height: 24px;
+  text-shadow: 1px 1px 1px #FFFFFF;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  text-decoration: none;
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set .reset_filter:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set.hide {
+  display: block;
+  position: absolute;
+  top: -9999em;
+}
+.modal.statistic_selector .advanced_container .filters_container .filter_set.in_focus .dimension_function_chosen,
+.modal.statistic_selector .advanced_container .filters_container .filter_set.in_focus .reset_filter {
+  visibility: visible;
+}
+.modal.statistic_selector .advanced_container .filters_container .add_filter_set {
+  margin-left: 83px;
+}
+.modal.statistic_selector .advanced_container .filters_container .add_filter_set .show_filter_set i {
+  margin-right: 4px;
+}
+.modal.statistic_selector .advanced_container .filters_container.hide {
+  display: block;
+  position: absolute;
+  top: -9999em;
+}
+.modal.statistic_selector .modal-footer .pull-left .btn {
+  display: inline-block;
+}
