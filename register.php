@@ -7,6 +7,7 @@ if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of t
 if ($user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'platform/index.php');
 }
+$hooks = getMyHooks();
 
 includeHook($hooks, 'pre');
 //There is a lot of commented out code for a future release of sign ups with payments
