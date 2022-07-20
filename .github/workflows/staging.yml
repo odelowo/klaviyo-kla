@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - staging
-name: 🚀 Deploy to website (prod) on push
+name: 🚀 Deploy to website (staging) on push
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -17,4 +17,4 @@ jobs:
         server: ftp.thatspurple.com
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /public_html/klaviyo-kla-dev/
+        server-dir: /klaviyo-kla-dev/
