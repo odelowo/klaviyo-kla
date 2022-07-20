@@ -1,6 +1,6 @@
 
 <?php
-require_once '../users/init.php'; //initialisation script
+require_once '/users/init.php'; //initialisation script
 if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of the page
     die();
 }
