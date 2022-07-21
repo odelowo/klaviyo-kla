@@ -13,5 +13,4 @@ $response = $client->request('POST', 'https://a.klaviyo.com/api/track', [
   ],
 ]);
 
-echo $response->getBody();
 ?>

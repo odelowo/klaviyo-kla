@@ -4,7 +4,7 @@ require_once 'users/init.php'; //initialisation script
 
 $call = new Klaviyo();
 
-$email = "odelowo@live.co.uk";
+$email = "samson.odelowo@googlemail.com";
 $properties = array (
   array("vericode","EXAMPLECODE"),
   array("vericode_expiry","22/07/2022"),
