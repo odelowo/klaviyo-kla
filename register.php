@@ -217,12 +217,14 @@ if (Input::exists()) {
   <p>Already have an account? <a href="login.php"><u>Login</u></a></p>
   <div class="form-container">
     <?php
-    if (!$form_valid && Input::exists()){?>
-      <?php if(!$validation->errors()=='') { display_errors($validation->errors()); } ?>
+    if (!$form_valid && Input::exists()){
+       if(!$validation->errors()=='') { display_errors($validation->errors());
+       }
+    }?>
     <form id="registration-form" method="POST" >
         <div class="form-group">
           <div class="controls">
-            <input required type="email" name="email" class="form-control" placeholder="Email" value="" />
+            <input required type="email" name="email" class="form-control" placeholder="Email" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" />
 
           </div>
         </div>
@@ -236,21 +238,21 @@ if (Input::exists()) {
 
         <div class="form-group">
           <div class="controls">
-            <input required type="name" name="company" class="form-control" placeholder="Company Name" value="" />
+            <input required type="name" name="company" class="form-control" placeholder="Company Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $company;} ?>" />
 
           </div>
         </div>
 
         <div class="form-group">
           <div class="controls">
-            <input type="name" name="company_website" class="form-control" placeholder="Company Website" value="" />
+            <input type="name" name="company_website" class="form-control" placeholder="Company Website" value="<?php if (!$form_valid && !empty($_POST)){ echo $website;} ?>" />
 
           </div>
         </div>
 
         <div class="form-group">
           <div class="controls">
-            <input type="name" name="phone" class="form-control" placeholder="Phone Number" value="" />
+            <input type="name" name="phone" class="form-control" placeholder="Phone Number" value="<?php if (!$form_valid && !empty($_POST)){ echo $phone;} ?>" />
 
           </div>
         </div>
