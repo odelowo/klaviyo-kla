@@ -4,6 +4,13 @@ require_once 'users/init.php'; //initialisation script
 
 $client = new Klaviyo();
 
+$email = "odelowo@live.co.uk";
+$properties = array (
+  array("vericode","EXAMPLECODE"),
+  array("vericode_expiry","22/07/2022"),
+  array("vericodeURL","www.klaviyo.com"),
+);
+
 $client->triggerCustomerEmailVerificationEmail($email, $properties);
 
 // $response = $client->request('POST', 'https://a.klaviyo.com/api/track', [
