@@ -357,7 +357,7 @@ class Validate
 						case 'is_valid_uk_phone':
 						$numeric_only_phone = preg_replace("/[^0-9]/", "", $value); //Strip out all non-numeric characters
 						$str = lang("VAL_UK_PHONE");
-						if($numeric_only_phone[0] != 0 && $value[0] != 0){ //UK numbers must start with a 0
+						if($value[0] != 0){ //UK numbers must start with a 0
 							$this->addError(["{$display} $str",$item]);
 							$this->ruleBroken([$item,"is_valid_uk_phone",false]);
 						}

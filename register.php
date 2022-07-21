@@ -218,14 +218,16 @@ if (Input::exists()) {
   <div class="form-container">
     <?php
       echo '1';
-    if (!$form_valid && Input::exists()){
-      echo '2';
+    if (!$form_valid && Input::exists()){?>
+      <?php echo '2';
        if(!$validation->errors()=='') {
          echo '3';
          display_errors($validation->errors());
-         echo '4'; 
-       }
-    }?>
+         echo '4';
+       }?>
+    <?}
+    includeHook($hooks,'body');
+    ?>
     <form id="registration-form" method="POST" >
         <div class="form-group">
           <div class="controls">
