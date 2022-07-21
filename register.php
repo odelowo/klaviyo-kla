@@ -104,18 +104,7 @@ if (Input::exists()) {
                                 'join_vericode_expiry' => $settings->join_vericode_expiry,
                         ];
             $vericode_expiry = date('Y-m-d H:i:s');
-            $vericodeURL = $abs_us_root.$us_url_root.'/klaviyo-kla-dev/confirm.php?v='.$vericode;
-
-            //send registration email via Klavio
-            $call = new Klaviyo();
-
-            $properties = array (
-              array("vericode",$vericode),
-              array("vericode_expiry",$vericode_expiry),
-              array("vericodeURL",$vericodeURL),
-            );
-
-            $call->triggerCustomerEmailVerificationEmail($email, $properties);
+            $vericodeURL = $abs_us_root.$us_url_root.'/klaviyo-kla-dev/confirm-email.php?v='.$vericode;
 
             try {
                 // echo "Trying to create user";
@@ -154,6 +143,18 @@ if (Input::exists()) {
                 }
                 die($e->getMessage());
             }
+
+            //send registration email via Klavio
+            $call = new Klaviyo();
+
+            $properties = array (
+              array("vericode",$vericode),
+              array("vericode_expiry",$vericode_expiry),
+              array("vericodeURL",$vericodeURL),
+            );
+
+            $call->triggerCustomerEmailVerificationEmail($email, $properties);
+
             if ($form_valid == true) { //this allows the plugin hook to kill the post but it must delete the created user
                 include $abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php';
 
@@ -223,10 +224,9 @@ if (Input::exists()) {
   <p>Already have an account? <a href="login.php"><u>Login</u></a></p>
   <div class="form-container">
     <?php
-      echo '1';
     if (!$form_valid && Input::exists()){?>
       <?php if(!$validation->errors()=='') { echo $validation->display_errors(); } ?>
-    <?} //$validation->errors()
+    <?}
     includeHook($hooks,'body');
     ?>
     <form id="registration-form" method="POST" >
