@@ -217,8 +217,13 @@ if (Input::exists()) {
   <p>Already have an account? <a href="login.php"><u>Login</u></a></p>
   <div class="form-container">
     <?php
+      echo '1';
     if (!$form_valid && Input::exists()){
-       if(!$validation->errors()=='') { display_errors($validation->errors());
+      echo '2';
+       if(!$validation->errors()=='') {
+         echo '3';
+         display_errors($validation->errors());
+         echo '4'; 
        }
     }?>
     <form id="registration-form" method="POST" >
