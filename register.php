@@ -224,7 +224,7 @@ if (Input::exists()) {
          echo '3';
          dump(display_errors($validation->errors()));
 echo "3.5";
-         dump('validation->errors()'.$validation->errors());
+         dump($validation->errors());
          echo '4';
        }?>
     <?}
