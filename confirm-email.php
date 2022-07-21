@@ -32,7 +32,6 @@ if(Input::exists('get')){
 
 	//if email is valid, do this
 	if($validation->passed()){
-    echo "1- passed validation!";
 		//get the user info based on the email
     $verify = new User($email);
 
@@ -40,7 +39,6 @@ if(Input::exists('get')){
 			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
 			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
 
-    echo "2";
 		}else{
       echo "3";
 		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
