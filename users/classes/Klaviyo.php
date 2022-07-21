@@ -19,7 +19,7 @@ class Klaviyo extends Client {
 
     $firstRecord = TRUE;
 
-    /*foreach ($properties as [$prop, $val]) {
+    foreach ($properties as [$prop, $val]) {
       if($firstRecord == TRUE){
         $data .= '"'.$prop.'":"'.$val.'"';
         $firstRecord = FALSE;
@@ -29,13 +29,13 @@ class Klaviyo extends Client {
       }
     }
 
-    $data.='}}';*/
-    $json = json_encode($properties);
-    echo 'json - '.$json;
-    //echo 'data = '.$data;
+    $data.='}}';
+    // $json = json_encode($properties);
+    // echo 'json - '.$json;
+    echo 'data = '.$data;
     $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
-        'data' => $json
+        'data' => $data
       ],
       'headers' => [
         'Accept' => 'text/html',
