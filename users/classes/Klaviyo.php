@@ -23,6 +23,7 @@ class Klaviyo extends Client {
 
     $data.='}}';
 
+    echo 'data = '.$data;
     $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
         'data' => $data
@@ -32,7 +33,8 @@ class Klaviyo extends Client {
         'Content-Type' => 'application/x-www-form-urlencoded',
       ],
     ]);
-    return $response; 
+    
+    return $response;
   }
 }
 //
