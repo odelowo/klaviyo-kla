@@ -5,20 +5,17 @@ if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of t
     die();
 }
 
-ini_set('display_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');
-error_reporting(E_ALL);
+// ini_set('display_errors',1);
+// ini_set('log_errors',1);
+// ini_set('error_log',dirname(__FILE__).'/log.txt');
+// error_reporting(E_ALL);
 
 if ($user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'platform/index.php');
 }
-$hooks = getMyHooks();
 
-includeHook($hooks, 'pre');
-//There is a lot of commented out code for a future release of sign ups with payments
-$form_method = 'POST';
-$form_action = 'join.php';
+
+
 $vericode = randomstring(15);
 
 $form_valid = false;
@@ -27,15 +24,6 @@ $form_valid = false;
 $query = $db->query('SELECT * FROM email');
 $results = $query->first();
 $act = $results->email_act;
-
-//If you say in email settings that you do NOT want email activation,
-//new users are active in the database, otherwise they will become
-//active after verifying their email.
-if ($act == 1) {
-    $pre = 0;
-} else {
-    $pre = 1;
-}
 
 if (Input::exists()) {
 
@@ -85,9 +73,7 @@ if (Input::exists()) {
                 'max' => 11,
           ],
         ]);
-    if ($eventhooks = getMyHooks(['page' => 'joinAttempt'])) {
-        includeHook($eventhooks, 'body');
-    }
+
     if ($validation->passed()) {
             $form_valid = true;
             //add user to the database
@@ -104,7 +90,7 @@ if (Input::exists()) {
                                 'join_vericode_expiry' => $settings->join_vericode_expiry,
                         ];
             $vericode_expiry = date('Y-m-d H:i:s');
-            $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode;
+            $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode.'&email='.$email;
 
             try {
                 // echo "Trying to create user";
@@ -123,7 +109,7 @@ if (Input::exists()) {
                                         'newsletterSubscription' => $newsletterSubscription,
                                         'permissions' => 1,
                                         'join_date' => $join_date,
-                                        'email_verified' => $pre,
+                                        'email_verified' => 0,
                                         'vericode' => $vericode,
                                         'vericode_expiry' => $vericode_expiry,
                                         'oauth_tos_accepted' => true,
@@ -136,11 +122,9 @@ if (Input::exists()) {
                 }
                 $theNewId = $user->create($fields);
 
-                includeHook($hooks, 'post');
+
             } catch (Exception $e) {
-                if ($eventhooks = getMyHooks(['page' => 'joinFail'])) {
-                    includeHook($eventhooks, 'body');
-                }
+
                 die($e->getMessage());
             }
 
@@ -225,7 +209,7 @@ if (Input::exists()) {
     if (!$form_valid && Input::exists()){?>
       <?php if(!$validation->errors()=='') { echo $validation->display_errors(); } ?>
     <?}
-    includeHook($hooks,'body');
+
     ?>
     <form id="registration-form" method="POST" >
         <div class="form-group">

@@ -137,6 +137,7 @@ $lang = array_merge($lang,array(
 		"GEN_COMP"				=> "Company",
 		"GEN_URL"					=> "Website",
 		"GEN_PHONE"				=> "Phone",
+		"GEN_VERI"				=> "Verification Code",
 		));
 
 //validation class

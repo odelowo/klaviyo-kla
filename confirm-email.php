@@ -5,173 +5,59 @@ if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of t
     die();
 }
 
-ini_set('display_errors',1);
-ini_set('log_errors',1);
-ini_set('error_log',dirname(__FILE__).'/log.txt');
-error_reporting(E_ALL);
+// ini_set('display_errors',1);
+// ini_set('log_errors',1);
+// ini_set('error_log',dirname(__FILE__).'/log.txt');
+// error_reporting(E_ALL);
 
-if ($user->isLoggedIn()) { //if already logged in, redirect
-    Redirect::to($us_url_root.'platform/index.php');
+$email = Input::get('email'); //get parameter
+$vericode = Input::get('vericode'); //get parameter
+if($user->isLoggedIn()) $user->logout(); //if user is currently logged in, log them out
+
+$verify_success=FALSE; //initialise flag
+
+$errors = array();
+
+if(Input::exists('get')){
+
+	$validate = new Validate();
+	$validation = $validate->check($_GET,array(
+	'email' => array(
+	  'display' => lang("GEN_EMAIL"),
+	  'valid_email' => true,
+	  'required' => true,
+	),
+	));
+
+
+	//if email is valid, do this
+	if($validation->passed()){
+		//get the user info based on the email
+    $verify = new User($email);
+
+		if($verify->data()->email_verified == 1 && $verify->data()->vericode == $vericode && $verify->data()->email_new == ""){
+			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
+			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
+
+
+		}else{
+		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
+			//check if this email account exists in the DB
+
+			if($new==1 && !$verify->data()->email_new == NULL)	$verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s"),'email' => $verify->data()->email_new,'email_new' => NULL),$verify->data()->id);
+			else $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
+			$verify_success=TRUE;
+			logger($verify->data()->id,"User","Verification completed via vericode.");
+			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
+
+			usSuccess($msg);
+			if($new==1){Redirect::to($us_url_root.'users/user_settings.php');}
+		}
+	}
+	}else{
+		$errors = $validation->errors();
+	}
 }
-$hooks = getMyHooks();
-
-includeHook($hooks, 'pre');
-//There is a lot of commented out code for a future release of sign ups with payments
-$form_method = 'POST';
-$form_action = 'join.php';
-$vericode = randomstring(15);
-
-$form_valid = false;
-
-//Decide whether or not to use email activation
-$query = $db->query('SELECT * FROM email');
-$results = $query->first();
-$act = $results->email_act;
-
-//If you say in email settings that you do NOT want email activation,
-//new users are active in the database, otherwise they will become
-//active after verifying their email.
-if ($act == 1) {
-    $pre = 0;
-} else {
-    $pre = 1;
-}
-
-if (Input::exists()) {
-
-    $email = Input::get('email');
-    $password = Input::get('password');
-    $company = Input::get('company');
-    $website = Input::get('company_website');
-    $phone = Input::get('phone');
-    $newsletterSubscription = (strlen(Input::get('is_subscribe_to_list')) > 1 ? 1 : 0);
-
-    $validation = new Validate();
-
-        $validation->check($_POST, [
-          'email' => [
-                'display' => lang('GEN_EMAIL'),
-                'required' => true,
-                'valid_email' => true,
-                'unique' => 'users',
-                'min' => 5,
-                'max' => 100,
-          ],
-          'password' => [
-                'display' => lang('GEN_PASS'),
-                'required' => true,
-                'min' => $settings->min_pw,
-                'max' => $settings->max_pw,
-          ],
-          'company' => [
-                'display' => lang('GEN_COMP'),
-                'required' => true,
-                'min' => 3,
-                'max' => 60,
-          ],
-          'company_website' => [
-                'display' => lang('GEN_URL'),
-                'required' => false,
-                'is_valid_website' => true,
-                'min' => 5,
-                'max' => 60,
-          ],
-          'phone' => [
-                'display' => lang('GEN_PHONE'),
-                'required' => false,
-                'is_valid_uk_phone' => true,
-                'unique' => 'users',
-                'min' => 11,
-                'max' => 11,
-          ],
-        ]);
-    if ($eventhooks = getMyHooks(['page' => 'joinAttempt'])) {
-        includeHook($eventhooks, 'body');
-    }
-    if ($validation->passed()) {
-            $form_valid = true;
-            //add user to the database
-            $user = new User();
-            $join_date = date('Y-m-d H:i:s');
-            $params = [
-                                'email' => $email,
-                                'company' => $company,
-                                'website' => $website,
-                                'phone' => $phone,
-                                'newsletterSubscription' => $newsletterSubscription,
-                                'username' => $email,
-                                'vericode' => $vericode,
-                                'join_vericode_expiry' => $settings->join_vericode_expiry,
-                        ];
-            $vericode_expiry = date('Y-m-d H:i:s');
-            $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode;
-
-            try {
-                // echo "Trying to create user";
-                if(isset($_SESSION['us_lang'])){
-                  $newLang = $_SESSION['us_lang'];
-                }else{
-                  $newLang = $settings->default_language;
-                }
-                $fields = [
-                                        'username' => $email,
-                                        'email' => Input::get('email'),
-                                        'password' => password_hash(Input::get('password', true), PASSWORD_BCRYPT, ['cost' => 12]),
-                                        'company' => $company,
-                                        'website' => $website,
-                                        'phone' => $phone,
-                                        'newsletterSubscription' => $newsletterSubscription,
-                                        'permissions' => 1,
-                                        'join_date' => $join_date,
-                                        'email_verified' => $pre,
-                                        'vericode' => $vericode,
-                                        'vericode_expiry' => $vericode_expiry,
-                                        'oauth_tos_accepted' => true,
-                                        'language'=>$newLang,
-                                ];
-
-                $activeCheck = $db->query('SELECT active FROM users');
-                if (!$activeCheck->error()) {
-                    $fields['active'] = 1;
-                }
-                $theNewId = $user->create($fields);
-
-                includeHook($hooks, 'post');
-            } catch (Exception $e) {
-                if ($eventhooks = getMyHooks(['page' => 'joinFail'])) {
-                    includeHook($eventhooks, 'body');
-                }
-                die($e->getMessage());
-            }
-
-            //send registration email via Klavio
-            $call = new Klaviyo();
-
-            $properties = array (
-              array("vericode",$vericode),
-              array("vericode_expiry",$vericode_expiry),
-              array("vericodeURL",$vericodeURL),
-            );
-
-            $call->triggerCustomerEmailVerificationEmail($email, $properties);
-
-            if ($form_valid == true) { //this allows the plugin hook to kill the post but it must delete the created user
-                include $abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php';
-
-                //here samson
-                /*
-                logger($theNewId, 'User', 'Registration completed and verification email sent.');
-                $query = $db->query('SELECT * FROM email');
-                $results = $query->first();
-                $act = $results->email_act;
-                require $abs_us_root.$us_url_root.'users/views/_joinThankYou_verify.php';
-
-                die();*/
-            }
-
-    } //Validation
-} //Input exists
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -218,75 +104,35 @@ if (Input::exists()) {
 
         <div class="center-container">
 
+          <?php
+
+          if ($verify_success){
+          	if($eventhooks =  getMyHooks(['page'=>'verifySuccess'])){
+          	  includeHook($eventhooks,'body');
+          	}
+
+          	if(file_exists($abs_us_root.$us_url_root.'usersc/views/_verify_success.php')){
+          		require_once $abs_us_root.$us_url_root.'usersc/views/_verify_success.php';
+          	}else{
+          		require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
+          	}
+
+          }else{
+          	if($eventhooks =  getMyHooks(['page'=>'verifyFail'])){
+          		includeHook($eventhooks,'body');
+          	}
+
+          	if(file_exists($abs_us_root.$us_url_root.'usersc/views/_verify_error.php')){
+          		require_once $abs_us_root.$us_url_root.'usersc/views/_verify_error.php';
+          	}else{
+          		require $abs_us_root.$us_url_root.'users/views/_verify_error.php';
+          	}
+
+          }
+
+          ?>
 
 
-  <h2 class="headline less-margin" style="max-width:760px;">Get started with your free Kla account</h2>
-  <p>Already have an account? <a href="login.php"><u>Login</u></a></p>
-  <div class="form-container">
-    <?php
-    if (!$form_valid && Input::exists()){?>
-      <?php if(!$validation->errors()=='') { echo $validation->display_errors(); } ?>
-    <?}
-    includeHook($hooks,'body');
-    ?>
-    <form id="registration-form" method="POST" >
-        <div class="form-group">
-          <div class="controls">
-            <input required type="email" name="email" class="form-control" placeholder="Email" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" />
-
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="controls">
-            <input required type="password" name="password" class="form-control fs-exclude" placeholder="Password" />
-
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="controls">
-            <input required type="name" name="company" class="form-control" placeholder="Company Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $company;} ?>" />
-
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="controls">
-            <input type="name" name="company_website" class="form-control" placeholder="Company Website" value="<?php if (!$form_valid && !empty($_POST)){ echo $website;} ?>" />
-
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="controls">
-            <input type="name" name="phone" class="form-control" placeholder="Phone Number" value="<?php if (!$form_valid && !empty($_POST)){ echo $phone;} ?>" />
-
-          </div>
-        </div>
-
-        <div class="checkbox-controls">
-          <div class="form-group">
-            <div class="controls">
-              <input type="checkbox" id="is_subscribe_to_list" name="is_subscribe_to_list" placeholder="" checked="checked"  value="on"/>
-              <label for="is_subscribe_to_list">Kla has a newsletter? Sign me up!</label>
-
-            </div>
-          </div>
-
-          <br />
-
-        <button type="submit" class="submit-button">Get Started</button>
-      </fieldset>
-    </form>
-  </div>
-
-  <p class="terms">
-    By submitting this form, you agree to
-    the <a href="/terms-of-service" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a>
-  </p>
-
-        </div>
       </div>
 
       <div id="footer" class="flex-container">

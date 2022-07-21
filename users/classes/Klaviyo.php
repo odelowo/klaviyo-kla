@@ -30,9 +30,7 @@ class Klaviyo extends Client {
     }
 
     $data.='}}';
-    // $json = json_encode($properties);
-    // echo 'json - '.$json;
-    echo 'data = '.$data;
+    
     $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
         'data' => $data
