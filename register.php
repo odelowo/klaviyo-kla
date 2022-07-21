@@ -223,6 +223,7 @@ if (Input::exists()) {
        if(!$validation->errors()=='') {
          echo '3';
          display_errors($validation->errors());
+         echo 'validation->errors()'.$validation->errors(); 
          echo '4';
        }?>
     <?}
