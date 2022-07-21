@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <div class="row">
   <div class="col-12 text-center">
     <h1><?=lang("JOIN_SUC");?><?=$settings->site_name?></h1>
+    <p>An email has been sent to your provided email address. Please click on the activation link</p>
     <?=lang("VER_RES_SUC");?><?=$settings->join_vericode_expiry?> <?=lang("T_HOURS");?>.</p>
     <br />
   </div>
