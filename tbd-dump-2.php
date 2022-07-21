@@ -2,7 +2,7 @@
 require_once 'users/init.php'; //initialisation script
 //require_once('vendor/autoload.php');
 
-$client = new Klaviyo();
+$call = new Klaviyo();
 
 $email = "odelowo@live.co.uk";
 $properties = array (
@@ -11,7 +11,7 @@ $properties = array (
   array("vericodeURL","www.klaviyo.com"),
 );
 
-$client->triggerCustomerEmailVerificationEmail($email, $properties);
+$call->triggerCustomerEmailVerificationEmail($email, $properties);
 
 // $response = $client->request('POST', 'https://a.klaviyo.com/api/track', [
 //   'form_params' => [
@@ -23,5 +23,5 @@ $client->triggerCustomerEmailVerificationEmail($email, $properties);
 //   ],
 // ]);
 //
-// echo $response->getBody();
+echo $call->getBody();
 ?>

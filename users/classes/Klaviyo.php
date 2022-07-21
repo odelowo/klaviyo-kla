@@ -32,6 +32,7 @@ class Klaviyo extends Client {
         'Content-Type' => 'application/x-www-form-urlencoded',
       ],
     ]);
+    return $response; 
   }
 }
 //
