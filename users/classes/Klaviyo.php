@@ -17,8 +17,16 @@ class Klaviyo extends Client {
     $event = "Customer Email Verification";
     $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'", "customer_properties": {"$email": "'.$email.'"}, "properties": {';
 
+    $firstRecord = TRUE;
+
     foreach ($properties as [$prop, $val]) {
-      $data .= '"'.$prop.'":"'.$val.'",';
+      if($firstRecord == TRUE){
+        $data .= '"'.$prop.'":"'.$val.'"';
+        $firstRecord = FALSE;
+      }
+      else {
+        $data .= ', "'.$prop.'":"'.$val.'"';
+      }
     }
 
     $data.='}}';
@@ -33,7 +41,7 @@ class Klaviyo extends Client {
         'Content-Type' => 'application/x-www-form-urlencoded',
       ],
     ]);
-    
+
     return $response;
   }
 }
