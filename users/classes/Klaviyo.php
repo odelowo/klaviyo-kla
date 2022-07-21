@@ -15,7 +15,7 @@ class Klaviyo extends Client {
 
   public function triggerCustomerEmailVerificationEmail($email, $properties){
     $event = "Customer Email Verification";
-    $data = '{"token": "'.$this->publicKey.'", "event": "'.$event.'", "customer_properties": {"$email": "'.$email.'"}, "properties": {';
+    $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'", "customer_properties": {"$email": "'.$email.'"}, "properties": {';
 
     foreach ($properties as [$prop, $val]) {
       $data .= '"'.$prop.'":"'.$val.'",';
@@ -23,7 +23,7 @@ class Klaviyo extends Client {
 
     $data.='}}';
 
-    $response = $client->request('POST', 'https://a.klaviyo.com/api/track', [
+    $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
         'data' => $data
       ],
