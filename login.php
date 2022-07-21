@@ -1,4 +1,63 @@
 
+<?php
+require_once 'users/init.php'; //initialisation script
+if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of the page
+    die();
+}
+
+// ini_set('display_errors',1);
+// ini_set('log_errors',1);
+// ini_set('error_log',dirname(__FILE__).'/log.txt');
+// error_reporting(E_ALL);
+
+$errors = $successes = [];
+if (Input::get('err') != '') {
+    $errors[] = Input::get('err');
+}
+
+if ($user->isLoggedIn()) { //if already logged in, redirect
+    Redirect::to($us_url_root.'platform/index.php');
+}
+
+$validate = new Validate();
+$validation = $validate->check($_POST, array(
+  'email' => array('display' => lang('GEN_EMAIL'),'required' => true),
+  'password' => array('display' => lang('GEN_PASS'), 'required' => true))
+);
+$validated = $validation->passed();
+// Set $validated to False to kill validation
+$email = Input::get('email');
+$password = trim(Input::get('password'));
+$remember = false;
+
+if ($validated) {
+  //Log user in
+  $user = new User();
+  $login = $user->loginEmail($email, $password, $remember);
+  if ($login) {
+    //if first name is blank, ask for more data
+    if($user->data()->fname == "") //if user has not yet updated their information, send to landing page to get more information
+      $dest = "platform/new-user.php";
+    else //user has provided their basic information so navigate to default landing page
+      $dest = "platform/index.php";
+
+      Redirect::to($dest);
+
+      $_SESSION['last_confirm']=date("Y-m-d H:i:s");
+
+
+    } else {
+      logger("0","Login Fail","A failed login on login.php");
+      $msg = lang("SIGNIN_FAIL");
+      $msg2 = lang("SIGNIN_PLEASE_CHK");
+      $errors[] = '<strong>'.$msg.'</strong>'.$msg2;
+    }
+  }else{
+    $errors = $validation->errors();
+  }
+  sessionValMessages($errors, $successes, NULL);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
