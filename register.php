@@ -90,7 +90,7 @@ if (Input::exists()) {
                                 'join_vericode_expiry' => $settings->join_vericode_expiry,
                         ];
             $vericode_expiry = date('Y-m-d H:i:s');
-            $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode.'&email='.$email;
+            $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode.'&email='.urlencode($email);
 
             try {
                 // echo "Trying to create user";

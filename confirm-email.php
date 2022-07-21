@@ -32,6 +32,7 @@ if(Input::exists('get')){
 
 	//if email is valid, do this
 	if($validation->passed()){
+    echo "1- passed validation!";
 		//get the user info based on the email
     $verify = new User($email);
 
@@ -39,23 +40,27 @@ if(Input::exists('get')){
 			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
 			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
 
-
+    echo "2";
 		}else{
+      echo "3";
 		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
 			//check if this email account exists in the DB
-
-			if($new==1 && !$verify->data()->email_new == NULL)	$verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s"),'email' => $verify->data()->email_new,'email_new' => NULL),$verify->data()->id);
-			else $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
+echo "4";
+			if($new==1 && !$verify->data()->email_new == NULL)	$verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s"),'email' => $verify->data()->email_new,'email_new' => NULL),$verify->data()->id); echo "5";
+			else $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id); echo "6";
 			$verify_success=TRUE;
 			logger($verify->data()->id,"User","Verification completed via vericode.");
 			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
-
-			usSuccess($msg);
-			if($new==1){Redirect::to($us_url_root.'users/user_settings.php');}
+      echo "7";
+			//tbd
+      //usSuccess($msg);
+			//if($new==1){Redirect::to($us_url_root.'users/user_settings.php');}
 		}
+    echo "8";
 	}
 	}else{
 		$errors = $validation->errors();
+    echo "9";
 	}
 }
 ?>
