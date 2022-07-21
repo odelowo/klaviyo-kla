@@ -40,7 +40,7 @@ if(Input::exists('get')){
 			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
 
 		}else{
-      echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry.' | '.strtotime(date("Y-m-d H:i:s").' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
+      echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry).' | '.strtotime(date("Y-m-d H:i:s")).' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
 		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
 			//check if this email account exists in the DB
 echo "4";
