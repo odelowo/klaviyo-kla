@@ -15,11 +15,11 @@ class Klaviyo extends Client {
 
   public function triggerCustomerEmailVerificationEmail($email, $properties){
     $event = "Customer Email Verification";
-    $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'", "customer_properties": {"$email": "'.$email.'"}, "properties": {';
+    $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'", "customer_properties": {"email": "'.$email.'"}, "properties": {';
 
     $firstRecord = TRUE;
 
-    foreach ($properties as [$prop, $val]) {
+    /*foreach ($properties as [$prop, $val]) {
       if($firstRecord == TRUE){
         $data .= '"'.$prop.'":"'.$val.'"';
         $firstRecord = FALSE;
@@ -29,12 +29,13 @@ class Klaviyo extends Client {
       }
     }
 
-    $data.='}}';
-
-    echo 'data = '.$data;
+    $data.='}}';*/
+    $json = json_encode($properties);
+    echo 'json - '.$json;
+    //echo 'data = '.$data;
     $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
-        'data' => {"token": "TMezSb", "event": "Customer Email Verification", "customer_properties": {"$email": "odelowo@live.co.uk"}, "properties": {"vericode":"EXAMPLECODE", "vericode_expiry":"22/07/2022", "vericodeURL":"www.klaviyo.com"}}
+        'data' => $json
       ],
       'headers' => [
         'Accept' => 'text/html',
