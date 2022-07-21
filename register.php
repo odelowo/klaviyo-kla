@@ -225,7 +225,7 @@ if (Input::exists()) {
     <?php
       echo '1';
     if (!$form_valid && Input::exists()){?>
-      <?php if(!$validation->errors()=='') { $validation->display_errors(); } ?>
+      <?php if(!$validation->errors()=='') { echo $validation->display_errors(); } ?>
     <?} //$validation->errors()
     includeHook($hooks,'body');
     ?>
