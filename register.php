@@ -222,8 +222,8 @@ if (Input::exists()) {
       <?php echo '2';
        if(!$validation->errors()=='') {
          echo '3';
-         display_errors($validation->errors());
-         echo 'validation->errors()'.$validation->errors(); 
+         echo display_errors($validation->errors());
+         print_r('validation->errors()'.$validation->errors());
          echo '4';
        }?>
     <?}
