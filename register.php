@@ -98,43 +98,19 @@ if (Input::exists()) {
                                 'join_vericode_expiry' => $settings->join_vericode_expiry,
                         ];
             $vericode_expiry = date('Y-m-d H:i:s');
-            if ($act == 1) {
-                //Verify email address settings
-                /*$to = rawurlencode($email);
-                $subject = html_entity_decode($settings->site_name, ENT_QUOTES);
-                $body = email_body('_email_template_verify.php', $params);
-                email($to, $subject, $body);
-                $vericode_expiry = date('Y-m-d H:i:s', strtotime("+$settings->join_vericode_expiry hours", strtotime(date('Y-m-d H:i:s'))));
-                */
+            $vericodeURL = $abs_us_root.$us_url_root.'/klaviyo-kla-dev/confirm.php?v='.$vericode;
 
-                $curl = curl_init();
+            //send registration email via Klavio
+            $call = new Klaviyo();
 
-                curl_setopt_array($curl, [
-                  CURLOPT_URL => "https://a.klaviyo.com/api/v2/lists?api_key=pk_1128ba9f64907df9bee8a7a7f27d84e92c",
-                  CURLOPT_RETURNTRANSFER => true,
-                  CURLOPT_ENCODING => "",
-                  CURLOPT_MAXREDIRS => 10,
-                  CURLOPT_TIMEOUT => 30,
-                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                  CURLOPT_CUSTOMREQUEST => "POST",
-                  CURLOPT_POSTFIELDS => "list_name=MyNewList",
-                  CURLOPT_HTTPHEADER => [
-                    "Accept: application/json",
-                    "Content-Type: application/x-www-form-urlencoded"
-                  ],
-                ]);
+            $properties = array (
+              array("vericode",$vericode),
+              array("vericode_expiry",$vericode_expiry),
+              array("vericodeURL",$vericodeURL),
+            );
 
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
+            $call->triggerCustomerEmailVerificationEmail($email, $properties);
 
-                curl_close($curl);
-
-                if ($err) {
-                  echo "cURL Error #:" . $err;
-                } else {
-                  echo $response;
-                }
-            }
             try {
                 // echo "Trying to create user";
                 if(isset($_SESSION['us_lang'])){
