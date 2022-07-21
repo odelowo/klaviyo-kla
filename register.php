@@ -216,6 +216,9 @@ if (Input::exists()) {
   <h2 class="headline less-margin" style="max-width:760px;">Get started with your free Kla account</h2>
   <p>Already have an account? <a href="login.php"><u>Login</u></a></p>
   <div class="form-container">
+    <?php
+    if (!$form_valid && Input::exists()){?>
+      <?php if(!$validation->errors()=='') { display_errors($validation->errors()); } ?>
     <form id="registration-form" method="POST" >
         <div class="form-group">
           <div class="controls">
