@@ -13,8 +13,7 @@ class Klaviyo extends Client {
   private static $privateKey = 'pk_1128ba9f64907df9bee8a7a7f27d84e92c';
   private static $publicKey = 'TMezSb';
 
-  public function triggerCustomerEmailVerificationEmail($email, $properties){
-    $event = "Customer Email Verification";
+  public function trackProfileActivity($email, $properties, $event){
     $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'", "customer_properties": {"email": "'.$email.'"}, "properties": {';
 
     $firstRecord = TRUE;
@@ -30,7 +29,7 @@ class Klaviyo extends Client {
     }
 
     $data.='}}';
-    
+
     $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
         'data' => $data

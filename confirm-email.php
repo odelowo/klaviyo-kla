@@ -44,29 +44,18 @@ if(Input::exists('get')){
 		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
 			//check if this email account exists in the DB
 //echo "4";
-			if($new==1 && !$verify->data()->email_new == NULL)
-      {
-        //tbd - relevance?
-        $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s"),'email' => $verify->data()->email_new,'email_new' => NULL),$verify->data()->id);
-        echo "5";
-      }
-			else {
-        $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
-        echo "6";
-      }
+
+      $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
+
 			$verify_success=TRUE;
 			logger($verify->data()->id,"User","Verification completed via vericode.");
 			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
-      echo "7";
-			//tbd
-      //usSuccess($msg);
-			//if($new==1){Redirect::to($us_url_root.'users/user_settings.php');}
+
 		}
-    echo "8";
 	}
 	}else{
 		$errors = $validation->errors();
-    echo "9";
+
 	}
 }
 ?>
@@ -118,9 +107,14 @@ if(Input::exists('get')){
           <?php
 
           if ($verify_success){
-          	if($eventhooks =  getMyHooks(['page'=>'verifySuccess'])){
-          	  includeHook($eventhooks,'body');
-          	}
+
+            //start welcome journey
+            $call = new Klaviyo();
+
+            $properties = []; 
+
+            $event = "Customer Welcome Journey";
+            $call->trackProfileActivity($email, $properties, $event);
 
           	if(file_exists($abs_us_root.$us_url_root.'usersc/views/_verify_success.php')){
           		require_once $abs_us_root.$us_url_root.'usersc/views/_verify_success.php';

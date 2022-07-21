@@ -137,8 +137,8 @@ if (Input::exists()) {
               array("vericode_expiry",$vericode_expiry),
               array("vericodeURL",$vericodeURL),
             );
-
-            $call->triggerCustomerEmailVerificationEmail($email, $properties);
+            $event = "Customer Email Verification";
+            $call->trackProfileActivity($email, $properties, $event);
 
             if ($form_valid == true) { //this allows the plugin hook to kill the post but it must delete the created user
                 include $abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php';
