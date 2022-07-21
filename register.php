@@ -4,6 +4,12 @@ require_once 'users/init.php'; //initialisation script
 if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of the page
     die();
 }
+
+ini_set('display_errors',1);
+ini_set('log_errors',1);
+ini_set('error_log',dirname(__FILE__).'/log.txt');
+error_reporting(E_ALL);
+
 if ($user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'platform/index.php');
 }
@@ -219,14 +225,7 @@ if (Input::exists()) {
     <?php
       echo '1';
     if (!$form_valid && Input::exists()){?>
-      <?php echo '2';
-       if(!$validation->errors()=='') {
-         echo '3';
-         dump(display_errors($validation->errors()));
-echo "3.5";
-         dump($validation->errors());
-         echo '4';
-       }?>
+      <?php if(!$validation->errors()=='') { display_errors($validation->errors()); } ?>
     <?}
     includeHook($hooks,'body');
     ?>
