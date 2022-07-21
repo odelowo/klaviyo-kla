@@ -11,7 +11,7 @@ if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of t
 // error_reporting(E_ALL);
 
 $email = Input::get('email'); //get parameter
-$vericode = Input::get('vericode'); //get parameter
+$vericode = Input::get('v'); //get parameter
 if($user->isLoggedIn()) $user->logout(); //if user is currently logged in, log them out
 
 $verify_success=FALSE; //initialise flag
@@ -40,12 +40,13 @@ if(Input::exists('get')){
 			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
 
 		}else{
-      echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry).' | '.strtotime(date("Y-m-d H:i:s")).' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
+      //troubleshooting values for if statement - echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry).' | '.strtotime(date("Y-m-d H:i:s")).' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
 		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
 			//check if this email account exists in the DB
-echo "4";
+//echo "4";
 			if($new==1 && !$verify->data()->email_new == NULL)
       {
+        //tbd - relevance?
         $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s"),'email' => $verify->data()->email_new,'email_new' => NULL),$verify->data()->id);
         echo "5";
       }
