@@ -34,7 +34,7 @@ class Klaviyo extends Client {
     echo 'data = '.$data;
     $response = $this->request('POST', 'https://a.klaviyo.com/api/track', [
       'form_params' => [
-        'data' => $data
+        'data' => {"token": "TMezSb", "event": "Customer Email Verification", "customer_properties": {"$email": "odelowo@live.co.uk"}, "properties": {"vericode":"EXAMPLECODE", "vericode_expiry":"22/07/2022", "vericodeURL":"www.klaviyo.com"}}
       ],
       'headers' => [
         'Accept' => 'text/html',
