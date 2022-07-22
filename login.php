@@ -1,6 +1,8 @@
 
 <?php
 require_once 'users/init.php'; //initialisation script
+$hooks =  getMyHooks();
+includeHook($hooks,'pre');
 if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of the page
     die();
 }
@@ -29,24 +31,29 @@ $validated = $validation->passed();
 $email = Input::get('email');
 $password = trim(Input::get('password'));
 $remember = false;
+includeHook($hooks,'post');
 
 if ($validated) {
   //Log user in
   $user = new User();
   $login = $user->loginEmail($email, $password, $remember);
   if ($login) {
+    $hooks =  getMyHooks(['page'=>'loginSuccess']);
+    includeHook($hooks,'body');
+
     //if first name is blank, ask for more data
     if($user->data()->fname == "") //if user has not yet updated their information, send to landing page to get more information
       $dest = "platform/new-user.php";
     else //user has provided their basic information so navigate to default landing page
       $dest = "platform/index.php";
+      $_SESSION['last_confirm']=date("Y-m-d H:i:s");
 
       Redirect::to($dest);
 
-      $_SESSION['last_confirm']=date("Y-m-d H:i:s");
-
 
     } else {
+      $eventhooks =  getMyHooks(['page'=>'loginFail']);
+      includeHook($eventhooks,'body');
       logger("0","Login Fail","A failed login on login.php");
       $msg = lang("SIGNIN_FAIL");
       $msg2 = lang("SIGNIN_PLEASE_CHK");
@@ -55,7 +62,7 @@ if ($validated) {
   }else{
     $errors = $validation->errors();
   }
-
+  sessionValMessages($errors, $successes, NULL);
 
 ?>
 <!DOCTYPE html>
@@ -98,7 +105,9 @@ if ($validated) {
         Please log in with your new email address.
       </div>
   </div>
-<?php sessionValMessages($errors, $successes, NULL); ?>
+  <?php
+  includeHook($hooks,'body');
+  ?>
   <h2 class="headline less-margin">Welcome Back</h2>
 
   <div class="form-container form-divider">
