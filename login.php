@@ -55,7 +55,7 @@ if ($validated) {
   }else{
     $errors = $validation->errors();
   }
-  sessionValMessages($errors, $successes, NULL);
+
 
 ?>
 <!DOCTYPE html>
@@ -98,7 +98,7 @@ if ($validated) {
         Please log in with your new email address.
       </div>
   </div>
-
+<?php sessionValMessages($errors, $successes, NULL); ?>
   <h2 class="headline less-margin">Welcome Back</h2>
 
   <div class="form-container form-divider">
