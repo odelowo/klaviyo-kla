@@ -3,6 +3,7 @@
 require_once 'users/init.php'; //initialisation script
 $hooks =  getMyHooks();
 includeHook($hooks,'pre');
+
 if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of the page
     die();
 }
@@ -16,6 +17,7 @@ $errors = $successes = [];
 if (Input::get('err') != '') {
     $errors[] = Input::get('err');
 }
+$loginfailed = false;
 
 if ($user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'platform/index.php');
@@ -58,6 +60,7 @@ if ($validated) {
       $msg = lang("SIGNIN_FAIL");
       $msg2 = lang("SIGNIN_PLEASE_CHK");
       $errors[] = '<strong>'.$msg.'</strong>'.$msg2;
+      $loginfailed = true;
     }
   }else{
     $errors = $validation->errors();
@@ -96,7 +99,7 @@ if ($validated) {
 
         <div class="center-container">
 
-          <?php if ($login){ echo '<div class="alert alert-error" id="email-changed-alert"><div class="alert-icon"><i class="kl kl-x" style="vertical-align: top"></i></div><div class="alert-message"><b>Error</b><br/>We were unable to log you in. Please check your username and password is correct.</div></div>';} ?>
+          <?php if ($loginfailed){ echo '<div class="alert alert-error" id="email-changed-alert"><div class="alert-icon"><i class="kl kl-x" style="vertical-align: top"></i></div><div class="alert-message"><b>Error</b><br/>We were unable to log you in. Please check your username and password is correct.</div></div>';} ?>
 
   <?php
   includeHook($hooks,'body');
