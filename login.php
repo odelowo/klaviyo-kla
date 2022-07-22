@@ -96,15 +96,8 @@ if ($validated) {
 
         <div class="center-container">
 
-  <div class="alert alert-success" style="display: none;" id="email-changed-alert">
-      <div class="alert-icon">
-        <i class="kl kl-circle-success" style="vertical-align: top"></i>
-      </div>
-      <div class="alert-message">
-        <b>Email address has been updated</b><br/>
-        Please log in with your new email address.
-      </div>
-  </div>
+          <?php if ($login){ echo '<div class="alert alert-error" id="email-changed-alert"><div class="alert-icon"><i class="kl kl-x" style="vertical-align: top"></i></div><div class="alert-message"><b>Error</b><br/>We were unable to log you in. Please check your username and password is correct.</div></div>';} ?>
+
   <?php
   includeHook($hooks,'body');
   ?>
@@ -112,11 +105,8 @@ if ($validated) {
 
   <div class="form-container form-divider">
     <form id="login-form" action="" method="POST">
-      <input type="hidden" name="csrfmiddlewaretoken" value="AAVASJbGoKyh4oH4lYiybZKOWblU5Ap9LMAYY21fmpJlcW1QaSg84PXwFqYp2frT">
-
 
       <fieldset>
-        <input type="hidden" name="authentication_step" value="login" />
 
         <div class="form-group">
           <label for="email" class="hide">Email address</label>
