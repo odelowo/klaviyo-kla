@@ -2,6 +2,9 @@
 $title = 'Welcome'; //used to identify user friendly in-page title
 $pageTitle = 'Welcome'; //used to identify page title
 $menuItemSelected = ''; //used to identify which menu item is preselected
+$journey = ""; //journey used for analytics purposes
+$journeyStep = ""; //journey step used to identify drop off in journey
+$pageview_attr = [];
 
 require_once '../users/init.php';
 require_once('includes/header.php');

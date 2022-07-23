@@ -29,7 +29,9 @@ var rowNum = 0; //initialise to 0
 
 function addRow(frm) { //on add row click
   rowNum ++; //increment by 1
-  var row = '<p id="rowNum'+rowNum+'"><input type="text" name="question[]" placeholder="Question"  value="'+frm.add_question.value+'"/> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"></p>';
+  var row = '<div class="form-group" id="rowNum'+rowNum+'"><div class="controls"><input type="text" class="form-control" name="question[]" placeholder="Question"  value="'+frm.add_question.value+'"/> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"></div></div>';
+
+
   jQuery('#itemRows').append(row); //append above code to the bottom
   frm.add_question.value = ''; //reset question to ""
 }
@@ -44,6 +46,11 @@ function removeRow(rnum) { //remove row
            <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj">
 
              <form method="post">
+               <div class="form-group" id="itemRows">
+                 <div class="controls">
+                  <input type="text" name="add_question" class="form-control" placeholder="Question"/>
+                 </div>
+               </div>
               <div id="itemRows">
                 <input type="text" name="add_question" placeholder="Question"/>
                 <input onclick="addRow(this.form);" type="button" value="Add Question" />
