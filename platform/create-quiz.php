@@ -28,7 +28,6 @@ if(!empty($_POST)){
 
 
   $response = preProcessForm();
-  $response['fields']['created'] = $now;
   $response['fields']['userid'] = $user->data()->id;
 
   if($response['form_valid'] == true){
