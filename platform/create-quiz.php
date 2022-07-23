@@ -26,23 +26,25 @@ if(!empty($_POST)){
   date_default_timezone_set('Europe/London');
   $now = date('Y-m-d H:i:s');
 
-
+echo "1";
   $response = preProcessForm();
-  $response['fields']['userid'] = $user->data()->id;
-
+  $response['fields']['userid'] = "".$user->data()->id."";
+echo "2";
   if($response['form_valid'] == true){
 
     postProcessForm($response);
-
+echo "3";
     //return the id of the quiz
     $rowQ = $db->query("SELECT id FROM quiz WHERE userid = ? ORDER BY timestamp DESC LIMIT 1 ", $user->data()->id);
     $row = $rowQ->first();
 
+echo "4";
     $call = new Klaviyo();
 
     $email = $user->data()->email;
     $firstname = $user->data()->fname;
     $lastname = $user->data()->lname;
+  echo "5. "
     $nextStep = "www.thatspurple.com/klaviyo-kla/platform/quiz-details.php?q=".numhash($row->id);
 
     $customer = array(
@@ -50,7 +52,7 @@ if(!empty($_POST)){
       array("first_name",$firstname),
       array("last_name",$lastname),
     );
-
+echo "6";
     $properties = array(
       array("quiz", $response['fields']['name']),
       array("nextStep",$nextStep),
@@ -58,9 +60,9 @@ if(!empty($_POST)){
 
     $event = "Quiz Start";
     $call->trackProfileActivity($customer, $properties, $event);
-
-    Redirect::to($nextStep);
-
+echo "7";
+    //Redirect::to($nextStep);
+echo "8 - redirect";
 
   }
   else{
