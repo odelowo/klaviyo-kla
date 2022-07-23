@@ -23,8 +23,14 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
     $script = '<script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id='.$call->returnPublicKey().'"></script>'.$nl;
     $script .= "<script>".$nl;
     $script .= "var _learnq = _learnq || [];".$nl;
-    $script .= "_learnq.push(['track', 'Page View', {".$nl;
+    $script .= "_learnq.push(['identify', {".$nl;
     $script .= "'$"."email' : '".$user->data()->email."',".$nl;
+    $script .= "'$"."first_name' : '".$user->data()->fname."',".$nl;
+    $script .= "'$"."last_name' : '".$user->data()->lname."',".$nl;
+    $script .= "}]);".$nl.$nl;
+
+
+    $script .= "_learnq.push(['track', 'Page View', {".$nl;
     $script .= "'url' : '".$_SERVER['REQUEST_URI']."',".$nl;
     $script .= "'pageTitle' : '".$pageTitle."',".$nl;
     $script .= "'journey' : '".$journey."',".$nl;
