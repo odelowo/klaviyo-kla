@@ -30,10 +30,10 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
 
     //add additional page view attributes automatically
     foreach ($pageview_attr as [$attr, $val]) {
-        $script .= ','.$nl.' "'.$attr.'" : "'.$val.'"'.$nl;
+        $script .= ','.$nl.' "'.$attr.'" : "'.$val.'"';
     }
 
-    $script .= "}]);".$nl;
+    $script .= $nl."}]);".$nl;
     $script .= "</script>".$nl;
     echo $script;
 
