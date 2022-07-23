@@ -53,6 +53,7 @@ if (Input::exists()) {
       $successes[] = 'Account '.lang('GEN_UPDATED');
       logger($user->data()->id, 'User', "Update basic information $firstname and $lastname.");
 
+      $call = new Klaviyo();
       //trigger hello message to klaviyo
       $properties = [];
 
