@@ -57,7 +57,7 @@ if (Input::exists()) {
       $properties = [];
 
       $customer = array(
-        array("email",$email),
+        array("email",$$user->data()->email),
         array("first_name",$firstname),
         array("last_name",$lastname),
       );

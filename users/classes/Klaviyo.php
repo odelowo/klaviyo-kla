@@ -52,7 +52,6 @@ class Klaviyo extends Client {
         'Content-Type' => 'application/x-www-form-urlencoded',
       ],
     ]);
-    echo $data;
     return $response;
   }
 }
