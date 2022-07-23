@@ -13,6 +13,9 @@ class Klaviyo extends Client {
   private static $privateKey = 'pk_1128ba9f64907df9bee8a7a7f27d84e92c';
   private static $publicKey = 'TMezSb';
 
+  public function returnPublicKey(){
+      return self::$publicKey; 
+  }
   public function trackProfileActivity($customerattr, $properties, $event){
     $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'"';
 
