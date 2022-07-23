@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'../../users/init.php'; //initialisation script
+require_once __DIR__.'/../../users/init.php'; //initialisation script
 if (!$user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'index.php');
 }
