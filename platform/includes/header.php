@@ -3,6 +3,10 @@ require_once __DIR__.'/../../users/init.php'; //initialisation script
 if (!$user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'index.php');
 }
+
+function numhash($n) { //encode/decode 32-bit int
+    return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +42,7 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
 
     //add additional page view attributes automatically
     foreach ($pageview_attr as [$attr, $val]) {
-        
+
         $script .= ",".$nl." '".$attr."' : '".$val."'";
     }
 

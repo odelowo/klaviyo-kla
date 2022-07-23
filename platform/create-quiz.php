@@ -2,6 +2,16 @@
 $title = 'Create Quiz'; //used to identify user friendly in-page title
 $pageTitle = 'Create Quiz'; //used to identify page title
 $menuItemSelected = 'create-quiz'; //used to identify which menu item is preselected
+$journey = "Create Quiz"; //journey used for analytics purposes
+$journeyStep = "Step 1 - Define Quiz"; //journey step used to identify drop off in journey
+$pageview_attr = [];
+
+//used to add additional page view attributes
+// $pageview_attr = array(
+//   array("test1","value 1"),
+//   array("test2","value 2"),
+//   array("test3","value 4"),
+// );
 
 require_once '../users/init.php';
 require_once('includes/header.php');
@@ -10,52 +20,62 @@ ini_set('display_errors',1);
 ini_set('log_errors',1);
 ini_set('error_log',dirname(__FILE__).'/log.txt');
 error_reporting(E_ALL);
+
+if(!empty($_POST)){
+  $timezone = date_default_timezone_get();
+  date_default_timezone_set('Europe/London');
+  $now = date('Y-m-d H:i:s');
+
+
+  $response = preProcessForm();
+  $response['fields']['created'] = $now;
+  $response['fields']['userid'] = $user->data()->id;
+
+  if($response['form_valid'] == true){
+
+    postProcessForm($response);
+
+    //return the id of the quiz
+    $rowQ = $db->query("SELECT id FROM quiz WHERE userid = ? ORDER BY timestamp DESC LIMIT 1 ", $user->data()->id);
+    $row = $rowQ->first();
+
+    $call = new Klaviyo();
+
+    $email = $user->data()->email;
+    $firstname = $user->data()->fname;
+    $lastname = $user->data()->lname;
+    $nextStep = "www.thatspurple.com/klaviyo-kla/platform/quiz-details.php?q=".numhash($row->id);
+
+    $customer = array(
+      array("email",$email),
+      array("first_name",$firstname),
+      array("last_name",$lastname),
+    );
+
+    $properties = array(
+      array("quiz", $response['fields']['name']),
+      array("nextStep",$nextStep),
+    );
+
+    $event = "Quiz Start";
+    $call->trackProfileActivity($customer, $properties, $event);
+
+    Redirect::to($nextStep);
+
+
+  }
+  else{
+    echo "<br></br><br></br><br></br><br></br><br></br><br></br>in-valid";
+  }
+  //$token = Token::generate();
+}
+
 ?>
 
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
         <div class="ObjectivesTab__DashboardContainer-sc-1el61mo-1 khhmlX">
            <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj">
-              <div class="HeroCardWrapper__CardListContainer-sc-1monayj-0 fIrQJB">
-                 <div class="Box__StyledBox-sc-16nrscc-0 hzZglw Title__StyledBox-sc-1bx2dve-0 gLCdlk">
-                    <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk Title__StyledBody-sc-1bx2dve-1 NdxIz">Get Started</span>
-                    <div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">Using Kla</span></div>
-                 </div>
-                 <div class="HeroCardListMember__StepAndCardContainer-sc-1q98de9-0 gOYaCR">
-                    <div class="StepNumber__StepContainer-sc-vts7m4-0 jcRCgj">
-                       <div class="StepNumber__StepNumberElement-sc-vts7m4-1 clJZwQ">1</div>
-                       <div class="StepNumber__StepLine-sc-vts7m4-2 kdZuwc"></div>
-                    </div>
-                    <span class="HeroCardListMember__Container-sc-1q98de9-1 hnROve">
-                       <div class="HeroCardListMember__CollapsedArchivedCompletedContainer-sc-1q98de9-4 kRGAvY">
-                          <div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><a href="create-quiz.php"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">Create a quiz</span></a></div>
-                          <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk">Simple.</span>
-                       </div>
-                    </span>
-                 </div>
-                 <div class="HeroCardListMember__StepAndCardContainer-sc-1q98de9-0 gOYaCR">
-                    <div class="StepNumber__StepContainer-sc-vts7m4-0 jcRCgj">
-                       <div class="StepNumber__StepNumberElement-sc-vts7m4-1 gAXjwL">2</div>
-                       <div class="StepNumber__StepLine-sc-vts7m4-2 kdZuwc"></div>
-                    </div>
-                    <span class="HeroCardListMember__Container-sc-1q98de9-1 hnROve">
-                       <div class="HeroCardListMember__CollapsedArchivedCompletedContainer-sc-1q98de9-4 kRGAvY">
-                          <div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">Share your quiz</span></div>
-                          <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk">Send the quiz to friends, family and colleagues.</span>
-                       </div>
-                    </span>
-                 </div>
-                 <div class="HeroCardListMember__StepAndCardContainer-sc-1q98de9-0 gOYaCR">
-                    <div class="StepNumber__StepContainer-sc-vts7m4-0 jcRCgj">
-                       <div class="StepNumber__StepNumberElement-sc-vts7m4-1 gAXjwL">3</div>
-                    </div>
-                    <span class="HeroCardListMember__Container-sc-1q98de9-1 hnROve">
-                       <div class="HeroCardListMember__CollapsedArchivedCompletedContainer-sc-1q98de9-4 kRGAvY">
-                          <div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">Find out who your true friends are</span></div>
-                          <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk">Just kidding</span>
-                       </div>
-                    </span>
-                 </div>
-              </div>
+              <?php displayForm('quiz'); ?>
            </div>
         </div>
      </div>
