@@ -30,14 +30,14 @@ if(!empty($_POST)){
   $response = preProcessForm();
   $response['fields']['userid'] = $user->data()->id;
   $response['fields']['status'] = "Draft";
-echo "2";
-echo "response['form_valid'] = ".$response['form_valid']; 
+
+
   if($response['form_valid'] == true){
 
     postProcessForm($response);
-echo "3";
+
     //return the id of the quiz
-    $rowQ = $db->query("SELECT id FROM quiz WHERE userid = ? ORDER BY timestamp DESC LIMIT 1 ", $user->data()->id);
+    $rowQ = $db->query("SELECT id FROM quiz WHERE userid = ? ORDER BY timestamp DESC LIMIT 1 ", [$user->data()->id]);
     $row = $rowQ->first();
 
 echo "4";
