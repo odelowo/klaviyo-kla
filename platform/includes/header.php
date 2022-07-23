@@ -2335,7 +2335,7 @@ fOAfGa > li {
             <header role="banner" class="SiteHead__StyledSiteHead-sc-1cjjxai-0 imeWfR">
                <nav class="styles__StyledHeader-sc-qpxf0f-0 hrlJdN">
                   <div>
-                    <a href="index.php"><img src="../images/logo.png"></a>
+                    <a href="index.php"><img src="images/logo.png"></a>
                      <form action="/search" method="GET" id="search-form" class="styles__StyledSearch-sc-us72y0-0 chOITk"><input type="text" placeholder="Global Search..." id="search" name="q"><button type="submit" class="styles__StyledButton-sc-us72y0-1 hdtWvd"><i class="fa fa-search search-icon"></i></button></form>
                   </div>
                   <div>
