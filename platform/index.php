@@ -3,7 +3,8 @@ $title = 'Dashboard'; //used to identify user friendly in-page title
 $pageTitle = 'Dashboard'; //used to identify page title
 $menuItemSelected = 'dashboard'; //used to identify which menu item is preselected
 
-require_once('/includes/header.php');
+require_once '../users/init.php';
+require_once('includes/header.php');
 
 ini_set('display_errors',1);
 ini_set('log_errors',1);
@@ -59,5 +60,5 @@ error_reporting(E_ALL);
         </div>
      </div>
  <?php
- require_once('/includes/footer.php');
+ require_once('includes/footer.php');
  ?>
