@@ -26,9 +26,9 @@ if(!empty($_POST)){
   date_default_timezone_set('Europe/London');
   $now = date('Y-m-d H:i:s');
 
-echo "1";
+
   $response = preProcessForm();
-  $response['fields']['userid'] = "".$user->data()->id."";
+  $response['fields']['userid'] = $user->data()->id;
 echo "2";
   if($response['form_valid'] == true){
 
@@ -76,7 +76,7 @@ echo "8 - redirect";
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
         <div class="ObjectivesTab__DashboardContainer-sc-1el61mo-1 khhmlX">
            <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj">
-              <?php displayForm('quiz'); ?>
+              <?php displayView(1); ?>
            </div>
         </div>
      </div>
