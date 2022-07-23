@@ -72,7 +72,7 @@ function numhash($n) { //encode/decode 32-bit int
       <style data-klaviyo-fender="active" data-styled-version="5.2.1"></style>
 
 
-      <script src="../js/jquery-3.6.0.min.js"></script>
+      <script src="../../js/jquery-3.6.0.min.js"></script>
 
       <style>.react-grid-layout {
          position: relative;

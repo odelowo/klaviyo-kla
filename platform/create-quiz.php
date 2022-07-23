@@ -62,8 +62,8 @@ if(!empty($_POST)){
 
     $event = "Quiz Start";
     $call->trackProfileActivity($customer, $properties, $event);
-
-    Redirect::to($nextStep);
+    $dest = "quiz-details.php?q=".numhash($row->id);
+    Redirect::to($dest);
 
   }
   else{
