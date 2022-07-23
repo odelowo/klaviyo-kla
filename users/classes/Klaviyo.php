@@ -30,7 +30,7 @@ class Klaviyo extends Client {
 
 
     $firstRecord = TRUE;
-    $data .= ', "properties": {';
+    $data .= '}, "properties": {';
     foreach ($properties as [$prop, $val]) {
       if($firstRecord == TRUE){
         $data .= '"'.$prop.'":"'.$val.'"';
@@ -52,7 +52,7 @@ class Klaviyo extends Client {
         'Content-Type' => 'application/x-www-form-urlencoded',
       ],
     ]);
-    echo $data; 
+    echo $data;
     return $response;
   }
 }
