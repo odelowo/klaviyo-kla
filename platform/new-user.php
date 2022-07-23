@@ -34,6 +34,7 @@ error_reporting(E_ALL);
        <button class="submit-button" type="submit">Complete Sign Up</button>
 
      </div>
+   </form>
         </div>
      </div>
  <?php
