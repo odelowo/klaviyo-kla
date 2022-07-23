@@ -4,6 +4,7 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
     Redirect::to($us_url_root.'index.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en" class="wf-proximanova-n7-active wf-proximanova-i7-active wf-proximanova-n6-active wf-proximanova-n4-active wf-proximanova-i4-active wf-active ADS-24-Outline-events-icons-ready ADS-20-Fill-events-icons-ready ADS-24-Fill-events-icons-ready kl-events-icons-ready ADS-16-Fill-events-icons-ready ADS-16-Outline-events-icons-ready">
    <head>
@@ -13,6 +14,31 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
       <script src="https://use.fortawesome.com/d537f022.js"></script>
     <script src="https://use.typekit.net/lfn1kdd.js"></script>
     <script>try{Typekit.load({ async: false });}catch(e){}</script>
+    <?php
+
+    $nl = "\r\n"; //new line
+
+    //script for tracking logged in user activity
+    $script = "<script>".$nl;
+    $script .= "var _learnq = _learnq || [];".$nl;
+    $script .= "_learnq.push(['track', {".$nl;
+    $script .= "'$"."email' : '".$user->data()->email."',".$nl;
+    $script .= "'url' : '".$_SERVER['REQUEST_URI']."',".$nl;
+    $script .= "'pageTitle' : '".$pageTitle."',".$nl;
+    $script .= "'journey' : '".$journey."',".$nl;
+    $script .= "'journeyStep' : '".$journeyStep."',".$nl;
+    $script .= "'event' : 'Page View'".$nl;
+
+    //add additional page view attributes automatically
+    foreach ($pageview_attr as [$attr, $val]) {
+        $script .= ', "'.$attr.'" : "'.$val.'"'.$nl;
+    }
+
+    $script .= "}]);".$nl;
+    $script .= "</script>".$nl;
+    echo $script;
+
+    ?>
       <link rel="shortcut icon" href="https://www.klaviyo.com/media/Favicon-16by16.png">
       <meta name="description" content="Klaviyo is email platform powered by data built for commerce and web businesses.">
       <meta name="author" content="Klaviyo">

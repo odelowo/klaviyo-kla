@@ -2,6 +2,15 @@
 $title = 'Dashboard'; //used to identify user friendly in-page title
 $pageTitle = 'Dashboard'; //used to identify page title
 $menuItemSelected = 'dashboard'; //used to identify which menu item is preselected
+$journey = "Temp should be blank"; //journey used for analytics purposes
+$journeyStep = "initial"; //journey step used to identify drop off in journey
+
+//used to add additional page view attributes
+$pageview_attr = array(
+  array("test1","value 1"),
+  array("test2","value 2"),
+  array("test3","value 4"),
+);
 
 require_once '../users/init.php';
 require_once('includes/header.php');
