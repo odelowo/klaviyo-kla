@@ -40,13 +40,13 @@ if(!empty($_POST)){
     $rowQ = $db->query("SELECT id FROM quiz WHERE userid = ? ORDER BY timestamp DESC LIMIT 1 ", [$user->data()->id]);
     $row = $rowQ->first();
 
-echo "4";
+
     $call = new Klaviyo();
 
     $email = $user->data()->email;
     $firstname = $user->data()->fname;
     $lastname = $user->data()->lname;
-  echo "5. ";
+
     $nextStep = "www.thatspurple.com/klaviyo-kla/platform/quiz-details.php?q=".numhash($row->id);
 
     $customer = array(
@@ -54,7 +54,7 @@ echo "4";
       array("first_name",$firstname),
       array("last_name",$lastname),
     );
-echo "6";
+
     $properties = array(
       array("quiz", $response['fields']['name']),
       array("nextStep",$nextStep),
@@ -62,15 +62,14 @@ echo "6";
 
     $event = "Quiz Start";
     $call->trackProfileActivity($customer, $properties, $event);
-echo "7";
-    //Redirect::to($nextStep);
-echo "8 - redirect";
+
+    Redirect::to($nextStep);
 
   }
   else{
-    echo "<br></br><br></br><br></br><br></br><br></br><br></br>in-valid";
+    echo "in-valid";
   }
-  //$token = Token::generate();
+
 }
 
 ?>
