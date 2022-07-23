@@ -21,7 +21,7 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
     //script for tracking logged in user activity
     $script = "<script>".$nl;
     $script .= "var _learnq = _learnq || [];".$nl;
-    $script .= "_learnq.push(['track', 'Page View' {".$nl;
+    $script .= "_learnq.push(['track', 'Page View', {".$nl;
     $script .= "'$"."email' : '".$user->data()->email."',".$nl;
     $script .= "'url' : '".$_SERVER['REQUEST_URI']."',".$nl;
     $script .= "'pageTitle' : '".$pageTitle."',".$nl;
