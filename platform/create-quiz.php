@@ -44,7 +44,7 @@ echo "4";
     $email = $user->data()->email;
     $firstname = $user->data()->fname;
     $lastname = $user->data()->lname;
-  echo "5. "
+  echo "5. ";
     $nextStep = "www.thatspurple.com/klaviyo-kla/platform/quiz-details.php?q=".numhash($row->id);
 
     $customer = array(
