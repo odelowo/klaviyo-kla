@@ -4,6 +4,11 @@ $pageTitle = 'Dashboard'; //used to identify page title
 $menuItemSelected = 'dashboard'; //used to identify which menu item is preselected
 
 require_once('/includes/header.php');
+
+ini_set('display_errors',1);
+ini_set('log_errors',1);
+ini_set('error_log',dirname(__FILE__).'/log.txt');
+error_reporting(E_ALL);
 ?>
 
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
