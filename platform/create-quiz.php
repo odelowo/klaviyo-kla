@@ -29,8 +29,9 @@ if(!empty($_POST)){
 
   $response = preProcessForm();
   $response['fields']['userid'] = $user->data()->id;
-  $response['fields']['status'] = "Draft";  
+  $response['fields']['status'] = "Draft";
 echo "2";
+echo "response['form_valid'] = ".$response['form_valid']; 
   if($response['form_valid'] == true){
 
     postProcessForm($response);
