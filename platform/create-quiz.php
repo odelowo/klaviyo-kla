@@ -79,5 +79,5 @@ if(!empty($_POST)){
         </div>
      </div>
  <?php
- require_once('../includes/footer.php');
+ require_once('includes/footer.php');
  ?>
