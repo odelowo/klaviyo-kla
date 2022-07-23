@@ -25,20 +25,20 @@ error_reporting(E_ALL);
 ?>
 <script>
 //add row button logic
-var rowNum = 0; //initialise to 0
-
-function addRow(frm) { //on add row click
-  rowNum ++; //increment by 1
-  var row = '<div class="form-group" id="rowNum'+rowNum+'"><div class="controls"><input type="text" class="form-control" name="question[]" placeholder="Question"  value="'+frm.add_question.value+'"/> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"></div></div>';
-
-
-  jQuery('#itemRows').append(row); //append above code to the bottom
-  frm.add_question.value = ''; //reset question to ""
-}
-
-function removeRow(rnum) { //remove row
-  jQuery('#rowNum'+rnum).remove();
-}
+// var rowNum = 0; //initialise to 0
+//
+// function addRow(frm) { //on add row click
+//   rowNum ++; //increment by 1
+//   var row = '<div class="form-group" id="rowNum'+rowNum+'"><div class="controls"><input type="text" class="form-control" name="question[]" placeholder="Question"  value="'+frm.add_question.value+'"/> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"></div></div>';
+//
+//
+//   jQuery('#itemRows').append(row); //append above code to the bottom
+//   frm.add_question.value = ''; //reset question to ""
+// }
+//
+// function removeRow(rnum) { //remove row
+//   jQuery('#rowNum'+rnum).remove();
+// }
 
 </script>
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
