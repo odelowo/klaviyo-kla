@@ -45,7 +45,7 @@ if ($validated) {
 
     //if first name is blank, ask for more data
     if($user->data()->fname == "") //if user has not yet updated their information, send to landing page to get more information
-      $dest = "platform/new-user.php";
+      $dest = "platform/welcome.php";
     else //user has provided their basic information so navigate to default landing page
       $dest = "platform/index.php";
       $_SESSION['last_confirm']=date("Y-m-d H:i:s");
