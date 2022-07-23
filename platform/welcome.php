@@ -28,13 +28,13 @@ if (Input::exists()) {
     'fname' => [
           'display' => lang('GEN_FNAME'),
           'required' => true,
-          'min' => 1,
+          'min' => 2,
           'max' => 60,
     ],
     'lname' => [
           'display' => lang('GEN_LNAME'),
           'required' => true,
-          'min' => 1,
+          'min' => 2,
           'max' => 60,
     ],
   ]);
@@ -52,6 +52,18 @@ if (Input::exists()) {
 
       $successes[] = 'Account '.lang('GEN_UPDATED');
       logger($user->data()->id, 'User', "Update basic information $firstname and $lastname.");
+
+      //trigger hello message to klaviyo
+      $properties = [];
+
+      $customer = array(
+        array("email",$email),
+        array("first_name",$firstname),
+        array("last_name",$lastname),
+      );
+
+      $event = "Sign Up Complete";
+      $call->trackProfileActivity($customer, $properties, $event);
 
       $dest = "index.php";
       Redirect::to($dest);

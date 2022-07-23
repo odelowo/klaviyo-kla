@@ -13,11 +13,24 @@ class Klaviyo extends Client {
   private static $privateKey = 'pk_1128ba9f64907df9bee8a7a7f27d84e92c';
   private static $publicKey = 'TMezSb';
 
-  public function trackProfileActivity($email, $properties, $event){
-    $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'", "customer_properties": {"email": "'.$email.'"}, "properties": {';
+  public function trackProfileActivity($customerattr, $properties, $event){
+    $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'"';
 
     $firstRecord = TRUE;
+    $data .= ', "customer_properties": {';
+    foreach ($customerattr as [$attr, $val]) {
+      if($firstRecord == TRUE){
+        $data .= '"'.$attr.'":"'.$val.'"';
+        $firstRecord = FALSE;
+      }
+      else {
+        $data .= ', "'.$attr.'":"'.$val.'"';
+      }
+    }
 
+
+    $firstRecord = TRUE;
+    $data .= ', "properties": {';
     foreach ($properties as [$prop, $val]) {
       if($firstRecord == TRUE){
         $data .= '"'.$prop.'":"'.$val.'"';

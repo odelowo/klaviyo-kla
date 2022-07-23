@@ -111,10 +111,13 @@ if(Input::exists('get')){
             //start welcome journey
             $call = new Klaviyo();
 
-            $properties = []; 
+            $properties = [];
+            $customer = array(
+              array("email",$email),
+            );
 
             $event = "Customer Welcome Journey";
-            $call->trackProfileActivity($email, $properties, $event);
+            $call->trackProfileActivity($customer, $properties, $event);
 
           	if(file_exists($abs_us_root.$us_url_root.'usersc/views/_verify_success.php')){
           		require_once $abs_us_root.$us_url_root.'usersc/views/_verify_success.php';
