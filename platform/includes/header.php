@@ -3,6 +3,10 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <title>Kla | <?php echo $pageTitle; ?></title>
+      <link rel="stylesheet" href="https://www.klaviyo.com/media/css/public_v4/base.css?v=3db444d">
+      <script src="https://use.fortawesome.com/d537f022.js"></script>
+    <script src="https://use.typekit.net/lfn1kdd.js"></script>
+    <script>try{Typekit.load({ async: false });}catch(e){}</script>
       <link rel="shortcut icon" href="https://www.klaviyo.com/media/Favicon-16by16.png">
       <meta name="description" content="Klaviyo is email platform powered by data built for commerce and web businesses.">
       <meta name="author" content="Klaviyo">
