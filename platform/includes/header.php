@@ -26,7 +26,7 @@ if (!$user->isLoggedIn()) { //if already logged in, redirect
     $script .= "'url' : '".$_SERVER['REQUEST_URI']."',".$nl;
     $script .= "'pageTitle' : '".$pageTitle."',".$nl;
     $script .= "'journey' : '".$journey."',".$nl;
-    $script .= "'journeyStep' : '".$journeyStep."',".$nl;
+    $script .= "'journeyStep' : '".$journeyStep."'".$nl;
 
     //add additional page view attributes automatically
     foreach ($pageview_attr as [$attr, $val]) {
