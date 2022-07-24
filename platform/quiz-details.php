@@ -22,7 +22,7 @@ if ( !empty($_POST) ) {
     array_push($pageview_attr, $attr);
   }
 
-  dump($pageview_attr);
+  var_dump($pageview_attr);
 
 }
 //used to add additional page view attributes
