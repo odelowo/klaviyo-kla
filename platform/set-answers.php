@@ -28,7 +28,8 @@ $journeyStep = "Step 3 - Set Answers"; //journey step used to identify drop off 
 $pageview_attr = [];
 
 //used further down in building form
-$stmt = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
+$dbcon = DB::getInstance();
+$stmt = $dbcon->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
 $stmt->execute();
 $stmt->bind_result($id, $question);
 
