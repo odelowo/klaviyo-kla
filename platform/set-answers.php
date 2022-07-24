@@ -53,24 +53,19 @@ if ( !empty($_POST) ) {
 
 
 ?>
-<script>
-//add row button logic
-var rowNum = 0; //initialise to 0
-
-function addRow(frm) { //on add row click
-  rowNum ++; //increment by 1
-  var row = '<div class="form-group" id="rowNum'+rowNum+'"><div class="controls"><input type="text" class="form-control" name="question[]" placeholder="Question"  value="'+frm.add_question.value+'"/> <input type="button" value="Remove" onclick="removeRow('+rowNum+');"></div></div>';
-
-
-  jQuery('#itemRows').append(row); //append above code to the bottom
-  frm.add_question.value = ''; //reset question to ""
+<style>
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 
-function removeRow(rnum) { //remove row
-  jQuery('#rowNum'+rnum).remove();
+.correct {
+  border: 2px solid green;
+  border-radius: 4px;
 }
-
-</script>
+</style>
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
         <div class="ObjectivesTab__DashboardContainer-sc-1el61mo-1 khhmlX">
            <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj">
@@ -85,7 +80,7 @@ function removeRow(rnum) { //remove row
                 foreach ($db->results() as $question){
                   $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$question->question.'</span></div>';
                   $html .= '<label for="answer_'.$pos.'_1_'.$question->id.'">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]">';
+                  $html .= '<input type="text" class="correct" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]">';
 
                   $html .= '<label for="answer_'.$pos.'_2">Correct Answer</label>';
                   $html .= '<input type="text" id="answer_'.$pos.'_2_'.$question->id.'" name="answer1[]">';
