@@ -94,9 +94,9 @@ function removeRow(rnum) { //remove row
                   $html .= '<label for="answer_'.$pos.'_4">Correct Answer</label>';
                   $html .= '<input type="text" id="answer_'.$pos.'_4_'.$id.'" name="answer3[]">';
 
-                  $html .= "<br>"
+                  $html .= "<br>";
 
-                  $pos = $pos+1;
+                  $pos++;
              		}
                	$stmt->close();
                  echo $html;
