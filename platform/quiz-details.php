@@ -5,22 +5,24 @@ $menuItemSelected = 'create-quiz'; //used to identify which menu item is presele
 $journey = "Create Quiz"; //journey used for analytics purposes
 $journeyStep = "Step 2 - Quiz Enteries"; //journey step used to identify drop off in journey
 $pageview_attr = [];
-echo "0";
+//echo "0";
 if ( !empty($_POST) ) {
 
 
   for ($q = 1; $q <= count($_POST['question']); $q++) {
-    echo "loop";
+    //echo "loop";
     $arrayPos = $q -1;
 
-    echo "loop 2";
+    //echo "loop 2";
     $attr = [
       "Question ".$q => $_POST['question'][$arrayPos]
     ];
 
-    echo "loop 3";
+    //echo "loop 3";
     array_push($pageview_attr, $attr);
   }
+
+  dump($pageview_attr);
 
 }
 //used to add additional page view attributes
