@@ -27,11 +27,6 @@ $journey = "Create Quiz"; //journey used for analytics purposes
 $journeyStep = "Step 3 - Set Answers"; //journey step used to identify drop off in journey
 $pageview_attr = [];
 
-//used further down in building form
-$dbcon = DB::getInstance();
-$stmt = $dbcon->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
-$stmt->execute();
-$stmt->bind_result($id, $question);
 
 require_once('includes/header.php');
 
@@ -86,26 +81,26 @@ function removeRow(rnum) { //remove row
                 $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
                 $pos = 0; //used to dynamically assign answer ids
 
-                 while ($stmt->fetch())
-               	{
-                  $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$question.'</span></div>';
-                  $html .= '<label for="answer_'.$pos.'_1_'.$id.'">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_1_'.$id.'" name="answer0[]">';
+                $rowQ = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
+                foreach ($db->results() as $question){
+                  $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$question->question.'</span></div>';
+                  $html .= '<label for="answer_'.$pos.'_1_'.$question->id.'">Correct Answer</label>';
+                  $html .= '<input type="text" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]">';
 
                   $html .= '<label for="answer_'.$pos.'_2">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_2_'.$id.'" name="answer1[]">';
+                  $html .= '<input type="text" id="answer_'.$pos.'_2_'.$question->id.'" name="answer1[]">';
 
                   $html .= '<label for="answer_'.$pos.'_3">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_3_'.$id.'" name="answer2[]">';
+                  $html .= '<input type="text" id="answer_'.$pos.'_3_'.$question->id.'" name="answer2[]">';
 
                   $html .= '<label for="answer_'.$pos.'_4">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_4_'.$id.'" name="answer3[]">';
+                  $html .= '<input type="text" id="answer_'.$pos.'_4_'.$question->id.'" name="answer3[]">';
 
                   $html .= "<br>";
 
                   $pos++;
-             		}
-               	$stmt->close();
+                }
+
                  echo $html;
 
                ?>
