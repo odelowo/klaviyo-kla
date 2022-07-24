@@ -27,6 +27,11 @@ $journey = "Create Quiz"; //journey used for analytics purposes
 $journeyStep = "Step 3 - Set Answers"; //journey step used to identify drop off in journey
 $pageview_attr = [];
 
+//used further down in building form
+$stmt = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
+$stmt->execute();
+$stmt->bind_result($id, $question);
+
 require_once('includes/header.php');
 
 ini_set('display_errors',1);
@@ -79,9 +84,7 @@ function removeRow(rnum) { //remove row
 
                 $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
                 $pos = 0; //used to dynamically assign answer ids
-                 $stmt = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
-                 $stmt->execute();
-                 $stmt->bind_result($id, $question);
+
                  while ($stmt->fetch())
                	{
                   $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$question.'</span></div>';
