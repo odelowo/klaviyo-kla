@@ -95,12 +95,15 @@ input[type=text] {
                   $html .= "<br></br><br></br>";
 
                   $pos++;
-                  $questionNum++; 
+                  $questionNum++;
                 }
 
                  echo $html;
 
                ?>
+               <div class="checkbox-controls">
+                  <button class="submit-button" type="submit">Complete <?php echo $quizName;?> Quiz</button>
+                </div>
             </form>
 
            </div>
