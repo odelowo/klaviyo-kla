@@ -96,7 +96,7 @@ function removeRow(rnum) { //remove row
 
                   $html .= "<br>"
 
-                  $pos++; 
+                  $pos = $pos+1;
              		}
                	$stmt->close();
                  echo $html;
