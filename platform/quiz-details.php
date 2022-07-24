@@ -35,8 +35,8 @@ if ( !empty($_POST) ) {
     $db->insert("questions", ["question"=>$question, "quizid"=>$quizid]);
   }
 
-  $dest = "set-answers.php?q=".$_POST['question'];
-  Redirect::to($dest); 
+  $dest = "set-answers.php?q=".$_POST['q'];
+  Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers
 
