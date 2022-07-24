@@ -15,7 +15,7 @@ if (!Input::exists()) {
 
     echo "loop 2";
     $attr = [
-      "Question ".$q => $_POST['question'][$arrayPos];
+      "Question ".$q => $_POST['question'][$arrayPos]
     ];
 
     echo "loop 3";
