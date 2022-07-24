@@ -5,7 +5,24 @@ $menuItemSelected = 'create-quiz'; //used to identify which menu item is presele
 $journey = "Create Quiz"; //journey used for analytics purposes
 $journeyStep = "Step 2 - Quiz Enteries"; //journey step used to identify drop off in journey
 $pageview_attr = [];
+echo "0";
+if (!Input::exists()) {
 
+
+  for ($q = 1; $q <= count($_POST['question']); $q++) {
+    echo "loop";
+    $arrayPos = $q -1;
+
+    echo "loop 2";
+    $attr = [
+      "Question ".$q => $_POST['question'][$arrayPos];
+    ];
+
+    echo "loop 3";
+    array_push($pageview_attr, $attr);
+  }
+
+}
 //used to add additional page view attributes
 // $pageview_attr = array(
 //   array("test1","value 1"),
@@ -52,6 +69,9 @@ function removeRow(rnum) { //remove row
                   <input onclick="addRow(this.form);" type="button" value="Add Question" />
                  </div>
                </div>
+               <div class="checkbox-controls">
+               <button class="submit-button" type="submit">Set Answers</button>
+             </div>
             </form>
 
            </div>
