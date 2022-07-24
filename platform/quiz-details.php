@@ -6,7 +6,7 @@ $journey = "Create Quiz"; //journey used for analytics purposes
 $journeyStep = "Step 2 - Quiz Enteries"; //journey step used to identify drop off in journey
 $pageview_attr = [];
 echo "0";
-if (!Input::exists()) {
+if ( !empty($_POST) ) {
 
 
   for ($q = 1; $q <= count($_POST['question']); $q++) {
