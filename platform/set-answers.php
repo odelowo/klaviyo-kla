@@ -75,13 +75,12 @@ function removeRow(rnum) { //remove row
                <?php
 
                 $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
-                $pos = -1; //used to dynamically assign answer ids
+                $pos = 0; //used to dynamically assign answer ids
                  $stmt = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
                  $stmt->execute();
                  $stmt->bind_result($id, $question);
                  while ($stmt->fetch())
                	{
-                  $pos++; 
                   $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$question.'</span></div>';
                   $html .= '<label for="answer_'.$pos.'_1_'.$id.'">Correct Answer</label>';
                   $html .= '<input type="text" id="answer_'.$pos.'_1_'.$id.'" name="answer0[]">';
@@ -96,6 +95,8 @@ function removeRow(rnum) { //remove row
                   $html .= '<input type="text" id="answer_'.$pos.'_4_'.$id.'" name="answer3[]">';
 
                   $html .= "<br>"
+
+                  $pos++; 
              		}
                	$stmt->close();
                  echo $html;
