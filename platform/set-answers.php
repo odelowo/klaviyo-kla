@@ -75,25 +75,27 @@ input[type=text] {
 
                 $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
                 $pos = 0; //used to dynamically assign answer ids
+                $questionNum = 1;
 
                 $rowQ = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
                 foreach ($db->results() as $question){
-                  $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$question->question.'</span></div>';
+                  $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$questionNum.'. '.$question->question.'</span></div>';
                   $html .= '<label for="answer_'.$pos.'_1_'.$question->id.'">Correct Answer</label>';
-                  $html .= '<input type="text" class="correct" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]">';
+                  $html .= '<input type="text" placeholder="Enter Correct Answer here" class="correct" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]">';
 
-                  $html .= '<label for="answer_'.$pos.'_2">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_2_'.$question->id.'" name="answer1[]">';
+                  $html .= '<label for="answer_'.$pos.'_2">Incorrect Answer</label>';
+                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_2_'.$question->id.'" name="answer1[]">';
 
-                  $html .= '<label for="answer_'.$pos.'_3">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_3_'.$question->id.'" name="answer2[]">';
+                  $html .= '<label for="answer_'.$pos.'_3">Incorrect Answer</label>';
+                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_3_'.$question->id.'" name="answer2[]">';
 
-                  $html .= '<label for="answer_'.$pos.'_4">Correct Answer</label>';
-                  $html .= '<input type="text" id="answer_'.$pos.'_4_'.$question->id.'" name="answer3[]">';
+                  $html .= '<label for="answer_'.$pos.'_4">Incorrect Answer</label>';
+                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_4_'.$question->id.'" name="answer3[]">';
 
-                  $html .= "<br>";
+                  $html .= "<br></br><br></br>";
 
                   $pos++;
+                  $questionNum++; 
                 }
 
                  echo $html;
