@@ -8,27 +8,16 @@ $pageview_attr = [];
 //echo "0";
 if ( !empty($_POST) ) {
 
-
   for ($q = 1; $q <= count($_POST['question']); $q++) {
-    //echo "loop";
-    $arrayPos = $q -1;
 
-    //echo "loop 2";
+    $arrayPos = $q -1;
     $temp = array("Question ".$q, $_POST['question'][$arrayPos]);
-       
-    //echo "loop 3";
     array_push($pageview_attr, $temp);
   }
 
   var_dump($pageview_attr);
 
 }
-//used to add additional page view attributes
-// $pageview_attr = array(
-//   array("test1","value 1"),
-//   array("test2","value 2"),
-//   array("test3","value 4"),
-// );
 
 require_once '../users/init.php';
 require_once('includes/header.php');
@@ -37,6 +26,20 @@ ini_set('display_errors',1);
 ini_set('log_errors',1);
 ini_set('error_log',dirname(__FILE__).'/log.txt');
 error_reporting(E_ALL);
+
+if ( !empty($_POST) ) {
+
+  $quizid = numhash($_GET["q"]);
+  foreach ($_POST['question'] as &$question) {
+
+    $db->insert("questions", ["question"=>$question, "quizid"=>$quizid]);
+  }
+
+  $dest = "set-answers.php?q=".$_POST['question'];
+  Redirect::to($dest); 
+}
+//save questions into questions table - id, question, 4 answers
+
 
 
 ?>
