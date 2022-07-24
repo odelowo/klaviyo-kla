@@ -14,12 +14,10 @@ if ( !empty($_POST) ) {
     $arrayPos = $q -1;
 
     //echo "loop 2";
-    $attr = [
-      "Question ".$q => $_POST['question'][$arrayPos]
-    ];
-
+    $temp = array("Question ".$q, $_POST['question'][$arrayPos]);
+       
     //echo "loop 3";
-    array_push($pageview_attr, $attr);
+    array_push($pageview_attr, $temp);
   }
 
   var_dump($pageview_attr);
