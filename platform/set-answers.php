@@ -46,7 +46,7 @@ if ( !empty($_POST) ) {
   echo "2 /n";
   foreach ($db->results() as $question){ //loop through questions
     echo "loop-/n ";
-    $db->update("questions", $question->id, ["answer1"=>$_POST['question0'][$position], "answer2"=>$_POST['question1'][$position], "answer3"=>$_POST['question2'][$position], "answer4"=>$_POST['question3'][$position]]);
+    $db->update("questions", $question->id, ["answer1"=>$_POST['answer0'][$position], "answer2"=>$_POST['answer1'][$position], "answer3"=>$_POST['answer2'][$position], "answer4"=>$_POST['answer3'][$position]]);
 
     $position++;
   }
