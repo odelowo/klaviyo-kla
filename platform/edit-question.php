@@ -137,8 +137,11 @@ input[type=text] {
                             $html .= "<option value='Live'>Live</option>";
                             $html .= "<option value='Close' disabled>Close</option>";
                           }
-                          $html .= "</select>"; 
-                          $html .= '<input type="hidden" id="q" name="q" value="'.$_GET["q"].'">';
+                          $html .= "</select>";
+
+                          echo $html;
+
+                          $html = '<input type="hidden" id="q" name="q" value="'.$_GET["q"].'">';
 
                           echo $html;
                         ?>
