@@ -58,7 +58,7 @@ if ( !empty($_POST) ) {
   $db->update("quiz", $quizid, ["status"=>$_POST['status']]);
 
   $dest = "edit-question?q=".$_POST['q'].'&updated=1';
-  Redirect::to($dest);
+  //Redirect::to($dest);
 
   //no validation, simply save results - risk although for the purposes of time, will be left out
   //relying on front end validation for string length only
@@ -121,7 +121,7 @@ input[type=text] {
 
                         <?php
                           $html = "";
-                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()">\n';
+                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()" style=" width:100%;">\n';
                           if($status == "Draft"){
                             $html .= "<option value='Draft' disabled>Draft</option>\n";
                             $html .= "<option value='Live'>Live</option>\n";
