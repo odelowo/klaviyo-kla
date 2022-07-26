@@ -47,14 +47,13 @@ if ( !empty($_POST) ) {
   foreach ($db->results() as $question){ //loop through questions
 
     $db->update("questions", $question->id, ["answer1"=>$_POST['answer0'][$position], "answer2"=>$_POST['answer1'][$position], "answer3"=>$_POST['answer2'][$position], "answer4"=>$_POST['answer3'][$position]]);
-    echo "(".$position.") update questions where id =".$question->id." with values ".$_POST['answer0'][$position]." | ".$_POST['answer1'][$position]." | ".$_POST['answer2'][$position]." | ".$_POST['answer3'][$position];
     $position++;
   }
 
 
 
-  //$dest = "edit-question?q=".$_POST['q'];
-  //Redirect::to($dest);
+  $dest = "edit-question?q=".$_POST['q'];
+  Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers
 
