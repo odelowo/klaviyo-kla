@@ -121,7 +121,7 @@ input[type=text] {
 
                         <?php
                           $html = "";
-                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()>\n';
+                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()">\n';
                           if($status == "Draft"){
                             $html .= "<option value='Draft' disabled>Draft</option>\n";
                             $html .= "<option value='Live'>Live</option>\n";
@@ -135,7 +135,7 @@ input[type=text] {
                           else { //close
                             $html .= "<option value='Draft' disabled>Draft</option>\n";
                             $html .= "<option value='Live'>Live</option>\n";
-                            $html .= "<option value='Close' disabled>Close</option>";
+                            $html .= "<option value='Close' disabled>Close</option>\n";
                           }
                           $html .= "</select>";
 
