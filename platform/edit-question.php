@@ -121,7 +121,8 @@ input[type=text] {
 
                         <?php
                           $html = "";
-                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()" style=" width:100%;">\n';
+                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()" style=" width:100%;"> \n';
+                          $html .= '<option value="" disabled selected>Change Quiz Status</option>';
                           if($status == "Draft"){
                             $html .= "<option value='Draft' disabled>Draft</option>\n";
                             $html .= "<option value='Live'>Live</option>\n";
