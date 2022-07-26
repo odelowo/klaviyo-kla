@@ -102,7 +102,7 @@ input[type=text] {
                   $pos++;
                   $questionNum++;
                 }
-                 echo .= '<input type="hidden" id="q" name="q" value="'.$_GET["q"].'">';
+                 $html .= '<input type="hidden" id="q" name="q" value="'.$_GET["q"].'">';
                  echo $html;
 
                ?>
