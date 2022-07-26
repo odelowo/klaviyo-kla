@@ -58,7 +58,7 @@ if ( !empty($_POST) ) {
   $db->update("quiz", $quizid, ["status"=>$_POST['updateStatus']]);
 
   $dest = "edit-question?q=".$_POST['q'].'&updated=1';
-  //Redirect::to($dest);
+  Redirect::to($dest);
 
   //no validation, simply save results - risk although for the purposes of time, will be left out
   //relying on front end validation for string length only
