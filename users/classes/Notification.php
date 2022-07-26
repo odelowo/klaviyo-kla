@@ -32,8 +32,9 @@ class Notification
         return false;
     }
 
-    public function addNotification($message, $user_id = -1) {
-        return false;
+    public function addNotification($message, $user_id, $cta) {
+      $db->insert("notifications", ["user_id"=>$user_id, "message"=>$message, "destination"=>$cta]);
+      return $db->lastId();
     }
 
     public function setRead($notification_id, $read = true) {

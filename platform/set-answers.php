@@ -37,15 +37,20 @@ error_reporting(E_ALL);
 
 if ( !empty($_POST) ) {
 
-  //save logic - tbd
+  //no validation, simply save results - risk although for the purposes of time, will be left out
+  //relying on front end validation for string length only
 
-  $quizid = numhash($_GET["q"]);
-  foreach ($_POST['question'] as &$question) {
+  $quizid = numhash($_POST["q"]);
+  $rowQ = $db->query("SELECT id FROM questions WHERE quizid = ? ORDER BY id ASC", [$quizid]);
+  $position = 0;
+  foreach ($db->results() as $question){ //loop through questions
 
-    $db->insert("questions", ["question"=>$question, "quizid"=>$quizid]);
+    $db->update("questions", $question->id, ["answer1"=>$_POST['question0'][$position], "answer2"=>$_POST['question1'][$position], "answer3"=>$_POST['question2'][$position], "answer4"=>$_POST['question3'][$position]]);
+
+    $position++;
   }
 
-  $dest = "set-answers.php?q=".$_POST['q'];
+  $dest = "edit-question?q=".$_POST['q'];
   Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers
@@ -81,23 +86,23 @@ input[type=text] {
                 foreach ($db->results() as $question){
                   $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$questionNum.'. '.$question->question.'</span></div>';
                   $html .= '<label for="answer_'.$pos.'_1_'.$question->id.'">Correct Answer</label>';
-                  $html .= '<input type="text" placeholder="Enter Correct Answer here" class="correct" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]">';
+                  $html .= '<input type="text" placeholder="Enter Correct Answer here" class="correct" id="answer_'.$pos.'_1_'.$question->id.'" name="answer0[]" min="2" max="60">';
 
                   $html .= '<label for="answer_'.$pos.'_2">Incorrect Answer</label>';
-                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_2_'.$question->id.'" name="answer1[]">';
+                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_2_'.$question->id.'" name="answer1[]" min="2" max="60">';
 
                   $html .= '<label for="answer_'.$pos.'_3">Incorrect Answer</label>';
-                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_3_'.$question->id.'" name="answer2[]">';
+                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_3_'.$question->id.'" name="answer2[]" min="2" max="60">';
 
                   $html .= '<label for="answer_'.$pos.'_4">Incorrect Answer</label>';
-                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_4_'.$question->id.'" name="answer3[]">';
+                  $html .= '<input type="text" placeholder="Enter Wrong Answer here" id="answer_'.$pos.'_4_'.$question->id.'" name="answer3[]" min="2" max="60">';
 
-                  $html .= "<br></br><br></br>";
+                  $html .= "<br></br><br>";
 
                   $pos++;
                   $questionNum++;
                 }
-
+                 echo .= '<input type="hidden" id="q" name="q" value="'.$_GET["q"].'">';
                  echo $html;
 
                ?>
