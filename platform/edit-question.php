@@ -121,20 +121,20 @@ input[type=text] {
 
                         <?php
                           $html = "";
-                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()>';
+                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()>\n';
                           if($status == "Draft"){
-                            $html .= "<option value='Draft' disabled>Draft</option>";
-                            $html .= "<option value='Live'>Live</option>";
-                            $html .= "<option value='Close'>Close</option>";
+                            $html .= "<option value='Draft' disabled>Draft</option>\n";
+                            $html .= "<option value='Live'>Live</option>\n";
+                            $html .= "<option value='Close'>Close</option>\n";
                           }
                           else if ($status == "Live"){
-                            $html .= "<option value='Draft'>Draft</option>";
-                            $html .= "<option value='Live' disabled>Live</option>";
-                            $html .= "<option value='Close'>Close</option>";
+                            $html .= "<option value='Draft'>Draft</option>\n";
+                            $html .= "<option value='Live' disabled>Live</option>\n";
+                            $html .= "<option value='Close'>Close</option>\n";
                           }
                           else { //close
-                            $html .= "<option value='Draft' disabled>Draft</option>";
-                            $html .= "<option value='Live'>Live</option>";
+                            $html .= "<option value='Draft' disabled>Draft</option>\n";
+                            $html .= "<option value='Live'>Live</option>\n";
                             $html .= "<option value='Close' disabled>Close</option>";
                           }
                           $html .= "</select>";
