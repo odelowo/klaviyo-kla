@@ -39,19 +39,22 @@ if ( !empty($_POST) ) {
 
   //no validation, simply save results - risk although for the purposes of time, will be left out
   //relying on front end validation for string length only
-
+  echo "1 /n";
   $quizid = numhash($_POST["q"]);
   $rowQ = $db->query("SELECT id FROM questions WHERE quizid = ? ORDER BY id ASC", [$quizid]);
   $position = 0;
+  echo "2 /n"
   foreach ($db->results() as $question){ //loop through questions
-
+    echo "loop-/n "
     $db->update("questions", $question->id, ["answer1"=>$_POST['question0'][$position], "answer2"=>$_POST['question1'][$position], "answer3"=>$_POST['question2'][$position], "answer4"=>$_POST['question3'][$position]]);
 
     $position++;
   }
+  echo "position = ".$position.'/n';
 
-  $dest = "edit-question?q=".$_POST['q'];
-  Redirect::to($dest);
+
+  //$dest = "edit-question?q=".$_POST['q'];
+  //Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers
 
