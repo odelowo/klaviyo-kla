@@ -39,18 +39,18 @@ if ( !empty($_POST) ) {
 
   //no validation, simply save results - risk although for the purposes of time, will be left out
   //relying on front end validation for string length only
-  echo "1 /n";
+
   $quizid = numhash($_POST["q"]);
   $rowQ = $db->query("SELECT id FROM questions WHERE quizid = ? ORDER BY id ASC", [$quizid]);
   $position = 0;
-  echo "2 /n";
-  foreach ($db->results() as $question){ //loop through questions
-    echo "loop-/n ";
-    $db->update("questions", $question->id, ["answer1"=>$_POST['answer0'][$position], "answer2"=>$_POST['answer1'][$position], "answer3"=>$_POST['answer2'][$position], "answer4"=>$_POST['answer3'][$position]]);
 
+  foreach ($db->results() as $question){ //loop through questions
+
+    $db->update("questions", $question->id, ["answer1"=>$_POST['answer0'][$position], "answer2"=>$_POST['answer1'][$position], "answer3"=>$_POST['answer2'][$position], "answer4"=>$_POST['answer3'][$position]]);
+    echo "(".$position.") update questions where id =".$question->id." with values ".$_POST['answer0'][$position]." | ".$_POST['answer1'][$position]." | ".$_POST['answer2'][$position]." | ".$_POST['answer3'][$position];
     $position++;
   }
-  echo "position = ".$position.'/n';
+
 
 
   //$dest = "edit-question?q=".$_POST['q'];
