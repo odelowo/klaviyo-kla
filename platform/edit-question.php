@@ -55,7 +55,7 @@ error_reporting(E_ALL);
 if ( !empty($_POST) ) {
 
   $quizid = numhash($_POST["q"]);
-  $db->update("quiz", $quizid, ["status"=>$_POST['status']]);
+  $db->update("quiz", $quizid, ["status"=>$_POST['updateStatus']]);
 
   $dest = "edit-question?q=".$_POST['q'].'&updated=1';
   //Redirect::to($dest);
