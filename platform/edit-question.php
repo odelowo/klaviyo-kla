@@ -158,7 +158,7 @@ input[type=text] {
 
 
             </form>
-            <?php if (isset($_GET['updated'])){ echo 'Check out your personalised link for this quiz - <strong>https://thatspurple.com/klaviyo-kla/platform/take-survey.php?id='.$_GET['q'].'</strong>.';} ?>
+            <?php if (isset($_GET['updated'])){ echo 'Check out your personalised link for this quiz - <p><strong>https://thatspurple.com/klaviyo-kla/platform/take-survey.php?id='.$_GET['q'].'</strong></p>.';} ?>
             </div>
            </div>
         </div>
