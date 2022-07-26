@@ -118,9 +118,10 @@ input[type=text] {
                        <strong><?php echo $responses; ?></strong>
                     </div>
                     <div class="per_recipient">Update Status:
-                      <select name="updateStatus" id="updateStatus" onchange="this.form.submit()>
+
                         <?php
                           $html = "";
+                          $html .= '<select name="updateStatus" id="updateStatus" onchange="this.form.submit()>';
                           if($status == "Draft"){
                             $html .= "<option value='Draft' disabled>Draft</option>";
                             $html .= "<option value='Live'>Live</option>";
@@ -136,10 +137,12 @@ input[type=text] {
                             $html .= "<option value='Live'>Live</option>";
                             $html .= "<option value='Close' disabled>Close</option>";
                           }
+                          $html .= "</select>"; 
                           $html .= '<input type="hidden" id="q" name="q" value="'.$_GET["q"].'">';
+
                           echo $html;
                         ?>
-                      </select>
+
                     </div>
                   </div>
                 </div>
