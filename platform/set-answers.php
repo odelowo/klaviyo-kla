@@ -52,7 +52,7 @@ if ( !empty($_POST) ) {
 
 
 
-  $dest = "edit-question?q=".$_POST['q'].'&new=1';
+  $dest = "edit-question.php?q=".$_POST['q'].'&new=1';
   Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers

@@ -3,6 +3,10 @@
 require_once '../users/init.php'; //require initialisation script to access $db
 
 
+function numhash2($n) { //encode/decode 32-bit int //declared once again as header not yet called
+    return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
+}
+
 if(isset($_GET['new'])){
   $pageTitle = 'Create Quiz'; //used to identify page title
   $menuItemSelected = 'create-quiz'; //used to identify which menu item is preselected
@@ -21,7 +25,7 @@ $pageview_attr = [];
 
 
 //validate quizid
-$quizid = numhash($_GET["q"]);
+$quizid = numhash2($_GET["q"]);
 
 $rowQ = $db->query("SELECT name, description, responses, status, timestamp FROM quiz WHERE id = ? AND userid = ?", [$quizid, $user->data()->id]);
 $rowC = $rowQ->count();
