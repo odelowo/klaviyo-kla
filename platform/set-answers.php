@@ -43,9 +43,9 @@ if ( !empty($_POST) ) {
   $quizid = numhash($_POST["q"]);
   $rowQ = $db->query("SELECT id FROM questions WHERE quizid = ? ORDER BY id ASC", [$quizid]);
   $position = 0;
-  echo "2 /n"
+  echo "2 /n";
   foreach ($db->results() as $question){ //loop through questions
-    echo "loop-/n "
+    echo "loop-/n ";
     $db->update("questions", $question->id, ["answer1"=>$_POST['question0'][$position], "answer2"=>$_POST['question1'][$position], "answer3"=>$_POST['question2'][$position], "answer4"=>$_POST['question3'][$position]]);
 
     $position++;
