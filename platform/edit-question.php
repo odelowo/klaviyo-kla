@@ -57,7 +57,7 @@ if ( !empty($_POST) ) {
   $quizid = numhash($_POST["q"]);
   $db->update("quiz", $quizid, ["status"=>$_POST['updateStatus']]);
 
-  $dest = "edit-question?q=".$_POST['q'].'&updated=1';
+  $dest = "edit-question.php?q=".$_POST['q'].'&updated=1';
   Redirect::to($dest);
 
   //no validation, simply save results - risk although for the purposes of time, will be left out
@@ -98,8 +98,12 @@ input[type=text] {
 </style>
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
         <div class="ObjectivesTab__DashboardContainer-sc-1el61mo-1 khhmlX">
-           <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj">
-             <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk Title__StyledBody-sc-1bx2dve-1 NdxIz"><?php echo $quizDesc; ?></span>
+           <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj"
+           style="position: relative; display: block;">
+           <div style="width:100%;">
+                 <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk Title__StyledBody-sc-1bx2dve-1 NdxIz"><?php echo $quizDesc; ?></span>
+             </div>
+             <div style="width: 100%;vertical-align: bottom;clear: both;">
              <?php if (isset($_GET['updated'])){ echo '<div class="alert alert-success" id="email-changed-alert"><div class="alert-icon"><i class="kl check-circle" style="vertical-align: top"></i></div><div class="alert-message"><b>Status Updated</b><br/>Your quiz has succesfully had its status updated.</div></div>';} ?>
              <form method="post">
                <div class="details">
@@ -155,7 +159,7 @@ input[type=text] {
 
             </form>
             <?php if (isset($_GET['updated'])){ echo 'Check out your personalised link for this quiz - <strong>https://thatspurple.com/klaviyo-kla/platform/take-survey.php?id='.$_GET['q'].'</strong>.';} ?>
-
+            </div>
            </div>
         </div>
      </div>
