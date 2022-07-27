@@ -36,13 +36,80 @@ if ( !empty($_POST) ) {
 
  }
 
+
  echo "you scored ".$score." out of ". $total;
- //add 1 to the count of quiz
-
- //check whether quiz is live
 
 
+
+ //alert the owner of the quiz
+ $notify = new Notification(); //initialise Notifications
+ $cta = "#";
+ $rowQ = $db->query("SELECT userid, name, description FROM quiz WHERE id = ? ", [$quizId]); //get userid
+ $row = $rowQ->first();
+
+ $quizOwnerId = $row->userid;
+ $quizName = $row->name;
+ $quizDesc = $row->description;
+
+
+
+ $message = $user->data()->fname." has completed your ".$quizName." quiz!"
+
+ $notify->addNotification($message, $quizOwnerId, $cta);
+
+ //send email to the owner of the quiz
+ $rowQ = $db->query("SELECT fname, lname, email FROM users WHERE id = ? ", [$quizOwnerId]); //get the user's name
+ $row = $rowQ->first();
+
+ $quizOwnerFname = $row->fname;
+ $quizOwnerLname = $row->lname;
+ $quizOwnerEmail = $row->email;
+
+ $call = new Klaviyo(); //initialise klaviyo class
+
+ //trigger Klaviyo message to user
+ $properties = array(
+   array("quiz", $quizName),
+   array("desc", $quizDesc),
+   array("firstname", $user->data()->fname),
+   array("lastname", $user->data()->lname),
+   array("score", $score),
+   array("total", $total),
+ );
+
+ $customer = array(
+   array("email",$quizOwnerEmail),
+   array("first_name",$quizOwnerFname),
+   array("last_name",$quizOwnerLname),
+ );
+
+ $event = "Somebody Completed Your Quiz";
+ $call->trackProfileActivity($customer, $properties, $event);
+
+
+ //trigger Klaviyo message to the person who filled out the survey
+ $properties = array(
+   array("quiz", $quizName),
+   array("desc", $quizDesc),
+   array("firstname", $quizOwnerFname),
+   array("lastname", $quizOwnerLname),
+   array("score", $score),
+   array("total", $total),
+ );
+
+ $customer = array(
+   array("first_name",$user->data()->fname),
+   array("last_name",$user->data()->lname),
+   array("email",$user->data()->email),
+
+ );
+
+ $event = "You Have Completed A Quiz";
+ $call->trackProfileActivity($customer, $properties, $event);
+
+ //redirect to thank you page
 }
+
 
 ini_set('display_errors',1);
 ini_set('log_errors',1);
