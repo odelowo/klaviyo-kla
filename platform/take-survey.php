@@ -22,7 +22,7 @@ if ( !empty($_POST) ) {
   $quizid = numhash2($_POST["q"]);
 
 
-  $rowQ = $db->query("SELECT id, answer1 FROM questions WHERE quizid = ? ", [$quizId]);
+  $rowQ = $db->query("SELECT id, answer1 FROM questions WHERE quizid = ? ", [$quizid]);
   $answers = [];
   $score = 0;
   $total = 0;
