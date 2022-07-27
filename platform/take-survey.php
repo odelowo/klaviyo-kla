@@ -53,7 +53,7 @@ if ( !empty($_POST) ) {
 
 
 
- $message = $user->data()->fname." has completed your ".$quizName." quiz!"
+ $message = $user->data()->fname." has completed your ".$quizName." quiz!"; 
 
  $notify->addNotification($message, $quizOwnerId, $cta);
 
