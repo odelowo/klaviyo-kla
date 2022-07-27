@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../../users/init.php'; //initialisation script
-if (!$user->isLoggedIn()) { //if already logged in, redirect
+if (!$user->isLoggedIn()) { //if not already logged in, redirect
     Redirect::to($us_url_root.'index.php');
 }
 
@@ -2409,7 +2409,7 @@ fOAfGa > li {
                                   $html .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV">You don\'t currently have any notifications.</div>';
                                 }
 
-                                echo $html; 
+                                echo $html;
                              ?>
 
                            </div>

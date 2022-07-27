@@ -36,7 +36,8 @@ if ( !empty($_POST) ) {
   }
 
   $dest = "set-answers.php?q=".$_POST['q'];
-  Redirect::to($dest);
+  echo $dest; 
+  //Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers
 
