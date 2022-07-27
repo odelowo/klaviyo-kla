@@ -344,6 +344,28 @@ class Validate
 							$this->ruleBroken([$item,"is_valid_north_american_phone",false]);
 						}
 						break;
+
+						/* Samson Odelowo Class extension */
+						case 'is_valid_website':
+						if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$value)) {
+							$str = lang("VAL_URL");
+							$this->addError(["{$display} $str",$item]);
+							$this->ruleBroken([$item,"is_valid_website",false]);
+				    }
+						break;
+
+						case 'is_valid_uk_phone':
+						$numeric_only_phone = preg_replace("/[^0-9]/", "", $value); //Strip out all non-numeric characters
+						$str = lang("VAL_UK_PHONE");
+						if($value[0] != 0){ //UK numbers must start with a 0
+							$this->addError(["{$display} $str",$item]);
+							$this->ruleBroken([$item,"is_valid_uk_phone",false]);
+						}
+						if(strlen($numeric_only_phone) != 11){ //Valid UK phone numbers are 11 digits long
+							$this->addError(["{$display} $str",$item]);
+							$this->ruleBroken([$item,"is_valid_uk_phone",false]);
+						}
+						break;
 					}
 				}
 			}
