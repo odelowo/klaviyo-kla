@@ -25,6 +25,14 @@ error_reporting(E_ALL);
 
 $quizId = numhash($_GET['id']);
 
+//return quiz information
+$rowQ = $db->query("SELECT name, description, status, userid FROM quiz WHERE id = ? ", [$quizId]);
+$row = $rowQ->first();
+
+$quizName = $row->name;
+$quizDesc = $row->description;
+$quizStatus = $row->status;
+$quizOwnerId = $row->userid;
 
 ?>
 
@@ -34,14 +42,6 @@ $quizId = numhash($_GET['id']);
              <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk Title__StyledBody-sc-1bx2dve-1 NdxIz"><?php echo $quizDesc; ?></span>
              <form method="post">
                <?php
-                 //return quiz information
-                 $rowQ = $db->query("SELECT name, description, status, userid FROM quiz WHERE id = ? ", [$quizId]);
-                 $row = $rowQ->first();
-
-                 $quizName = $row->name;
-                 $quizDesc = $row->description;
-                 $quizStatus = $row->status;
-                 $quizOwnerId = $row->userid;
 
                  //return owner id
                  $rowQ = $db->query("SELECT fname, lname FROM users WHERE id = ? ", [$quizOwnerId]);
