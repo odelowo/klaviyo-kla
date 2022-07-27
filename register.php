@@ -32,7 +32,7 @@ if (Input::exists()) {
     $company = Input::get('company');
     $website = Input::get('company_website');
     $phone = Input::get('phone');
-    $newsletterSubscription = (strlen(Input::get('is_subscribe_to_list')) > 1 ? 1 : 0);
+    $newsletterSubscription = (isset($_POST['is_subscribe_to_list']) ? 1 : 0);
 
     $validation = new Validate();
 
