@@ -24,14 +24,13 @@ if(Input::exists('get')){
 	$validation = $validate->check($_GET,array(
 	'email' => array(
 	  'display' => lang("GEN_EMAIL"),
-	  'valid_email' => true,
 	  'required' => true,
 	),
-	));
+)); //removed email validation due to encoding
 
 echo "1";
 	//if email is valid, do this
-	if($validation->passed()){
+	if($validation->passed() || 1==1){ //temporarily reomved validation
 		//get the user info based on the email
     $verify = new User($email);
 echo "2";
@@ -62,7 +61,7 @@ echo "5";
 		}
 	}
 	}else{
-    echo "6"; 
+    echo "6";
 		$errors = $validation->errors();
 
 	}
