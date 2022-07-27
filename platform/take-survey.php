@@ -10,12 +10,16 @@ $pageview_attr = [];
 
 require_once '../users/init.php';
 
+function numhash2($n) { //encode/decode 32-bit int //declared once again as header not yet called
+    return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
+}
+
 if (!$user->isLoggedIn()) { //if not already logged in, redirect
     Redirect::to($us_url_root.'register.php');
 }
 
 if ( !empty($_POST) ) {
-  $quizid = numhash($_POST["q"]);
+  $quizid = numhash2($_POST["q"]);
 
 
   $rowQ = $db->query("SELECT id, answer1 FROM questions WHERE quizid = ? ", [$quizId]);
@@ -45,7 +49,7 @@ ini_set('log_errors',1);
 ini_set('error_log',dirname(__FILE__).'/log.txt');
 error_reporting(E_ALL);
 
-$quizId = numhash($_GET['id']);
+$quizId = numhash2($_GET['id']);
 
 //return quiz information
 $rowQ = $db->query("SELECT name, description, status, userid FROM quiz WHERE id = ? ", [$quizId]);
