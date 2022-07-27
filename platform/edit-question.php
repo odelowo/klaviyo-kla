@@ -57,6 +57,24 @@ if ( !empty($_POST) ) {
   $quizid = numhash($_POST["q"]);
   $db->update("quiz", $quizid, ["status"=>$_POST['updateStatus']]);
 
+  if($_POST['updateStatus'] == "Live"){ //if quiz is put live, notify everyone in the same company 
+    $company = strtolower($user->data()->company);
+    $companyLikeCondition = '%'.$company.'%';
+    $message = $user->data()->fname.' has just published a new survey';
+
+    $notify = new Notification(); //initialise Notifications
+
+    $cta = 'https://thatspurple.com/klaviyo-kla/platform/take-survey.php?id='.$_POST['q'];
+
+    $rowQ = $db->query("SELECT id, email, fname, lname FROM users WHERE email_verified = 1 and LOWER(company) LIKE ? ", [$companyLikeCondition]);
+    foreach ($db->results() as $colleague){ //loop through questions
+      //add to notification
+      $notify->addNotification($message, $colleague->id, $cta);
+
+      //write to klaviyo batch trigger
+    }
+  }
+
   $dest = "edit-question.php?q=".$_POST['q'].'&updated=1';
   Redirect::to($dest);
 
