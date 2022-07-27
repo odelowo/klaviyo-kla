@@ -74,6 +74,8 @@ $quizOwnerId = $row->userid;
                  }
 
                  $html .= '<input type="hidden" id="q" name="q" value="'.$_GET['id'].'">';
+
+                 echo $html; 
                ?>
                 <div class="checkbox-controls">
                   <button class="submit-button" type="submit">Complete <?php echo $quizName;?> Quiz</button>
