@@ -1,5 +1,5 @@
 <?php
-$title = 'Survey'; //used to identify user friendly in-page title
+
 $pageTitle = 'Dashboard'; //used to identify page title
 $menuItemSelected = ''; //used to identify which menu item is preselected
 $journey = "Complete Survey"; //journey used for analytics purposes
@@ -14,9 +14,31 @@ if (!$user->isLoggedIn()) { //if not already logged in, redirect
     Redirect::to($us_url_root.'register.php');
 }
 
-require_once('includes/header.php');
+if ( !empty($_POST) ) {
+  $quizid = numhash($_POST["q"]);
 
 
+  $rowQ = $db->query("SELECT id, answer1 FROM questions WHERE quizid = ? ", [$quizId]);
+  $answers = [];
+  $score = 0;
+  $total = 0;
+  foreach ($db->results() as $answer){
+    //NOT ADDING TO A PHYSICAL TABLE DUE TO TIME CONSTAINTS FOR DELIVERY
+
+    if($answer->answer1 == $_POST["answer"][$total])
+      $score++;
+
+    $total++;
+
+ }
+
+ echo "you scored ".$score." out of ". $total;
+ //add 1 to the count of quiz
+
+ //check whether quiz is live
+
+
+}
 
 ini_set('display_errors',1);
 ini_set('log_errors',1);
@@ -34,6 +56,8 @@ $quizDesc = $row->description;
 $quizStatus = $row->status;
 $quizOwnerId = $row->userid;
 
+$title = $row->name; //used to identify user friendly in-page title
+require_once('includes/header.php');
 ?>
 
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
@@ -75,7 +99,7 @@ $quizOwnerId = $row->userid;
 
                  $html .= '<input type="hidden" id="q" name="q" value="'.$_GET['id'].'">';
 
-                 echo $html; 
+                 echo $html;
                ?>
                 <div class="checkbox-controls">
                   <button class="submit-button" type="submit">Complete <?php echo $quizName;?> Quiz</button>
