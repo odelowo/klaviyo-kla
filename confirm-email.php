@@ -19,52 +19,53 @@ $verify_success=FALSE; //initialise flag
 $errors = array();
 
 if(Input::exists('get')){
-//removed references to validation as was not working with kamil
-	// $validate = new Validate();
-	// $validation = $validate->check($_GET,array(
-	// 'email' => array(
-	//   'display' => lang("GEN_EMAIL"),
-	//   'valid_email' => true,
-	//   'required' => true,
-	// ),
-	// ));
 
+	$validate = new Validate();
+	$validation = $validate->check($_GET,array(
+	'email' => array(
+	  'display' => lang("GEN_EMAIL"),
+	  'valid_email' => true,
+	  'required' => true,
+	),
+	));
 
+echo "1";
 	//if email is valid, do this
-	//if($validation->passed()){
+	if($validation->passed()){
 		//get the user info based on the email
     $verify = new User($email);
-
+echo "2";
 		if($verify->data()->email_verified == 1 && $verify->data()->vericode == $vericode && $verify->data()->email_new == ""){
 			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
 			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
-
+echo "3";
 		}else{
       //troubleshooting values for if statement - echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry).' | '.strtotime(date("Y-m-d H:i:s")).' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
 		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
 			//check if this email account exists in the DB
 //echo "4";
-
+echo "4";
       $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
 
 			$verify_success=TRUE;
 			logger($verify->data()->id,"User","Verification completed via vericode.");
 			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
-
+echo "5";
       //add user to newsletter list if they have opted in
       if($user->data()->newsletterSubscription == 1){
         //add to list
         $call = new Klaviyo();
         $listId = "VqpWFS";
-        $call->subscribeToList($listId, $email); 
+        $call->subscribeToList($listId, $email);
       }
 
 		}
 	}
-	// }else{
-	// 	$errors = $validation->errors();
-  //
-	// }
+	}else{
+    echo "6"; 
+		$errors = $validation->errors();
+
+	}
 }
 ?>
 <!DOCTYPE html>
