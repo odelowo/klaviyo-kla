@@ -28,9 +28,19 @@ if(Input::exists('get')){
 	),
 )); //removed email validation due to encoding
 
+//due to issue with url encoding, looked up url based on verification code
+$rowQ = $db->query("SELECT email  FROM users WHERE vericode = ? ", [$vericode]);
+$rowC = $rowQ->count();
+
+if($rowC == 1){
+  $row = $rowQ->first();
+  $email = $row->email; //overwrite email address
+  
+}
+
 echo "1";
 	//if email is valid, do this
-	if($validation->passed() || 1==1){ //temporarily reomved validation
+	if($validation->passed()){ //temporarily reomved validation
 		//get the user info based on the email
     $verify = new User($email);
 echo "2";
