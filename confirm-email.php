@@ -19,19 +19,19 @@ $verify_success=FALSE; //initialise flag
 $errors = array();
 
 if(Input::exists('get')){
-
-	$validate = new Validate();
-	$validation = $validate->check($_GET,array(
-	'email' => array(
-	  'display' => lang("GEN_EMAIL"),
-	  'valid_email' => true,
-	  'required' => true,
-	),
-	));
+//removed references to validation as was not working with kamil
+	// $validate = new Validate();
+	// $validation = $validate->check($_GET,array(
+	// 'email' => array(
+	//   'display' => lang("GEN_EMAIL"),
+	//   'valid_email' => true,
+	//   'required' => true,
+	// ),
+	// ));
 
 
 	//if email is valid, do this
-	if($validation->passed()){
+	//if($validation->passed()){
 		//get the user info based on the email
     $verify = new User($email);
 
@@ -61,10 +61,10 @@ if(Input::exists('get')){
 
 		}
 	}
-	}else{
-		$errors = $validation->errors();
-
-	}
+	// }else{
+	// 	$errors = $validation->errors();
+  //
+	// }
 }
 ?>
 <!DOCTYPE html>
