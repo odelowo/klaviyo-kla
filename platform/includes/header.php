@@ -2437,8 +2437,7 @@ fOAfGa > li {
                      </div>
                      <div class="list-section">
                         <li class="list <?php echo ($menuItemSelected == 'create-quiz') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'create-quiz') ? '#' : 'create-quiz.php'; ?>" class="list-link"><i class="fa fa fa-paper-plane"></i>Create Quiz</a></li>
-                        <li class="list <?php echo ($menuItemSelected == 'view-results') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'view-results') ? '#' : 'view-results.php'; ?>" class="list-link"><i class="fa fa fa-share-alt fa-area-chart"></i>View Quiz Results</a></li>
-                        <li class="list <?php echo ($menuItemSelected == 'answered-questions') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'answered-questions') ? '#' : 'answered-questions.php'; ?>" class="list-link"><i class="fa fa-tachometer"></i>Answered Quizes</a></li>
+                        <!-- <li class="list <?php echo ($menuItemSelected == 'view-results') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'view-results') ? '#' : 'view-results.php'; ?>" class="list-link"><i class="fa fa fa-share-alt fa-area-chart"></i>View Quiz Results</a></li> -->
                      </div>
                   </ul>
                </aside>

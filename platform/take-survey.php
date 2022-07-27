@@ -37,7 +37,7 @@ if ( !empty($_POST) ) {
  }
 
 
- echo "you scored ".$score." out of ". $total;
+ //echo "you scored ".$score." out of ". $total;
 
 
 
@@ -108,6 +108,8 @@ if ( !empty($_POST) ) {
  $call->trackProfileActivity($customer, $properties, $event);
 
  //redirect to thank you page
+ $dest = "all-done.php";
+ Redirect::to($dest);
 }
 
 
