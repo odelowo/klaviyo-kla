@@ -53,7 +53,7 @@ $quizId = numhash($_GET['id']);
                  //return quiz questions
                  $rowQ = $db->query("SELECT id, question, answer1, answer2, answer3, answer4 FROM questions WHERE quizid = ? ", [$quizId]);
 
-                 $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'$quizName.' (by '.$quizOwnerFname.' '.$quizOwnerLname.')</span></div>';
+                 $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizName.' (by '.$quizOwnerFname.' '.$quizOwnerLname.')</span></div>';
                  $questionNum = 1;
                  $ques = [];
                  foreach ($db->results() as $question){
