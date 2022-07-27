@@ -80,7 +80,7 @@ input[type=text] {
              <form method="post">
                <?php
 
-                $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
+                // $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
                 $pos = 0; //used to dynamically assign answer ids
                 $questionNum = 1;
 
