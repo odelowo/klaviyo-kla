@@ -20,6 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class Notification
 {
+  private $_db;
+
     public function __construct() {
         return false;
     }
@@ -33,8 +35,9 @@ class Notification
     }
 
     public function addNotification($message, $user_id, $cta) {
-      $db->insert("notifications", ["user_id"=>$user_id, "message"=>$message, "destination"=>$cta]);
-      return $db->lastId();
+      $this->_db = DB::getInstance();
+      $this->_db->insert("notifications", ["user_id"=>$user_id, "message"=>$message, "destination"=>$cta]);
+      return $this->_db->lastId();
     }
 
     public function setRead($notification_id, $read = true) {
