@@ -29,7 +29,7 @@ error_reporting(E_ALL);
 
 if ( !empty($_POST) ) {
 
-  $quizid = numhash($_GET["q"]);
+  $quizid = numhash($_POST["q"]);
   foreach ($_POST['question'] as &$question) {
 
     $db->insert("questions", ["question"=>$question, "quizid"=>$quizid]);
@@ -73,6 +73,7 @@ function removeRow(rnum) { //remove row
                   <input onclick="addRow(this.form);" type="button" value="Add Question" />
                  </div>
                </div>
+               <input type="hidden" id="q" name="q" value="<?php echo $_GET["q"]; ?>">
                <div class="checkbox-controls">
                <button class="submit-button" type="submit">Set Answers</button>
              </div>
