@@ -35,7 +35,7 @@ $rowC = $rowQ->count();
 if($rowC == 1){
   $row = $rowQ->first();
   $email = $row->email; //overwrite email address
-  
+
 }
 
 echo "1";
@@ -61,7 +61,7 @@ echo "4";
 			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
 echo "5";
       //add user to newsletter list if they have opted in
-      if($user->data()->newsletterSubscription == 1){
+      if($verify->data()->newsletterSubscription == 1){
         //add to list
         $call = new Klaviyo();
         $listId = "VqpWFS";
