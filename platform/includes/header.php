@@ -2393,7 +2393,25 @@ fOAfGa > li {
                         <div id="kl-notification-list" class="styles__StyledNotificationsList-sc-n7rdk0-2 bRPFxC" style="display: none;">
                            <div class="styles__StyledNotificationsHeader-sc-n7rdk0-4 jpALXp"><span>Inbox</span></div>
                            <div>
-                              <div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV">You don't currently have any notifications.</div>
+                             <?php
+                                //check to see if they have any notifications
+                                $rowQ = $db->query("SELECT message, destination FROM notifications WHERE user_id = ? ORDER BY last_updated DESC", [$user->data()->id]);
+                                $rowC = $rowQ->count();
+
+                                $html = "";
+
+                                if($rowC >0){ //has notifications
+                                  foreach ($db->results() as $notification){ //write notification
+                                    $html .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV" style="padding: 5px; padding-left: 20px; text-align: left;"><a href="'.$notification->destination.'"> '.$notification->message.'</a></div>';
+                                  }
+
+                                }else { //does not have any notifications
+                                  $html .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV">You don\'t currently have any notifications.</div>';
+                                }
+
+                                echo $html; 
+                             ?>
+
                            </div>
                         </div>
                      </div>
