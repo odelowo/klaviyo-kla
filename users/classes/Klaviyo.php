@@ -14,8 +14,23 @@ class Klaviyo extends Client {
   private static $publicKey = 'TMezSb';
 
   public function returnPublicKey(){
-      return self::$publicKey; 
+      return self::$publicKey;
   }
+
+  public function subscribeToList($listId, $email){
+
+    $body = '{"profiles":[{"email":"'.$email.'", "email_consent":true}]}';
+
+    $response = $this->request('POST', 'https://a.klaviyo.com/api/v2/list/'.$listId.'/subscribe?api_key='.$this->privateKey, [
+      'body' => $body,
+      'headers' => [
+        'Accept' => 'application/json',
+        'Content-Type' => 'application/json',
+      ],
+    ]);
+    return $response;
+  }
+
   public function trackProfileActivity($customerattr, $properties, $event){
     $data = '{"token": "'.self::$publicKey.'", "event": "'.$event.'"';
 
@@ -57,6 +72,8 @@ class Klaviyo extends Client {
     ]);
     return $response;
   }
+
+
 }
 //
 // $client = new \GuzzleHttp\Client();

@@ -2418,9 +2418,8 @@ fOAfGa > li {
                      <ul class="UserNav__StyledNav-sc-juwt59-0 fOAfGa">
                         <li>
                            <div class="styles__StyledUserDropdown-sc-irwd2-0 jzFvdv">
-                              <button type="button" aria-expanded="false" aria-controls="kl-user-menu" class="styles__StyledUserToggleButton-sc-irwd2-4 hVVsZf dropdown-toggle"><span><img src="https://secure.gravatar.com/avatar/af80e6f1dc41855f975cebd490f4223f?d=https%3A%2F%2Fwww.klaviyo.com%2Fmedia%2Fimages%2Fletters%2Fo-g.png" width="32" height="32" title="odelowo@live.co.uk" alt="Profile Avatar" class="styles__StyledAvatar-sc-irwd2-1 eYzgLE"></span><span class="styles__StyledUsername-sc-irwd2-5 jxEkZL">That's Purple</span><span class="fa fa-caret-down"></span></button>
+                              <button type="button" aria-expanded="false" aria-controls="kl-user-menu" class="styles__StyledUserToggleButton-sc-irwd2-4 hVVsZf dropdown-toggle"><span><img src="https://secure.gravatar.com/avatar/af80e6f1dc41855f975cebd490f4223f?d=https%3A%2F%2Fwww.klaviyo.com%2Fmedia%2Fimages%2Fletters%2Fo-g.png" width="32" height="32" title="odelowo@live.co.uk" alt="Profile Avatar" class="styles__StyledAvatar-sc-irwd2-1 eYzgLE"></span><span class="styles__StyledUsername-sc-irwd2-5 jxEkZL"><?php echo $user->data()->email; ?></span><span class="fa fa-caret-down"></span></button>
                               <ul id="kl-user-menu" class="styles__StyledUserMenu-sc-irwd2-2 eTeurt" style="display: none;">
-                                 <li><a href="account.php">Account</a></li>
                                  <li><a href="<?=$us_url_root?>users/logout.php">Logout</a></li>
                               </ul>
                            </div>

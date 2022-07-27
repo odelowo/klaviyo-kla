@@ -51,6 +51,14 @@ if(Input::exists('get')){
 			logger($verify->data()->id,"User","Verification completed via vericode.");
 			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
 
+      //add user to newsletter list if they have opted in
+      if($user->data()->newsletterSubscription == 1){
+        //add to list
+        $call = new Klaviyo();
+        $listId = "VqpWFS";
+        $call->subscribeToList($listId, $email); 
+      }
+
 		}
 	}
 	}else{
