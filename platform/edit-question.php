@@ -57,21 +57,54 @@ if ( !empty($_POST) ) {
   $quizid = numhash($_POST["q"]);
   $db->update("quiz", $quizid, ["status"=>$_POST['updateStatus']]);
 
-  if($_POST['updateStatus'] == "Live"){ //if quiz is put live, notify everyone in the same company 
+  if($_POST['updateStatus'] == "Live"){ //if quiz is put live, notify everyone in the same company
     $company = strtolower($user->data()->company);
     $companyLikeCondition = '%'.$company.'%';
     $message = $user->data()->fname.' has just published a new survey';
 
     $notify = new Notification(); //initialise Notifications
+    $call = new Klaviyo(); //initialise klaviyo class
 
     $cta = 'https://thatspurple.com/klaviyo-kla/platform/take-survey.php?id='.$_POST['q'];
 
-    $rowQ = $db->query("SELECT id, email, fname, lname FROM users WHERE email_verified = 1 and LOWER(company) LIKE ? ", [$companyLikeCondition]);
+    //trigger Klaviyo message to user
+    $properties = array(
+      array("quiz", $quizName),
+    );
+
+    $customer = array(
+      array("email",$user->data()->email),
+      array("first_name",$user->data()->fname),
+      array("last_name",$user->data()->lname),
+    );
+
+    $event = "Quiz Complete";
+    $call->trackProfileActivity($customer, $properties, $event);
+
+
+    $rowQ = $db->query("SELECT id, email, fname, lname FROM users WHERE email_verified = 1 AND LOWER(company) LIKE ? AND id != ?", [$companyLikeCondition, $user->data()->id]);
     foreach ($db->results() as $colleague){ //loop through questions
       //add to notification
       $notify->addNotification($message, $colleague->id, $cta);
 
-      //write to klaviyo batch trigger
+      //trigger Klaviyo message to colleagues
+      $properties = array(
+        array("quiz", $quizName),
+        array("quizDesc", $quizDesc),
+        array("cta", $cta),
+        array("quizCreatorFirstname", $user->data()->fname),
+        array("quizCreatorLaststname", $user->data()->lname),
+      );
+
+      $customer = array(
+        array("email",$colleague->email),
+        array("first_name",$colleague->fname),
+        array("last_name",$colleague->lname),
+      );
+
+      $event = "Quiz Complete";
+      $call->trackProfileActivity($customer, $properties, $event);
+
     }
   }
 
