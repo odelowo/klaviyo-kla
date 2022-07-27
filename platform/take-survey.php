@@ -44,7 +44,7 @@ if ( !empty($_POST) ) {
  //alert the owner of the quiz
  $notify = new Notification(); //initialise Notifications
  $cta = "#";
- $rowQ = $db->query("SELECT userid, name, description FROM quiz WHERE id = ? ", [$quizId]); //get userid
+ $rowQ = $db->query("SELECT userid, name, description FROM quiz WHERE id = ? ", [$quizid]); //get userid
  $row = $rowQ->first();
 
  $quizOwnerId = $row->userid;
@@ -53,7 +53,7 @@ if ( !empty($_POST) ) {
 
 
 
- $message = $user->data()->fname." has completed your ".$quizName." quiz!"; 
+ $message = $user->data()->fname." has completed your ".$quizName." quiz!";
 
  $notify->addNotification($message, $quizOwnerId, $cta);
 
