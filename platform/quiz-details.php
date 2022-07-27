@@ -6,18 +6,18 @@ $journey = "Create Quiz"; //journey used for analytics purposes
 $journeyStep = "Step 2 - Quiz Enteries"; //journey step used to identify drop off in journey
 $pageview_attr = [];
 //echo "0";
-if ( !empty($_POST) ) {
-
-  for ($q = 1; $q <= count($_POST['question']); $q++) {
-
-    $arrayPos = $q -1;
-    $temp = array("Question ".$q, $_POST['question'][$arrayPos]);
-    array_push($pageview_attr, $temp);
-  }
-
-  var_dump($pageview_attr);
-
-}
+// if ( !empty($_POST) ) {
+//
+//   for ($q = 1; $q <= count($_POST['question']); $q++) {
+//
+//     $arrayPos = $q -1;
+//     $temp = array("Question ".$q, $_POST['question'][$arrayPos]);
+//     array_push($pageview_attr, $temp);
+//   }
+//
+//   var_dump($pageview_attr);
+//
+// }
 
 require_once '../users/init.php';
 require_once('includes/header.php');
@@ -36,8 +36,7 @@ if ( !empty($_POST) ) {
   }
 
   $dest = "set-answers.php?q=".$_POST['q'];
-  echo $dest; 
-  //Redirect::to($dest);
+  Redirect::to($dest);
 }
 //save questions into questions table - id, question, 4 answers
 
