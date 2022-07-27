@@ -102,7 +102,7 @@ if ( !empty($_POST) ) {
         array("last_name",$colleague->lname),
       );
 
-      $event = "Quiz Complete";
+      $event = "New Quiz Available";
       $call->trackProfileActivity($customer, $properties, $event);
 
     }
