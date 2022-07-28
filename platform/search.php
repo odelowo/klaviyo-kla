@@ -4,10 +4,14 @@ $pageTitle = 'Search'; //used to identify page title
 $menuItemSelected = ''; //used to identify which menu item is preselected
 $journey = "Search"; //journey used for analytics purposes
 $journeyStep = "Search"; //journey step used to identify drop off in journey
-$pageview_attr = array(
-  array("search_term",$_GET['search_term'])
-);
 
+if (!empty($_POST['search_term']) ) {
+  $pageview_attr = array(
+    array("search_term",$_GET['search_term'])
+  );
+}else{
+  $pageview_attr = [];
+}
 require_once '../users/init.php';
 
 require_once('includes/header.php');
