@@ -2384,7 +2384,7 @@ fOAfGa > li {
                <nav class="styles__StyledHeader-sc-qpxf0f-0 hrlJdN">
                   <div>
                     <a href="index.php"><img src="images/logo.png"></a>
-                     <form action="/search" method="GET" id="search-form" class="styles__StyledSearch-sc-us72y0-0 chOITk"><input type="text" placeholder="Global Search..." id="search" name="q"><button type="submit" class="styles__StyledButton-sc-us72y0-1 hdtWvd"><i class="fa fa-search search-icon"></i></button></form>
+                     <form action="search.php" method="GET" id="search-form" class="styles__StyledSearch-sc-us72y0-0 chOITk"><input type="text" placeholder="Find Quiz..." id="search_term" name="search_term"><button type="submit" class="styles__StyledButton-sc-us72y0-1 hdtWvd"><i class="fa fa-search search-icon"></i></button></form>
                   </div>
                   <div>
                      <ul class="AlertsNav__StyledNav-sc-yjf5fo-0 kNoAOY"></ul>

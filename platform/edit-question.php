@@ -7,19 +7,10 @@ function numhash2($n) { //encode/decode 32-bit int //declared once again as head
     return (((0x0000FFFF & $n) << 16) + ((0xFFFF0000 & $n) >> 16));
 }
 
-if(isset($_GET['new'])){
   $pageTitle = 'Create Quiz'; //used to identify page title
   $menuItemSelected = 'create-quiz'; //used to identify which menu item is preselected
   $journey = "Create Quiz"; //journey used for analytics purposes
   $journeyStep = "Step 4 - Publish";
-}
-else {
-  $title = 'View Results'; //used to identify user friendly in-page title
-  $pageTitle = 'View Results'; //used to identify page title
-  $menuItemSelected = 'view-results'; //used to identify which menu item is preselected
-  $journey = "View Results"; //journey used for analytics purposes
-  $journeyStep = "Step 2 - Edit Quiz";
-}
 
 $pageview_attr = [];
 
