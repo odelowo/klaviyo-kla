@@ -84,7 +84,7 @@ input[type=text] {
                 // $html = '<div class="Box__StyledBox-sc-16nrscc-0 bZntlp"><span class="TextStyleTemplate-sc-1jbnw9u-0 iQtoNF">'.$quizDesc.'</span></div>';
                 $pos = 0; //used to dynamically assign answer ids
                 $questionNum = 1;
-
+                $html = ""; 
                 $rowQ = $db->query("SELECT id, question FROM questions WHERE quizid = ?", [$quizid]);
                 foreach ($db->results() as $question){
                   $html .= '<div class="Box__StyledBox-sc-16nrscc-0 giItA-D"><span class="TextStyleTemplate-sc-1jbnw9u-0 fhHHqE">'.$questionNum.'. '.$question->question.'</span></div>';
