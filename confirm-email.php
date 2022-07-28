@@ -44,10 +44,14 @@ echo "1";
 		//get the user info based on the email
     $verify = new User($email);
 echo "2";
-echo "/n email = '".$email."'"; 
+echo "/n email = '".$email."'";
 		if($verify->data()->email_verified == 1 && $verify->data()->vericode == $vericode && $verify->data()->email_new == ""){
 			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
-			require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
+			//require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
+
+      $verify_success=TRUE;
+			logger($verify->data()->id,"User","Verification completed via vericode - again.");
+			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
 echo "3";
 		}else{
       //troubleshooting values for if statement - echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry).' | '.strtotime(date("Y-m-d H:i:s")).' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
