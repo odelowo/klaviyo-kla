@@ -15,7 +15,7 @@ function numhash($n) { //encode/decode 32-bit int
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <title>Kla | <?php echo $pageTitle; ?></title>
       <link rel="stylesheet" href="https://www.klaviyo.com/media/css/public_v4/base.css?v=3db444d">
-      <link href="https://www.klaviyo.com/media/css/integrations.css?v=c52aa084" rel="stylesheet">  
+      <link href="https://www.klaviyo.com/media/css/integrations.css?v=c52aa084" rel="stylesheet">
       <script src="https://use.fortawesome.com/d537f022.js"></script>
     <script src="https://use.typekit.net/lfn1kdd.js"></script>
     <script>try{Typekit.load({ async: false });}catch(e){}</script>
@@ -2440,7 +2440,7 @@ fOAfGa > li {
                      </div>
                      <div class="list-section">
                         <li class="list <?php echo ($menuItemSelected == 'create-quiz') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'create-quiz') ? '#' : 'create-quiz.php'; ?>" class="list-link"><i class="fa fa fa-paper-plane"></i>Create Quiz</a></li>
-                        <!-- <li class="list <?php echo ($menuItemSelected == 'view-results') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'view-results') ? '#' : 'view-results.php'; ?>" class="list-link"><i class="fa fa fa-share-alt fa-area-chart"></i>View Quiz Results</a></li> -->
+                        <li class="list <?php echo ($menuItemSelected == 'search') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'search') ? '#' : 'search.php'; ?>" class="list-link"><i class="fa fa fa-share-alt fa-area-chart"></i>View Quizzes</a></li>
                      </div>
                   </ul>
                </aside>

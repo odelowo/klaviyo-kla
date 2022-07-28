@@ -1,7 +1,7 @@
 <?php
 $title = 'Search'; //used to identify user friendly in-page title
 $pageTitle = 'Search'; //used to identify page title
-$menuItemSelected = ''; //used to identify which menu item is preselected
+$menuItemSelected = 'search'; //used to identify which menu item is preselected
 $journey = "Search"; //journey used for analytics purposes
 $journeyStep = "Search"; //journey step used to identify drop off in journey
 
@@ -31,7 +31,7 @@ error_reporting(E_ALL);
             $rowQ = $db->query($qry, []);
             //echo "SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%".$term."%' OR Lower(description) like '%".$term."%') AND status = 'Live' ORDER BY timestamp";
             $rowC = $rowQ->count();
-            echo "Showing Results for '".$_GET['search_term']."'. <a href='search.php'>Click here to see all available quizes.</a>"; 
+            echo "Showing Results for '".$_GET['search_term']."'. <a href='search.php'>Click here to see all available quizes.</a>";
           }
           else{
             $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE status = 'Live' ORDER BY timestamp DESC", []);
