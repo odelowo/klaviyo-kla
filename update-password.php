@@ -31,22 +31,18 @@ if(Input::exists('get')){
 //due to issue with url encoding, looked up url based on verification code
 $rowQ = $db->query("SELECT email  FROM users WHERE vericode = ? ", [$vericode]);
 $rowC = $rowQ->count();
-
+echo "1";
 if($rowC == 1){
   $row = $rowQ->first();
   $email = $row->email; //overwrite email address
 
-}
-
-	//if email is valid, do this
-	if(1==1){ //no validation required on passed url
-		//get the user info based on the email
     $verify = new User($email);
-
+    echo "2";
 		if($verify->data()->vericode == $vericode){
 			//link verified
 
       $verify_success=TRUE;
+      echo "3";
 
 
 		}
