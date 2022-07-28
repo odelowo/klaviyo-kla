@@ -96,7 +96,7 @@ if($rowC == 1){
 
           <?php
 
-          if ($verify_success){
+          if (!$verify_success){
             $html = '<div class="row">';
             $html .= '<div class="col-sm-12">';
             $html .= '<h1>Unable to Authenticate.</h1>';
