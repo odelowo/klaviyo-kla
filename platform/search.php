@@ -26,12 +26,12 @@ error_reporting(E_ALL);
           <?php
 
           if (!empty($_GET['search_term']) ) {
-            $term = Input::get('search_term');
-            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE name LIKE %?% OR description like %?% ORDER BY timestamp", [$term, $term]);
+            $term = strtolower(Input::get('search_term'));
+            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%?%' OR Lower(description) like '%?%') AND status = 'Live' ORDER BY timestamp", [$term, $term]);
             $rowC = $rowQ->count();
           }
           else{
-            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz ORDER BY timestamp", []);
+            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE status = 'Live' ORDER BY timestamp", []);
             $rowC = $rowQ->count();
           }
 
@@ -61,7 +61,7 @@ error_reporting(E_ALL);
             }
 
           } else {
-            $searchResult .= '<div class="empty_message" >There are no integrations for the current filters.</div>';
+            $searchResult .= '<div class="empty_message" >There are no Quizes matching your search term. Click here to see all available quizes.</div>';
             $searchResult .= '</div>';
           }
 
