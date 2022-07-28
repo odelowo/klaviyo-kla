@@ -10,17 +10,6 @@ $pageview_attr = array(
 
 require_once '../users/init.php';
 
-if (!empty($_POST['search_term']) ) {
-  $term = Input::get('search_term');
-  $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE name LIKE %?% OR description like %?% ORDER BY timestamp", [$term, $term]);
-  $rowC = $rowQ->count();
-}
-else{
-  $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz ORDER BY timestamp", []);
-  $rowC = $rowQ->count();
-}
-
-
 require_once('includes/header.php');
 
 ini_set('display_errors',1);
@@ -28,10 +17,20 @@ ini_set('log_errors',1);
 ini_set('error_log',dirname(__FILE__).'/log.txt');
 error_reporting(E_ALL);
 ?>
-
+    
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
         <div class="ObjectivesTab__DashboardContainer-sc-1el61mo-1 khhmlX">
           <?php
+
+          if (!empty($_POST['search_term']) ) {
+            $term = Input::get('search_term');
+            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE name LIKE %?% OR description like %?% ORDER BY timestamp", [$term, $term]);
+            $rowC = $rowQ->count();
+          }
+          else{
+            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz ORDER BY timestamp", []);
+            $rowC = $rowQ->count();
+          }
 
           $searchResult = "";
           $searchResult .= '<div id="integrations_list_container" class="hide" style="display: block;">';
@@ -63,7 +62,7 @@ error_reporting(E_ALL);
             $searchResult .= '</div>';
           }
 
-          echo $searchResult; 
+          echo $searchResult;
 
           ?>
         </div>
