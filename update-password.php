@@ -44,8 +44,7 @@ if($rowC == 1){
     $verify = new User($email);
 
 		if($verify->data()->vericode == $vericode){
-			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
-			//require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
+			//link verified
 
       $verify_success=TRUE;
 
@@ -108,7 +107,7 @@ if($rowC == 1){
             $html .= '<a href="password-reset.php" class="btn btn-primary">Reset password</a>';
             $html .= '<br>';
             $html .= '</div>';
-            $html .= '</div>'; 
+            $html .= '</div>';
 
           }
           else {
