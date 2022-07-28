@@ -135,7 +135,7 @@ if ( !empty($_POST) ) {
 
 ?>
 <style>
-input[type=text] {
+select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
