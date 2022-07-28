@@ -61,7 +61,7 @@ error_reporting(E_ALL);
             }
 
           } else {
-            $searchResult .= '<div class="empty_message" >There are no Quizes matching your search term. Click here to see all available quizes.</div>';
+            $searchResult .= '<div class="empty_message" >There are no Quizes matching your search term. <a href="search.php">Click here to see all available quizes.</a></div>';
             $searchResult .= '</div>';
           }
 
