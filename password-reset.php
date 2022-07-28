@@ -33,7 +33,7 @@
 
           //send the email
           $call = new Klaviyo();
-          $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode.'&email='.urlencode($email);
+          $vericodeURL = 'www.thatspurple.com/klaviyo-kla/update-password.php?v='.$vericode.'&email='.urlencode($email);
 
           $properties = array (
             array("vericode",$vericode),
