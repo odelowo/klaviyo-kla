@@ -11,6 +11,7 @@ As this is a demo put together as part of an interview process, their are a numb
 * No SMS integration (due to security no phone numbers are captured in either the local database or sent in calls to Klaviyo)
 * Form validation is limited
 * Error logging is limited  
+* The Solution is not optimised for Mobile, and has been developed for optimum use with Chrome
 
 ## Dependencies  
 * UserSpice PHP Framework - https://userspice.com/ (release 5.4)
@@ -37,6 +38,11 @@ As this is a demo put together as part of an interview process, their are a numb
 
 ## Solution Breakdown
 The solution relies leverages UserSpice for the user management - i.e. sign up, logged in sessions, etc. Though out of the box UserSpice easily integrates with mail servers, using the out of the box methods would have rendered this exercise mute. For this reason, user facing pages have been built from the ground up using styling elements from Klaviyo and out of the box function calls from UserSpice. All emails are triggered via Klaviyo using a purpose built class (Klaviyo) which is described in detail below.
+
+## Getting Started
+You can use either the Staging or Production link, though it is recommended to use the Production link as Staging may not be stable depending on when you access it. With regards to look and feel, both environments behave the same
+* Staging environment - https://thatspurple.com/klaviyo-kla-dev/
+* Production environment - https://thatspurple.com/klaviyo-kla/
 
 
 ## Klaviyo Class
