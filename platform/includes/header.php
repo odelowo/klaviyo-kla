@@ -2440,7 +2440,7 @@ fOAfGa > li {
                      </div>
                      <div class="list-section">
                         <li class="list <?php echo ($menuItemSelected == 'create-quiz') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'create-quiz') ? '#' : 'create-quiz.php'; ?>" class="list-link"><i class="fa fa fa-paper-plane"></i>Create Quiz</a></li>
-                        <li class="list <?php echo ($menuItemSelected == 'search') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'search') ? '#' : 'search.php'; ?>" class="list-link"><i class="fa fa fa-share-alt fa-area-chart"></i>View Quizzes</a></li>
+                        <li class="list <?php echo ($menuItemSelected == 'search') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'search') ? '#' : 'search.php'; ?>" class="list-link"><i class="fa fa-graduation-cap"></i>View Quizzes</a></li>
                      </div>
                   </ul>
                </aside>
