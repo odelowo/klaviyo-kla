@@ -27,7 +27,8 @@ error_reporting(E_ALL);
 
           if (!empty($_GET['search_term']) ) {
             $term = strtolower(Input::get('search_term'));
-            $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%?%' OR Lower(description) like '%?%') AND status = 'Live' ORDER BY timestamp DESC", [$term, $term]);
+            $qry = "SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%".$term."%' OR Lower(description) like '%".$term."%') AND status = 'Live' ORDER BY timestamp";
+            $rowQ = $db->query($qry, []);
             //echo "SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%".$term."%' OR Lower(description) like '%".$term."%') AND status = 'Live' ORDER BY timestamp";
             $rowC = $rowQ->count();
             echo "/n count = ".$rowC;
