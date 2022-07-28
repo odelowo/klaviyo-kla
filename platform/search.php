@@ -39,8 +39,8 @@ error_reporting(E_ALL);
             foreach ($db->results() as $quiz){ //write notification
               $searchResult .= '<ul id="integrations_list" style="margin: 0; list-style: none;">';
               $searchResult .= '<li class="integration_swatch " data-href="survey.php?id='.numhash($quiz->id).'" style="position: relative; border-top: solid 1px transparent; border-bottom: solid 1px transparent; padding: 18px 18px 17px; line-height: 18px;">';
-              $searchResult .= '<a href="survey.php?id='.numhash($quiz->id).'" style="display: table;width: 100%;text-decoration: none; color: #2b98d3;">';
-              $searchResult .= '<div class="integration_icon_container integration_icon_container_48" style="white-space: normal;width: 100%;display: table-cell;vertical-align: middle;">';
+              $searchResult .= '<a href="take-survey.php?id='.numhash($quiz->id).'" style="display: table;width: 100%;text-decoration: none; color: #2b98d3;">';
+              $searchResult .= '<div class="integration_icon_container integration_icon_container_48" style="white-space: normal;width: 75%;display: table-cell;vertical-align: middle;">';
               $searchResult .= '<div class="text" style="display: inline-block; vertical-align: middle; -webkit-font-smoothing: antialiased !important;">';
               $searchResult .= '<div class="integration_name_container">';
               $searchResult .= '<h3 class="integration_name" style="font-size: 18px;display: inline;vertical-align: middle;">'.$quiz->name.'</h3>';
