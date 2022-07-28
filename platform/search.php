@@ -30,6 +30,7 @@ error_reporting(E_ALL);
             $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%?%' OR Lower(description) like '%?%') AND status = 'Live' ORDER BY timestamp", [$term, $term]);
             echo "SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE (Lower(name) LIKE '%".$term."%' OR Lower(description) like '%".$term."%') AND status = 'Live' ORDER BY timestamp";
             $rowC = $rowQ->count();
+            echo "/n count = ".$rowC; 
           }
           else{
             $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE status = 'Live' ORDER BY timestamp", []);
