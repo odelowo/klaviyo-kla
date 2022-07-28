@@ -5,7 +5,7 @@ $menuItemSelected = ''; //used to identify which menu item is preselected
 $journey = "Search"; //journey used for analytics purposes
 $journeyStep = "Search"; //journey step used to identify drop off in journey
 
-if (!empty($_POST['search_term']) ) {
+if (!empty($_GET['search_term']) ) {
   $pageview_attr = array(
     array("search_term",$_GET['search_term'])
   );
@@ -25,7 +25,7 @@ error_reporting(E_ALL);
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
           <?php
 
-          if (!empty($_POST['search_term']) ) {
+          if (!empty($_GET['search_term']) ) {
             $term = Input::get('search_term');
             $rowQ = $db->query("SELECT id, name, description, responses, status, userid, timestamp FROM quiz WHERE name LIKE %?% OR description like %?% ORDER BY timestamp", [$term, $term]);
             $rowC = $rowQ->count();
