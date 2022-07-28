@@ -18,7 +18,28 @@ $verify_success=FALSE; //initialise flag
 
 $errors = array();
 
-if(Input::exists('get')){
+if (Input::exists('post')) {
+  $vericode = Input::get('veri');
+
+  $id = Input::get('id');
+
+  $rowQ = $db->query("SELECT email  FROM users WHERE vericode = ? AND id = ?", [$vericode, $id]);
+  $rowC = $rowQ->count();
+
+  if($rowC == 1){
+    $row = $rowQ->first();
+    $email = $row->email;
+
+    $newpassword = password_hash(Input::get('password', true), PASSWORD_BCRYPT, ['cost' => 12]);
+
+    $db->update('users', $id, ['password' => $newpassword]);
+
+    $dest = "login.php";
+    Redirect::to($dest);
+  }
+
+
+}  else if(Input::exists('get')){
 
 	$validate = new Validate();
 	$validation = $validate->check($_GET,array(
@@ -31,20 +52,19 @@ if(Input::exists('get')){
 //due to issue with url encoding, looked up url based on verification code
 $rowQ = $db->query("SELECT email  FROM users WHERE vericode = ? ", [$vericode]);
 $rowC = $rowQ->count();
-echo "1";
+
 if($rowC == 1){
   $row = $rowQ->first();
   $email = $row->email; //overwrite email address
 
+
     $verify = new User($email);
-    echo "2";
+
 		if($verify->data()->vericode == $vericode){
 			//link verified
 
       $verify_success=TRUE;
-      echo "3";
-
-
+      $id = $verify->data()->id;
 		}
 	}
 }
@@ -116,6 +136,8 @@ if($rowC == 1){
             $html .= '<label for="password" class="hide">Password</label>';
             $html .= '<div class="controls">';
             $html .= '<input type="password" aria-required="true" aria-invalid="false" name="password" id="password" class="form-control fs-exclude  password-input " placeholder="Password">';
+            $html .= '<input type="hidden" name="veri" id="veri" value="'.$vericode.'">';
+            $html .= '<input type="hidden" name="id" id="id" value="'.$id.'">';
             $html .= '</div>';
             $html .= '</div>';
             $html .= '<br>';
