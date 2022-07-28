@@ -2389,7 +2389,10 @@ fOAfGa > li {
                   <div>
                      <ul class="AlertsNav__StyledNav-sc-yjf5fo-0 kNoAOY"></ul>
                      <div class="styles__StyledNotifications-sc-n7rdk0-0 fDXMBh">
-                        <button type="button" class="styles__StyledNotificationToggle-sc-n7rdk0-1 fCsKlY fa fa-bell-o dropdown-toggle" aria-expanded="false" aria-controls="kl-notification-list" data-testid="notification-toggle"></button>
+                        <button type="button" class="styles__StyledNotificationToggle-sc-n7rdk0-1 fCsKlY fa fa-bell-o dropdown-toggle" aria-expanded="false" aria-controls="kl-notification-list" data-testid="notification-toggle"><?php
+                          $notificationCount = $db->query("SELECT id FROM notifications WHERE user_id = ?",[$user->data()->id])->count();
+                          echo $notificationCount; 
+                        ?></button>
                         <div id="kl-notification-list" class="styles__StyledNotificationsList-sc-n7rdk0-2 bRPFxC" style="display: none;">
                            <div class="styles__StyledNotificationsHeader-sc-n7rdk0-4 jpALXp"><span>Inbox</span></div>
                            <div>
