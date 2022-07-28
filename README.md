@@ -134,39 +134,6 @@ The below function works by receiving a multidimensional array for both the cust
 
 
 
-
-    $call = new Klaviyo(); //initialise Klaviyo class
-
-    //script for tracking logged in user activity
-    $script = '<script async type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id='.$call->returnPublicKey().'"></script>'.$nl;
-    $script .= "<script>".$nl;
-    $script .= "var _learnq = _learnq || [];".$nl;
-    $script .= "_learnq.push(['identify', {".$nl;
-    $script .= "'$"."email' : '".$user->data()->email."',".$nl;
-    $script .= "'$"."first_name' : '".$user->data()->fname."',".$nl;
-    $script .= "'$"."last_name' : '".$user->data()->lname."',".$nl;
-    $script .= "}]);".$nl.$nl;
-
-
-    $script .= "_learnq.push(['track', 'Page View', {".$nl;
-    $script .= "'url' : '".$_SERVER['REQUEST_URI']."',".$nl;
-    $script .= "'pageTitle' : '".$pageTitle."',".$nl;
-    $script .= "'journey' : '".$journey."',".$nl;
-    $script .= "'journeyStep' : '".$journeyStep."'";
-
-    //add additional page view attributes automatically
-    foreach ($pageview_attr as [$attr, $val]) {
-
-        $script .= ",".$nl." '".$attr."' : '".$val."'";
-    }
-
-    $script .= $nl."}]);".$nl;
-    $script .= "</script>".$nl;
-    echo $script;
-
-
-
-
 ## JavaScript Event Tracking
 #### Purpose
 Event tracking has been used to track logged in user behaviour on the website https://thatspurple.com/klaviyo-kla/ Every logged in page references both a header (platform/includes/header.php) and footer (platform/includes/footer.php). In addition to standardising the pages' cosmetics, the header.php file also calls the Klaviyo event JavaScript end point - allowing us to track user behaviour on the site
