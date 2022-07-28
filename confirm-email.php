@@ -39,7 +39,7 @@ if($rowC == 1){
 }
 
 	//if email is valid, do this
-	if($validation->passed()){ //temporarily reomved validation
+	if(1==1){ //no validation required on passed url 
 		//get the user info based on the email
     $verify = new User($email);
 
