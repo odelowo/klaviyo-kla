@@ -18,7 +18,28 @@ $verify_success=FALSE; //initialise flag
 
 $errors = array();
 
-if(Input::exists('get')){
+if (Input::exists('post')) {
+  $vericode = Input::get('veri');
+
+  $id = Input::get('id');
+
+  $rowQ = $db->query("SELECT email  FROM users WHERE vericode = ? AND id = ?", [$vericode, $id]);
+  $rowC = $rowQ->count();
+
+  if($rowC == 1){
+    $row = $rowQ->first();
+    $email = $row->email;
+
+    $newpassword = password_hash(Input::get('password', true), PASSWORD_BCRYPT, ['cost' => 12]);
+
+    $db->update('users', $id, ['password' => $newpassword]);
+
+    $dest = "login.php";
+    Redirect::to($dest);
+  }
+
+
+}  else if(Input::exists('get')){
 
 	$validate = new Validate();
 	$validation = $validate->check($_GET,array(
@@ -36,46 +57,15 @@ if($rowC == 1){
   $row = $rowQ->first();
   $email = $row->email; //overwrite email address
 
-}
 
-	//if email is valid, do this
-	if(1==1){ //no validation required on passed url 
-		//get the user info based on the email
     $verify = new User($email);
 
-		if($verify->data()->email_verified == 1 && $verify->data()->vericode == $vericode && $verify->data()->email_new == ""){
-			//email is already verified - Basically if the system already shows the email as verified and they click the link again, we're going to pass it regardless of the expiry because
-			//require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
+		if($verify->data()->vericode == $vericode){
+			//link verified
 
       $verify_success=TRUE;
-			logger($verify->data()->id,"User","Verification completed via vericode - again.");
-			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
-
-		}else{
-      //troubleshooting values for if statement - echo "3 - | ".$verify->exists().' | '.$verify->data()->vericode.' | '.$vericode.' || '.strtotime($verify->data()->vericode_expiry).' | '.strtotime(date("Y-m-d H:i:s")).' Z '.$new.' Y '.$verify->data()->email_new.' # '.$verify->data()->id;
-		if ($verify->exists() && $verify->data()->vericode == $vericode && (strtotime($verify->data()->vericode_expiry) - strtotime(date("Y-m-d H:i:s")) > 0)){
-			//check if this email account exists in the DB
-
-      $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
-
-			$verify_success=TRUE;
-			logger($verify->data()->id,"User","Verification completed via vericode.");
-			$msg = str_replace("+"," ",lang("REDIR_EM_SUCC"));
-
-      //add user to newsletter list if they have opted in
-      if($verify->data()->newsletterSubscription == 1){
-        //add to list
-        $call = new Klaviyo();
-        $listId = "VqpWFS";
-        $call->subscribeToList($listId, $email);
-      }
-
+      $id = $verify->data()->id;
 		}
-	}
-	}else{
-
-		$errors = $validation->errors();
-
 	}
 }
 ?>
@@ -126,37 +116,39 @@ if($rowC == 1){
 
           <?php
 
-          if ($verify_success){
-
-            //start welcome journey
-            $call = new Klaviyo();
-
-            $properties = [];
-            $customer = array(
-              array("email",$email),
-            );
-
-            $event = "Customer Welcome Journey";
-            $call->trackProfileActivity($customer, $properties, $event);
-
-          	if(file_exists($abs_us_root.$us_url_root.'usersc/views/_verify_success.php')){
-          		require_once $abs_us_root.$us_url_root.'usersc/views/_verify_success.php';
-          	}else{
-          		require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
-          	}
-
-          }else{
-          	if($eventhooks =  getMyHooks(['page'=>'verifyFail'])){
-          		includeHook($eventhooks,'body');
-          	}
-
-          	if(file_exists($abs_us_root.$us_url_root.'usersc/views/_verify_error.php')){
-          		require_once $abs_us_root.$us_url_root.'usersc/views/_verify_error.php';
-          	}else{
-          		require $abs_us_root.$us_url_root.'users/views/_verify_error.php';
-          	}
+          if (!$verify_success){
+            $html = '<div class="row">';
+            $html .= '<div class="col-sm-12">';
+            $html .= '<h1>Unable to Authenticate.</h1>';
+            $html .= '<a href="password-reset.php" class="btn btn-primary">Reset password</a>';
+            $html .= '<br>';
+            $html .= '</div>';
+            $html .= '</div>';
 
           }
+          else {
+
+            $html = '<h2 class="headline less-margin">Password Reset</h2>';
+            $html .= '<div class="form-container form-divider">';
+            $html .= '<form id="password-reset-form" action="" method="POST">';
+            $html .= '<fieldset>';
+            $html .= '<div class="form-group">';
+            $html .= '<label for="password" class="hide">Password</label>';
+            $html .= '<div class="controls">';
+            $html .= '<input type="password" aria-required="true" aria-invalid="false" name="password" id="password" class="form-control fs-exclude  password-input " placeholder="Password">';
+            $html .= '<input type="hidden" name="veri" id="veri" value="'.$vericode.'">';
+            $html .= '<input type="hidden" name="id" id="id" value="'.$id.'">';
+            $html .= '</div>';
+            $html .= '</div>';
+            $html .= '<br>';
+            $html .= '<button id="submit-button" type="submit" class="submit-button">Change Password</button>';
+            $html .= '</fieldset>';
+            $html .= '</form>';
+            $html .= '</div>';
+
+          }
+
+          echo $html;
 
           ?>
 

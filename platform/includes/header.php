@@ -15,6 +15,7 @@ function numhash($n) { //encode/decode 32-bit int
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <title>Kla | <?php echo $pageTitle; ?></title>
       <link rel="stylesheet" href="https://www.klaviyo.com/media/css/public_v4/base.css?v=3db444d">
+      <link href="https://www.klaviyo.com/media/css/integrations.css?v=c52aa084" rel="stylesheet">
       <script src="https://use.fortawesome.com/d537f022.js"></script>
     <script src="https://use.typekit.net/lfn1kdd.js"></script>
     <script>try{Typekit.load({ async: false });}catch(e){}</script>
@@ -2384,12 +2385,15 @@ fOAfGa > li {
                <nav class="styles__StyledHeader-sc-qpxf0f-0 hrlJdN">
                   <div>
                     <a href="index.php"><img src="images/logo.png"></a>
-                     <form action="/search" method="GET" id="search-form" class="styles__StyledSearch-sc-us72y0-0 chOITk"><input type="text" placeholder="Global Search..." id="search" name="q"><button type="submit" class="styles__StyledButton-sc-us72y0-1 hdtWvd"><i class="fa fa-search search-icon"></i></button></form>
+                     <form action="search.php" method="GET" id="search-form" class="styles__StyledSearch-sc-us72y0-0 chOITk"><input type="text" placeholder="Find Quiz..." id="search_term" name="search_term"><button type="submit" class="styles__StyledButton-sc-us72y0-1 hdtWvd"><i class="fa fa-search search-icon"></i></button></form>
                   </div>
                   <div>
                      <ul class="AlertsNav__StyledNav-sc-yjf5fo-0 kNoAOY"></ul>
                      <div class="styles__StyledNotifications-sc-n7rdk0-0 fDXMBh">
-                        <button type="button" class="styles__StyledNotificationToggle-sc-n7rdk0-1 fCsKlY fa fa-bell-o dropdown-toggle" aria-expanded="false" aria-controls="kl-notification-list" data-testid="notification-toggle"></button>
+                        <button type="button" class="styles__StyledNotificationToggle-sc-n7rdk0-1 fCsKlY fa fa-bell-o dropdown-toggle" aria-expanded="false" aria-controls="kl-notification-list" data-testid="notification-toggle"><?php
+                          $notificationCount = $db->query("SELECT id FROM notifications WHERE user_id = ?",[$user->data()->id])->count();
+                          echo $notificationCount;
+                        ?></button>
                         <div id="kl-notification-list" class="styles__StyledNotificationsList-sc-n7rdk0-2 bRPFxC" style="display: none;">
                            <div class="styles__StyledNotificationsHeader-sc-n7rdk0-4 jpALXp"><span>Inbox</span></div>
                            <div>
@@ -2398,18 +2402,18 @@ fOAfGa > li {
                                 $rowQ = $db->query("SELECT message, destination FROM notifications WHERE user_id = ? ORDER BY last_updated DESC", [$user->data()->id]);
                                 $rowC = $rowQ->count();
 
-                                $html = "";
+                                $html_notifications = "";
 
                                 if($rowC >0){ //has notifications
                                   foreach ($db->results() as $notification){ //write notification
-                                    $html .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV" style="padding: 5px; padding-left: 20px; text-align: left;"><a href="'.$notification->destination.'"> '.$notification->message.'</a></div>';
+                                    $html_notifications .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV" style="padding: 5px; padding-left: 20px; text-align: left;"><a href="'.$notification->destination.'"> '.$notification->message.'</a></div>';
                                   }
 
                                 }else { //does not have any notifications
-                                  $html .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV">You don\'t currently have any notifications.</div>';
+                                  $html_notifications .= '<div class="styles__StyledNoRecords-sc-n7rdk0-6 dlKiVV">You don\'t currently have any notifications.</div>';
                                 }
 
-                                echo $html;
+                                echo $html_notifications;
                              ?>
 
                            </div>
@@ -2436,7 +2440,7 @@ fOAfGa > li {
                      </div>
                      <div class="list-section">
                         <li class="list <?php echo ($menuItemSelected == 'create-quiz') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'create-quiz') ? '#' : 'create-quiz.php'; ?>" class="list-link"><i class="fa fa fa-paper-plane"></i>Create Quiz</a></li>
-                        <!-- <li class="list <?php echo ($menuItemSelected == 'view-results') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'view-results') ? '#' : 'view-results.php'; ?>" class="list-link"><i class="fa fa fa-share-alt fa-area-chart"></i>View Quiz Results</a></li> -->
+                        <li class="list <?php echo ($menuItemSelected == 'search') ? 'active' : ''; ?>"><a href="<?php echo ($menuItemSelected == 'search') ? '#' : 'search.php'; ?>" class="list-link"><i class="fa fa-graduation-cap"></i>View Quizzes</a></li>
                      </div>
                   </ul>
                </aside>

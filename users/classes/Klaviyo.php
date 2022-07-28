@@ -21,7 +21,7 @@ class Klaviyo extends Client {
 
     $body = '{"profiles":[{"email":"'.$email.'", "email_consent":true}]}';
 
-    $response = $this->request('POST', 'https://a.klaviyo.com/api/v2/list/'.$listId.'/subscribe?api_key='.$this->privateKey, [
+    $response = $this->request('POST', 'https://a.klaviyo.com/api/v2/list/'.$listId.'/subscribe?api_key='.self::$privateKey, [
       'body' => $body,
       'headers' => [
         'Accept' => 'application/json',

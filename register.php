@@ -80,7 +80,6 @@ if (Input::exists()) {
             $user = new User();
             $join_date = date('Y-m-d H:i:s');
 
-            $vericode_expiry = date('Y-m-d H:i:s');
             $vericode_expiry = date('Y-m-d H:i:s', strtotime("+$settings->join_vericode_expiry hours", strtotime(date('Y-m-d H:i:s'))));
             $vericodeURL = 'www.thatspurple.com/klaviyo-kla/confirm-email.php?v='.$vericode.'&email='.urlencode($email);
 

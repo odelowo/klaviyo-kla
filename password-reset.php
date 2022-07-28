@@ -1,4 +1,68 @@
+<?php
+  require_once 'users/init.php'; //initialisation script
 
+  if (!securePage($_SERVER['PHP_SELF'])) { //if unsecure do not load the rest of the page
+      die();
+  }
+
+  if($user->isLoggedIn()) $user->logout();
+
+  $email_sent = false;
+
+  if (Input::exists('post')) {
+    $email = Input::get('email');
+    $fuser = new User($email);
+    $check = $db->query("SELECT id FROM users WHERE email = ? AND email_verified = 1",[$email])->count();
+
+    $validate = new Validate();
+    $validation = $validate->check($_POST,array(
+    'email' => array(
+      'display' => lang("GEN_EMAIL"),
+      'valid_email' => true,
+      'required' => true,
+    ),
+    ));
+
+    if ($validation->passed()) {
+      if($fuser->exists()){
+
+        $vericode=randomstring(15);
+        $vericode_expiry=date("Y-m-d H:i:s",strtotime("+$settings->join_vericode_expiry hours",strtotime(date("Y-m-d H:i:s"))));
+        $db->update('users',$fuser->data()->id,['vericode' => $vericode,'vericode_expiry' => $vericode_expiry]);
+
+
+          //send the email
+          $call = new Klaviyo();
+          $vericodeURL = 'www.thatspurple.com/klaviyo-kla/update-password.php?v='.$vericode.'&email='.urlencode($email);
+
+          $properties = array (
+            array("vericode",$vericode),
+            array("vericode_expiry",$vericode_expiry),
+            array("vericodeURL",$vericodeURL),
+          );
+
+          $customer = array(
+            array("email",$email),
+          );
+
+          $event = "Resend Customer Email Verification";
+          $call->trackProfileActivity($customer, $properties, $event);
+
+          logger($fuser->data()->id,"User","Requested a new verification email.");
+
+          //show prompt
+          if($check > 0){
+            $email_sent = TRUE;
+          }
+      }else{
+          $errors[] = lang("ERR_EM_DB");
+      }
+    }else{
+        $errors = $validation->errors();
+    }
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,13 +102,9 @@
 
   <h2 class="headline extra-margin">Forgot your password?</h2>
   <p class="subtitle">Please enter the email address associated with your Kla account.</p>
-
+<?php if ($email_sent){ echo '<div class="alert alert-success" id="email-sent-alert"><div class="alert-icon"><i class="kl check-circle" style="vertical-align: top"></i></div><div class="alert-message"><b>Email sent</b><br/>A verification code has been sent to <span>'.$email.'.</span></div></div>';} ?>
   <div class="form-container form-divider">
-    <form action="/account/password-reset" method="POST">
-      <input type="hidden" name="csrfmiddlewaretoken" value="n3W0ZN8Bjx4BuLaOwKLmlHOs9DMYkGQ135n98LjYHqTrF1Jp2MiJ7gidK9JO7x0i">
-
-
-
+    <form id="password-reset" method="POST">
       <fieldset>
         <div class="form-group">
           <div class="controls">
