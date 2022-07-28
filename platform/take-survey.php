@@ -132,11 +132,24 @@ $quizOwnerId = $row->userid;
 $title = $row->name; //used to identify user friendly in-page title
 require_once('includes/header.php');
 ?>
+<style>
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
 
+.correct {
+  border: 2px solid green;
+  border-radius: 4px;
+}
+</style>
      <div class="ObjectivesTab__Container-sc-1el61mo-0 coNUBW">
         <div class="ObjectivesTab__DashboardContainer-sc-1el61mo-1 khhmlX">
-           <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj">
-             <span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk Title__StyledBody-sc-1bx2dve-1 NdxIz"><?php echo $quizDesc; ?></span>
+           <div class="Box__StyledBox-sc-16nrscc-0 izgCeZ HeroCardWrapper__StyledBox-sc-1monayj-1 hiaYEj" style="position: relative;display: block;">
+             <div style="width:100%;"><span class="TextStyleTemplate-sc-1jbnw9u-0 crhGTk Title__StyledBody-sc-1bx2dve-1 NdxIz"><?php echo $quizDesc; ?></span></div>
+             <div style="width: 100%;vertical-align: bottom;clear: both;">
              <form method="post">
                <?php
 
@@ -178,6 +191,7 @@ require_once('includes/header.php');
                   <button class="submit-button" type="submit">Complete <?php echo $quizName;?> Quiz</button>
                 </div>
              </form>
+           </div>
            </div>
         </div>
      </div>
